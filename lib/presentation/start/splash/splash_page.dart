@@ -16,6 +16,7 @@ class SplashPage
     super.init(context);
   }
 
+  //////////////////////splasj
   @override
   void listener(BuildContext context, SplashListenable state) {
     switch (state.effect) {
