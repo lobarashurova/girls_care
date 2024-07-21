@@ -9,7 +9,7 @@ import 'package:girls_care/presentation/start/splash/cubit/splash_state.dart';
 class SplashPage
     extends BasePage<SplashCubit, SplashBuildable, SplashListenable> {
   const SplashPage({super.key});
-
+//////////////////////////////////////////
   @override
   void init(BuildContext context) {
     context.read<SplashCubit>().changeStatus();
