@@ -1,6 +1,7 @@
 import 'package:elegant_notification/elegant_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
+import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/display/display.dart';
 
 import '../../di/injection.dart';
@@ -38,7 +39,7 @@ class DisplayWidget extends StatelessWidget {
         final Color color;
         switch (message.type) {
           case DisplayType.error:
-            icon = Assets.icons.information.svg(
+            icon = Assets.icons.arrow.svg(
               colorFilter: const ColorFilter.mode(
                 Colors.white,
                 BlendMode.srcIn,
@@ -49,7 +50,7 @@ class DisplayWidget extends StatelessWidget {
             color = Colors.red;
             break;
           case DisplayType.warning:
-            icon = Assets.icons.information.svg(
+            icon = Assets.icons.arrow.svg(
               colorFilter: const ColorFilter.mode(
                 Colors.white,
                 BlendMode.srcIn,
@@ -60,7 +61,7 @@ class DisplayWidget extends StatelessWidget {
             color = Colors.orange;
             break;
           case DisplayType.info:
-            icon = Assets.icons.information.svg(
+            icon = Assets.icons.arrow.svg(
               colorFilter: const ColorFilter.mode(
                 Colors.white,
                 BlendMode.srcIn,
@@ -71,7 +72,7 @@ class DisplayWidget extends StatelessWidget {
             color = Colors.blue;
             break;
           case DisplayType.success:
-            icon = Assets.icons.verify.image(
+            icon = Assets.icons.appLauncher.image(
               color: Colors.white,
               height: 28,
               width: 28,

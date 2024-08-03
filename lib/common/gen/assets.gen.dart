@@ -22,6 +22,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow.svg
   SvgGenImage get arrow => const SvgGenImage('assets/icons/arrow.svg');
 
+  /// File path: assets/icons/background.png
+  AssetGenImage get background =>
+      const AssetGenImage('assets/icons/background.png');
+
   /// File path: assets/icons/camera_rounded.svg
   SvgGenImage get cameraRounded =>
       const SvgGenImage('assets/icons/camera_rounded.svg');
@@ -35,60 +39,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
 
-  /// File path: assets/icons/draft_rounded.svg
-  SvgGenImage get draftRounded =>
-      const SvgGenImage('assets/icons/draft_rounded.svg');
-
-  /// File path: assets/icons/edit_prof.png
-  AssetGenImage get editProf =>
-      const AssetGenImage('assets/icons/edit_prof.png');
-
-  /// File path: assets/icons/empty.png
-  AssetGenImage get empty => const AssetGenImage('assets/icons/empty.png');
-
-  /// File path: assets/icons/home.svg
-  SvgGenImage get home => const SvgGenImage('assets/icons/home.svg');
-
-  /// File path: assets/icons/home_rounded.svg
-  SvgGenImage get homeRounded =>
-      const SvgGenImage('assets/icons/home_rounded.svg');
-
-  /// File path: assets/icons/image.png
-  AssetGenImage get image => const AssetGenImage('assets/icons/image.png');
-
-  /// File path: assets/icons/incorrect.svg
-  SvgGenImage get incorrect => const SvgGenImage('assets/icons/incorrect.svg');
-
-  /// File path: assets/icons/info_profile.svg
-  SvgGenImage get infoProfile =>
-      const SvgGenImage('assets/icons/info_profile.svg');
-
-  /// File path: assets/icons/info_rounded.svg
-  SvgGenImage get infoRounded =>
-      const SvgGenImage('assets/icons/info_rounded.svg');
-
-  /// File path: assets/icons/information.svg
-  SvgGenImage get information =>
-      const SvgGenImage('assets/icons/information.svg');
-
-  /// File path: assets/icons/innpay.png
-  AssetGenImage get innpay => const AssetGenImage('assets/icons/innpay.png');
-
-  /// File path: assets/icons/lenta_icon.svg
-  SvgGenImage get lentaIcon => const SvgGenImage('assets/icons/lenta_icon.svg');
-
-  /// File path: assets/icons/login_pic.png
-  AssetGenImage get loginPic =>
-      const AssetGenImage('assets/icons/login_pic.png');
-
-  /// File path: assets/icons/logo_splash.png
-  AssetGenImage get logoSplash =>
-      const AssetGenImage('assets/icons/logo_splash.png');
-
-  /// File path: assets/icons/notification_profile.svg
-  SvgGenImage get notificationProfile =>
-      const SvgGenImage('assets/icons/notification_profile.svg');
-
   /// File path: assets/icons/onboard1.png
   AssetGenImage get onboard1 =>
       const AssetGenImage('assets/icons/onboard1.png');
@@ -101,100 +51,42 @@ class $AssetsIconsGen {
   AssetGenImage get onboard3 =>
       const AssetGenImage('assets/icons/onboard3.png');
 
-  /// File path: assets/icons/password_profile.svg
-  SvgGenImage get passwordProfile =>
-      const SvgGenImage('assets/icons/password_profile.svg');
-
-  /// File path: assets/icons/profile.svg
-  SvgGenImage get profile => const SvgGenImage('assets/icons/profile.svg');
-
-  /// File path: assets/icons/saved_rounded.svg
-  SvgGenImage get savedRounded =>
-      const SvgGenImage('assets/icons/saved_rounded.svg');
-
-  /// File path: assets/icons/search.svg
-  SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
-
-  /// File path: assets/icons/send_icon.svg
-  SvgGenImage get sendIcon => const SvgGenImage('assets/icons/send_icon.svg');
-
-  /// File path: assets/icons/splash_col.png
-  AssetGenImage get splashCol =>
-      const AssetGenImage('assets/icons/splash_col.png');
-
-  /// File path: assets/icons/translator_profile.svg
-  SvgGenImage get translatorProfile =>
-      const SvgGenImage('assets/icons/translator_profile.svg');
-
-  /// File path: assets/icons/verify.png
-  AssetGenImage get verify => const AssetGenImage('assets/icons/verify.png');
+  /// File path: assets/icons/splash.png
+  AssetGenImage get splash => const AssetGenImage('assets/icons/splash.png');
 
   /// List of all assets
   List<dynamic> get values => [
         appLauncher,
         arrow,
+        background,
         cameraRounded,
         chatIcon,
         checked,
         close,
-        draftRounded,
-        editProf,
-        empty,
-        home,
-        homeRounded,
-        image,
-        incorrect,
-        infoProfile,
-        infoRounded,
-        information,
-        innpay,
-        lentaIcon,
-        loginPic,
-        logoSplash,
-        notificationProfile,
         onboard1,
         onboard2,
         onboard3,
-        passwordProfile,
-        profile,
-        savedRounded,
-        search,
-        sendIcon,
-        splashCol,
-        translatorProfile,
-        verify
+        splash
       ];
-}
-
-class $AssetsLottiesGen {
-  const $AssetsLottiesGen();
-
-  /// File path: assets/lotties/animation_loading.json
-  String get animationLoading => 'assets/lotties/animation_loading.json';
-
-  /// File path: assets/lotties/loading_lottie.json
-  String get loadingLottie => 'assets/lotties/loading_lottie.json';
-
-  /// File path: assets/lotties/splash.json
-  String get splash => 'assets/lotties/splash.json';
-
-  /// List of all assets
-  List<String> get values => [animationLoading, loadingLottie, splash];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
-  static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName, {this.size = null});
+  const AssetGenImage(
+    this._assetName, {
+    this.size,
+    this.flavors = const {},
+  });
 
   final String _assetName;
 
   final Size? size;
+  final Set<String> flavors;
 
   Image image({
     Key? key,
@@ -268,17 +160,19 @@ class AssetGenImage {
 class SvgGenImage {
   const SvgGenImage(
     this._assetName, {
-    this.size = null,
+    this.size,
+    this.flavors = const {},
   }) : _isVecFormat = false;
 
   const SvgGenImage.vec(
     this._assetName, {
-    this.size = null,
+    this.size,
+    this.flavors = const {},
   }) : _isVecFormat = true;
 
   final String _assetName;
-
   final Size? size;
+  final Set<String> flavors;
   final bool _isVecFormat;
 
   SvgPicture svg({
@@ -301,12 +195,23 @@ class SvgGenImage {
     @deprecated BlendMode colorBlendMode = BlendMode.srcIn,
     @deprecated bool cacheColorFilter = false,
   }) {
+    final BytesLoader loader;
+    if (_isVecFormat) {
+      loader = AssetBytesLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+      );
+    } else {
+      loader = SvgAssetLoader(
+        _assetName,
+        assetBundle: bundle,
+        packageName: package,
+        theme: theme,
+      );
+    }
     return SvgPicture(
-      _isVecFormat
-          ? AssetBytesLoader(_assetName,
-              assetBundle: bundle, packageName: package)
-          : SvgAssetLoader(_assetName,
-              assetBundle: bundle, packageName: package),
+      loader,
       key: key,
       matchTextDirection: matchTextDirection,
       width: width,
@@ -317,7 +222,6 @@ class SvgGenImage {
       placeholderBuilder: placeholderBuilder,
       semanticsLabel: semanticsLabel,
       excludeFromSemantics: excludeFromSemantics,
-      theme: theme,
       colorFilter: colorFilter ??
           (color == null ? null : ColorFilter.mode(color, colorBlendMode)),
       clipBehavior: clipBehavior,

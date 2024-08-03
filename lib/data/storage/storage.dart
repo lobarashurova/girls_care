@@ -1,4 +1,5 @@
 import 'package:girls_care/common/base/base_storage.dart';
+import 'package:girls_care/data/api_model/tokens/tokens.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,14 +13,14 @@ class Storage {
   static Future<Storage> create() async {
     await Hive.initFlutter();
 
-    // Hive.registerAdapter(TokensImplAdapter());
+    Hive.registerAdapter(TokensImplAdapter());
 
     final box = await Hive.openBox('storage');
     return Storage(box);
   }
 
   BaseStorage<bool> get showOnboard => BaseStorage(_box, 'showOnboard');
-
+  BaseStorage<Tokens> get tokens => BaseStorage(_box, 'token');
 
   BaseStorage<int> get status => BaseStorage(_box, 'status');
 

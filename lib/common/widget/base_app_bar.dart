@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
+import 'package:girls_care/common/gen/assets.gen.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar(
@@ -34,7 +35,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: leading ?? (canPop ? appBarLeading(context) : null),
       centerTitle: centerTitle,
       title: hasIcon
-          ? Assets.icons.innpay.image(width: 96, height: 28)
+          ? Assets.icons.appLauncher.image(width: 96, height: 28)
           : InkWell(
               onTap: () => onPressed?.call(),
               child: (title ?? '').w(600).s(16).c(backgroundColor != null

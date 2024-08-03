@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
+import 'package:girls_care/common/gen/assets.gen.dart';
 
 import '../../common/widget/common_button.dart';
 
@@ -28,7 +29,7 @@ class EmptyView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          icon ?? Assets.icons.verify.image(),
+          icon ?? Assets.icons.appLauncher.image(),
           const SizedBox(height: 48),
           (title ?? '')
               .s(20)

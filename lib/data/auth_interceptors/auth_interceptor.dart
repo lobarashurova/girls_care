@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:girls_care/data/api_model/tokens/tokens.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:logger/web.dart';
-import 'package:tsj_project/data/storage/storage.dart';
-
-import '../../common/constants/constants.dart';
-import '../base_model/tokens/tokens.dart';
 
 @lazySingleton
 class AuthInterceptor extends QueuedInterceptor {
@@ -19,7 +17,7 @@ class AuthInterceptor extends QueuedInterceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    final tokens = _storage.tokens.call();
+    final tokens = null;
 
     if (tokens == null) return handler.next(options);
 
@@ -48,7 +46,7 @@ class AuthInterceptor extends QueuedInterceptor {
   Future<String?> refreshToken(String refresh) async {
     try {
       final dio = Dio();
-      dio.options.baseUrl = Constants.baseUrl;
+      dio.options.baseUrl = " Constants.baseUrl";
 
       final request = {'refresh': refresh};
       final response =
