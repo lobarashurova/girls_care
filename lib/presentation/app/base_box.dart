@@ -31,14 +31,17 @@ class BaseBox extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        padding: padding ?? const EdgeInsets.all(16),
+        padding: padding ?? EdgeInsets.symmetric(vertical: 16),
         margin: margin,
         decoration: BoxDecoration(
-          color: backgroundColor ?? context.colors.onPrimary,
+          color: backgroundColor ??
+              (selected
+                  ? context.colors.primary2.withOpacity(0.2)
+                  : context.colors.onPrimary),
           borderRadius: BorderRadius.circular(16),
-          border: selected ? Border.all(color: context.colors.primary) : null,
+          border: Border.all(color: context.colors.primary2),
         ),
-        child: child,
+        child: Center(child: child),
       ),
     );
   }

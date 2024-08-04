@@ -22,9 +22,16 @@ class $AssetsIconsGen {
   /// File path: assets/icons/arrow.svg
   SvgGenImage get arrow => const SvgGenImage('assets/icons/arrow.svg');
 
+  /// File path: assets/icons/backgound.png
+  AssetGenImage get backgound =>
+      const AssetGenImage('assets/icons/backgound.png');
+
   /// File path: assets/icons/background.png
   AssetGenImage get background =>
       const AssetGenImage('assets/icons/background.png');
+
+  /// File path: assets/icons/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
 
   /// File path: assets/icons/camera_rounded.svg
   SvgGenImage get cameraRounded =>
@@ -39,6 +46,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
 
+  /// File path: assets/icons/hayz_girl.png
+  AssetGenImage get hayzGirl =>
+      const AssetGenImage('assets/icons/hayz_girl.png');
+
   /// File path: assets/icons/onboard1.png
   AssetGenImage get onboard1 =>
       const AssetGenImage('assets/icons/onboard1.png');
@@ -51,6 +62,10 @@ class $AssetsIconsGen {
   AssetGenImage get onboard3 =>
       const AssetGenImage('assets/icons/onboard3.png');
 
+  /// File path: assets/icons/pregrant.png
+  AssetGenImage get pregrant =>
+      const AssetGenImage('assets/icons/pregrant.png');
+
   /// File path: assets/icons/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/icons/splash.png');
 
@@ -58,14 +73,18 @@ class $AssetsIconsGen {
   List<dynamic> get values => [
         appLauncher,
         arrow,
+        backgound,
         background,
+        calendar,
         cameraRounded,
         chatIcon,
         checked,
         close,
+        hayzGirl,
         onboard1,
         onboard2,
         onboard3,
+        pregrant,
         splash
       ];
 }

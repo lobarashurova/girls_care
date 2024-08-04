@@ -166,7 +166,10 @@ class _CommonTextFieldState extends State<CommonTextField> {
                   setState(() => passwordVisible = !passwordVisible);
                 },
               )
-            :  widget.suffix,
+            :  Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: widget.suffix,
+            ),
       ),
       style: TextStyle(
         fontSize: 14,

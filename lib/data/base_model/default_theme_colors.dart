@@ -5,7 +5,8 @@ abstract class StaticColors {
   static const black = Color(0xFF000000);
   static const blueWhale = Color(0xFF0C1324);
   static const white = Color(0xFFFFFFFF);
-  static const vividCerulean = Color(0xFF639223);
+  static const limeBlue = Color(0xFF8D80C1);
+  static const vividCerulean = Color(0xFFEB2D69);
   static const midnight = Color(0xFF242B3A);
   static const raven = Color(0xFF6D717C);
   static const aluminium = Color(0xFF858991);
@@ -27,6 +28,7 @@ class DefaultThemeColors {
   final primary02 = StaticColors.vividCerulean.withOpacity(0.2);
   final primary005 = StaticColors.vividCerulean.withOpacity(0.05);
   final onPrimary = StaticColors.white;
+  final primary2 = StaticColors.limeBlue;
   final black = StaticColors.black;
   final headline = StaticColors.blueWhale;
   final greenHeadline = StaticColors.limeGreen;

@@ -90,7 +90,7 @@ extension TextExtensions on Text {
   }) =>
       Text(
         data ?? this.data!,
-        style: style ?? GoogleFonts.nunito(),
+        style: style ?? GoogleFonts.balooTamma2(),
         strutStyle: strutStyle ?? this.strutStyle,
         textAlign: textAlign ?? this.textAlign,
         textDirection: textDirection ?? this.textDirection,
@@ -106,22 +106,22 @@ extension TextExtensions on Text {
       );
 
   Text s(double size) => copyWith(
-        style: (style ?? GoogleFonts.nunito()).copyWith(fontSize: size),
+        style: (style ?? GoogleFonts.balooTamma2()).copyWith(fontSize: size),
       );
 
   Text c(Color color) => copyWith(
-        style: (style ?? GoogleFonts.nunito()).copyWith(color: color),
+        style: (style ?? GoogleFonts.balooTamma2()).copyWith(color: color),
       );
 
   Text a(TextAlign textAlign) => copyWith(
-        style: (style ?? GoogleFonts.nunito()),
+        style: (style ?? GoogleFonts.balooTamma2()),
         textAlign: textAlign,
       );
 
   Text w(int fontWeight) {
     final weight = FontWeight.values[fontWeight ~/ 100 - 1];
     return copyWith(
-        style: (style ?? GoogleFonts.nunito()).copyWith(fontWeight: weight));
+        style: (style ?? GoogleFonts.balooTamma2()).copyWith(fontWeight: weight));
   }
 
   Text styles({TextOverflow? overflow}) => Text(
