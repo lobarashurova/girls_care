@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               const CustomCalendar(),
               SizedBox(height: 20.h),
-              const ChangeCalendarB(),
+              const ChangeCalendarB(text: "Kalendarga o'zgartirish kiritish"),
               SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

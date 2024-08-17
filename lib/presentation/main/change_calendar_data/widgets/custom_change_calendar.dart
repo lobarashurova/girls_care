@@ -3,6 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class CustomCalendarChange extends StatefulWidget {
+  const CustomCalendarChange({super.key});
+
+  @override
+  State<CustomCalendarChange> createState() => _CustomCalendarChangeState();
+}
+
+class _CustomCalendarChangeState extends State<CustomCalendarChange> {
   DateTime selectedDate = DateTime.now();
   int currentDateSelectedIndex = 0;
 
@@ -38,16 +46,6 @@ import 'package:google_fonts/google_fonts.dart';
     "Noyabr",
     "Dekabr"
   ];
-
-
-class CustomCalendar extends StatefulWidget {
-  const CustomCalendar({super.key});
-
-  @override
-  State<CustomCalendar> createState() => _CustomCalendarState();
-}
-
-class _CustomCalendarState extends State<CustomCalendar> {
 
   void _goToPreviousMonth() {
     setState(() {
@@ -87,32 +85,17 @@ class _CustomCalendarState extends State<CustomCalendar> {
 
   @override
   Widget build(BuildContext context) {
-    String displaySelectedYearMonth =
-        "${listOfMonths[selectedDate.month - 1]} ${selectedDate.year}";
-
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
-              icon: Assets.icons.leftVector.svg(width: 14.w, height: 14.h),
-              onPressed: _goToPreviousMonth,
-            ),
-            Text(
-              displaySelectedYearMonth,
-              style: TextStyle(
-                fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                color: Colors.black,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            IconButton(
-              icon: Assets.icons.rightVector.svg(width: 24.w, height: 24.h),
-              onPressed: _goToNextMonth,
-            ),
-          ],
+        Text(
+          "Oxirgi hayzning 1-kunini kiriting",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.w700,
+            fontFamily: GoogleFonts.balooTamma2().fontFamily,
+          ),
         ),
         SizedBox(height: 20.h),
         Stack(
@@ -133,7 +116,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 60.h),
+                  SizedBox(height: 15.h),
                   _buildDaySelector(),
                 ],
               ),
@@ -187,8 +170,8 @@ class _CustomCalendarState extends State<CustomCalendar> {
                       child: Text(
                         '${index + 1}',
                         style: TextStyle(
-                          color: Colors.white,
                           fontFamily: GoogleFonts.balooTamma2().fontFamily,
+                          color: Colors.white,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w600,
                         ),
@@ -197,10 +180,10 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   : Text(
                       '${index + 1}',
                       style: TextStyle(
+                        fontFamily: GoogleFonts.balooTamma2().fontFamily,
                         letterSpacing: 0.5,
                         color: Colors.black,
                         fontSize: 16.sp,
-                        fontFamily: GoogleFonts.balooTamma2().fontFamily,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
 
 class ChangeCalendarB extends StatefulWidget {
-  const ChangeCalendarB({super.key});
+  final String text;
+  const ChangeCalendarB({super.key, required this.text});
 
   @override
   State<ChangeCalendarB> createState() => _ChangeCalendarBState();
@@ -23,14 +25,18 @@ class _ChangeCalendarBState extends State<ChangeCalendarB> {
           ),
           padding: EdgeInsets.all(10.w),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const ChangeCalendar()));
+        },
         child: Text(
-          "Kalendarga o'zgartirish kiritish",
+          widget.text,
           textAlign: TextAlign.center,
           style: TextStyle(
-              fontSize: 14.sp,
-              color: const Color(0xFFEB2D69),
-              fontWeight: FontWeight.w700),
+            fontSize: 14.sp,
+            color: const Color(0xFFEB2D69),
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
     );

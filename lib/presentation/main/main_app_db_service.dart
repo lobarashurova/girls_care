@@ -10,10 +10,6 @@ class MainAppDbService extends ChangeNotifier {
   bool get isVisible => _isVisible;
   ScrollController get scrollController => _scrollController;
 
-  MainAppDbService() {
-    _scrollController.addListener(handleScroll);
-  }
-
   void onTabTapped(int index) {
     _currentIndex = index;
     notifyListeners();
@@ -26,15 +22,13 @@ class MainAppDbService extends ChangeNotifier {
 
   void handleScroll() {
     if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.forward) {
-      if (!_isVisible) {
-        updateVisibility(true);
-      }
+            ScrollDirection.forward &&
+        !_isVisible) {
+      updateVisibility(true);
     } else if (_scrollController.position.userScrollDirection ==
-        ScrollDirection.reverse) {
-      if (_isVisible) {
-        updateVisibility(false);
-      }
+            ScrollDirection.reverse &&
+        _isVisible) {
+      updateVisibility(false);
     }
   }
 

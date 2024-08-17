@@ -37,9 +37,10 @@ class MainApp extends StatelessWidget {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Consumer<MainAppDbService>(
-          builder: (context, state, child) {
-            return state.isVisible
+        floatingActionButton: Selector<MainAppDbService, bool>(
+          selector: (_, state) => state.isVisible,
+          builder: (context, isVisible, child) {
+            return isVisible
                 ? _buildFloatingNavBar(context)
                 : const SizedBox.shrink();
           },

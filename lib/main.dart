@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/presentation/main/main_app.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:provider/provider.dart';
 import 'package:girls_care/common/di/injection.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: context.colors.window,
               textTheme: GoogleFonts.balooTamma2TextTheme(),
             ),
-            home: const SplashPage(),
+            home: const MainApp(),
           ),
         );
       },
