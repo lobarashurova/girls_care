@@ -6,6 +6,7 @@ import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/presentation/auth/plan/plan_page.dart';
 import 'package:girls_care/presentation/auth/verify_page/widget/common_pin_put.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
+import 'package:girls_care/presentation/main/main_app.dart';
 
 class VerifyPage extends StatefulWidget {
   const VerifyPage({super.key});
@@ -81,7 +82,7 @@ class _VerifyPageState extends State<VerifyPage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                                builder: (context) => MainApp()));
                       },
                     ),
                     SizedBox(

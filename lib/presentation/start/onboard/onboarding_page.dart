@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/widget/common_button.dart';
@@ -24,11 +25,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.only(
-            top: 50,
-            left: 16,
-            right: 16,
-            bottom: 24,
+          padding: EdgeInsets.only(
+            top: 50.h,
+            left: 16.w,
+            right: 16.w,
+            bottom: 24.h,
           ),
           child: Column(
             children: [
@@ -50,40 +51,40 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    const SizedBox(height: 68),
+                    SizedBox(height: 68.h),
                     AnimatedSmoothIndicator(
                       activeIndex: selectedIndex,
                       count: 3,
                       effect: CustomizableEffect(
                         dotDecoration: DotDecoration(
                           color: context.colors.title01,
-                          width: 8,
-                          height: 8,
-                          borderRadius: BorderRadius.circular(5),
+                          width: 8.w,
+                          height: 8.h,
+                          borderRadius: BorderRadius.circular(5.r),
                           dotBorder: DotBorder(
-                            width: 1,
+                            width: 1.w,
                             color: context.colors.primary01,
                           ),
                         ),
                         activeDotDecoration: DotDecoration(
                           color: context.colors.onPrimary,
-                          width: 24,
-                          height: 8,
-                          borderRadius: BorderRadius.circular(5),
+                          width: 24.w,
+                          height: 8.h,
+                          borderRadius: BorderRadius.circular(5.r),
                           dotBorder: DotBorder(
-                            width: 1,
+                            width: 1.w,
                             color: context.colors.primary,
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 18),
+                    SizedBox(height: 18.h),
                     Onboard.values[selectedIndex].title
-                        .s(24)
+                        .s(24.sp)
                         .w(600)
                         .c(context.colors.label)
                         .a(TextAlign.center),
-                    Spacer(),
+                    const Spacer(),
                     CommonButton.elevated(
                         text: "Далее",
                         onPressed: () {
@@ -92,14 +93,14 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               selectedIndex++;
                             });
                             controller.nextPage(
-                              duration: Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 300),
                               curve: Curves.easeIn,
                             );
                           } else {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => NamePage()));
+                                    builder: (context) => const NamePage()));
                           }
                         }),
                   ],

@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/base/base_page.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/start/onboard/onboarding_page.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_cubit.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_state.dart';
@@ -38,18 +40,17 @@ class SplashPage
   @override
   Widget builder(BuildContext context, SplashBuildable state) {
     return Scaffold(
-        body: Container(
+        body: SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Assets.icons.splash.image(width: 170, height: 200, fit: BoxFit.cover),
-          SizedBox(
-            height: 50,
-          ),
-          "Mali — sog’lom ayollik uchun ".s(24).w(600)
+          Assets.icons.splash
+              .image(width: 170.w, height: 200..h, fit: BoxFit.cover),
+          SizedBox(height: 50.h),
+          "Mali — sog’lom ayollik uchun ".s(24.sp).w(600)
         ],
       ),
     ));

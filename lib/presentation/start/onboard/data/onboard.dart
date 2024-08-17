@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/home/home_page.dart';
 
 enum Onboard {
   first,
@@ -22,11 +24,11 @@ extension LanguageExtensions on Onboard {
   Widget get icon {
     switch (this) {
       case Onboard.first:
-        return Assets.icons.onboard1.image(height: 300);
+        return Assets.icons.onboard1.image(height: 300.h);
       case Onboard.second:
-        return Assets.icons.onboard2.image(height: 300);
+        return Assets.icons.onboard2.image(height: 300.h);
       case Onboard.third:
-        return Assets.icons.onboard3.image(height: 300);
+        return Assets.icons.onboard3.image(height: 300.h);
     }
   }
 
