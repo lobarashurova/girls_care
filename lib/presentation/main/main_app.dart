@@ -103,6 +103,7 @@ class MainApp extends StatelessWidget {
                               : navIconsUnselected[index],
                         ),
                         Text(
+                          semanticsLabel: navTitle[index],
                           navTitle[index],
                           style: TextStyle(
                             color: isSelected ? Colors.white : Colors.black,

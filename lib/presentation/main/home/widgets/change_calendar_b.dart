@@ -4,7 +4,9 @@ import 'package:girls_care/presentation/main/change_calendar_data/change_calenda
 
 class ChangeCalendarB extends StatefulWidget {
   final String text;
-  const ChangeCalendarB({super.key, required this.text});
+  final VoidCallback onPressed;
+  const ChangeCalendarB(
+      {super.key, required this.text, required this.onPressed});
 
   @override
   State<ChangeCalendarB> createState() => _ChangeCalendarBState();
@@ -25,11 +27,9 @@ class _ChangeCalendarBState extends State<ChangeCalendarB> {
           ),
           padding: EdgeInsets.all(10.w),
         ),
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const ChangeCalendar()));
-        },
+        onPressed: widget.onPressed,
         child: Text(
+          semanticsLabel: widget.text,
           widget.text,
           textAlign: TextAlign.center,
           style: TextStyle(

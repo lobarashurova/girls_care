@@ -44,6 +44,7 @@ class _CustomContainerImgState extends State<CustomContainerImg> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
+                  semanticsLabel: widget.title,
                   widget.title,
                   style: TextStyle(
                     color: Colors.black,
@@ -53,6 +54,7 @@ class _CustomContainerImgState extends State<CustomContainerImg> {
                 ),
                 SizedBox(height: 8.h),
                 Text(
+                  semanticsLabel: widget.subtitle,
                   widget.subtitle,
                   style: TextStyle(
                     color: Colors.black,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_calendar.dart';
@@ -37,7 +38,12 @@ class _HomePageState extends State<HomePage> {
             children: [
               const CustomCalendar(),
               SizedBox(height: 20.h),
-              const ChangeCalendarB(text: "Kalendarga o'zgartirish kiritish"),
+              ChangeCalendarB(
+                  text: "Kalendarga o'zgartirish kiritish",
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ChangeCalendar()))),
               SizedBox(height: 20.h),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

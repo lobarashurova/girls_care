@@ -58,17 +58,6 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
     });
   }
 
-  void _goToNextMonth() {
-    setState(() {
-      if (selectedDate.month < 12) {
-        selectedDate = DateTime(selectedDate.year, selectedDate.month + 1);
-      } else {
-        selectedDate = DateTime(selectedDate.year + 1, 1);
-      }
-      _resetSelection();
-    });
-  }
-
   void _resetSelection() {
     currentDateSelectedIndex = 0;
     rangeStartIndex = null;
@@ -89,6 +78,7 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
+          semanticsLabel: "Oxirgi hayzning 1-kunini kiriting",
           "Oxirgi hayzning 1-kunini kiriting",
           style: TextStyle(
             color: Colors.black,
@@ -168,6 +158,7 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
                       radius: 20.w,
                       backgroundColor: const Color(0xFF8D80C1),
                       child: Text(
+                        semanticsLabel: '${index + 1}',
                         '${index + 1}',
                         style: TextStyle(
                           fontFamily: GoogleFonts.balooTamma2().fontFamily,
@@ -178,6 +169,7 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
                       ),
                     )
                   : Text(
+                      semanticsLabel: '${index + 1}',
                       '${index + 1}',
                       style: TextStyle(
                         fontFamily: GoogleFonts.balooTamma2().fontFamily,

@@ -18,6 +18,7 @@ class _MaqolalarSectionState extends State<MaqolalarSection> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
+              semanticsLabel: "Maqolalar",
               "Maqolalar",
               style: TextStyle(
                   color: Colors.black,
@@ -96,6 +97,7 @@ class GridItem extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
+                    semanticsLabel: " $title",
                     " $title",
                     style: TextStyle(
                       fontSize: 14.sp,

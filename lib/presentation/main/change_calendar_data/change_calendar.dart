@@ -35,7 +35,7 @@ class _ChangeCalendarState extends State<ChangeCalendar> {
           children: [
             const CustomCalendarChange(),
             SizedBox(height: 20.h),
-            const ChangeCalendarB(text: "Hayz sanasini kiritish"),
+             ChangeCalendarB(text: "Hayz sanasini kiritish", onPressed: (){},),
           ],
         ),
       ),

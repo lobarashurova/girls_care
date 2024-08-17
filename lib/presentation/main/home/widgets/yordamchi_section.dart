@@ -25,6 +25,7 @@ class _YordamchiSectionState extends State<YordamchiSection> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
+              semanticsLabel: "Yordamchi",
               "Yordamchi",
               style: TextStyle(
                   color: Colors.black,
@@ -58,6 +59,7 @@ class _YordamchiSectionState extends State<YordamchiSection> {
                       child: SizedBox(width: 78.w, height: 78.h, child: icon),
                     ),
                     Text(
+                      semanticsLabel: key,
                       key,
                       style: TextStyle(
                         color: Colors.black,

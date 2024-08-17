@@ -20,6 +20,7 @@ abstract class StaticColors {
   static const snow = Color(0xFFFFEFEF);
   static const lavender = Color(0xFFF3FAFD);
   static const backgrounColor = Color(0xffF3F0FF);
+  static const textFieldHint = Color(0xFF1B1F24);
 }
 
 @singleton
@@ -48,5 +49,5 @@ class DefaultThemeColors {
   final warningDark = StaticColors.mahogany;
   final warningLight = StaticColors.snow;
   final lightBlue = StaticColors.lavender;
-  static const backgrounColor = Color(0xffF3F0FF);
+  final backgrounColor = Color(0xffF3F0FF);
 }

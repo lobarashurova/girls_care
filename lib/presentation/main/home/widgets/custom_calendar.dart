@@ -3,42 +3,41 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-  DateTime selectedDate = DateTime.now();
-  int currentDateSelectedIndex = 0;
+DateTime selectedDate = DateTime.now();
+int currentDateSelectedIndex = 0;
 
-  int? rangeStartIndex;
-  int? rangeEndIndex;
+int? rangeStartIndex;
+int? rangeEndIndex;
 
-  final Map<String, int> monthDaysUzbek = {
-    "Yanvar": 31,
-    "Fevral": 28,
-    "Mart": 31,
-    "Aprel": 30,
-    "May": 31,
-    "Iyun": 30,
-    "Iyul": 31,
-    "Avgust": 31,
-    "Sentyabr": 30,
-    "Oktyabr": 31,
-    "Noyabr": 30,
-    "Dekabr": 31
-  };
+final Map<String, int> monthDaysUzbek = {
+  "Yanvar": 31,
+  "Fevral": 28,
+  "Mart": 31,
+  "Aprel": 30,
+  "May": 31,
+  "Iyun": 30,
+  "Iyul": 31,
+  "Avgust": 31,
+  "Sentyabr": 30,
+  "Oktyabr": 31,
+  "Noyabr": 30,
+  "Dekabr": 31
+};
 
-  List<String> listOfMonths = [
-    "Yanvar",
-    "Fevral",
-    "Mart",
-    "Aprel",
-    "May",
-    "Iyun",
-    "Iyul",
-    "Avgust",
-    "Sentyabr",
-    "Oktyabr",
-    "Noyabr",
-    "Dekabr"
-  ];
-
+List<String> listOfMonths = [
+  "Yanvar",
+  "Fevral",
+  "Mart",
+  "Aprel",
+  "May",
+  "Iyun",
+  "Iyul",
+  "Avgust",
+  "Sentyabr",
+  "Oktyabr",
+  "Noyabr",
+  "Dekabr"
+];
 
 class CustomCalendar extends StatefulWidget {
   const CustomCalendar({super.key});
@@ -48,7 +47,6 @@ class CustomCalendar extends StatefulWidget {
 }
 
 class _CustomCalendarState extends State<CustomCalendar> {
-
   void _goToPreviousMonth() {
     setState(() {
       if (selectedDate.month > 1) {
@@ -100,6 +98,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               onPressed: _goToPreviousMonth,
             ),
             Text(
+              semanticsLabel: displaySelectedYearMonth,
               displaySelectedYearMonth,
               style: TextStyle(
                 fontFamily: GoogleFonts.balooTamma2().fontFamily,
@@ -185,6 +184,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                       radius: 20.w,
                       backgroundColor: const Color(0xFF8D80C1),
                       child: Text(
+                        semanticsLabel: '${index + 1}',
                         '${index + 1}',
                         style: TextStyle(
                           color: Colors.white,
@@ -195,6 +195,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                       ),
                     )
                   : Text(
+                      semanticsLabel: '${index + 1}',
                       '${index + 1}',
                       style: TextStyle(
                         letterSpacing: 0.5,

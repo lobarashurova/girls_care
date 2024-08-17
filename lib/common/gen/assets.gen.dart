@@ -66,6 +66,12 @@ class $AssetsIconsGen {
   AssetGenImage get dorilarIcon =>
       const AssetGenImage('assets/icons/dorilar_icon.png');
 
+  /// File path: assets/icons/hayz_1.png
+  AssetGenImage get hayz1 => const AssetGenImage('assets/icons/hayz_1.png');
+
+  /// File path: assets/icons/hayz_2.png
+  AssetGenImage get hayz2 => const AssetGenImage('assets/icons/hayz_2.png');
+
   /// File path: assets/icons/hayz_davri.png
   AssetGenImage get hayzDavri =>
       const AssetGenImage('assets/icons/hayz_davri.png');
@@ -88,6 +94,26 @@ class $AssetsIconsGen {
   /// File path: assets/icons/kayfiyat_icon.png
   AssetGenImage get kayfiyatIcon =>
       const AssetGenImage('assets/icons/kayfiyat_icon.png');
+
+  /// File path: assets/icons/kun_mavzusi_1.jpg
+  AssetGenImage get kunMavzusi1 =>
+      const AssetGenImage('assets/icons/kun_mavzusi_1.jpg');
+
+  /// File path: assets/icons/kun_mavzusi_2.jpg
+  AssetGenImage get kunMavzusi2 =>
+      const AssetGenImage('assets/icons/kun_mavzusi_2.jpg');
+
+  /// File path: assets/icons/kun_mavzusi_3.jpg
+  AssetGenImage get kunMavzusi3 =>
+      const AssetGenImage('assets/icons/kun_mavzusi_3.jpg');
+
+  /// File path: assets/icons/kun_mavzusi_4.jpg
+  AssetGenImage get kunMavzusi4 =>
+      const AssetGenImage('assets/icons/kun_mavzusi_4.jpg');
+
+  /// File path: assets/icons/kun_mavzusi_5.jpg
+  AssetGenImage get kunMavzusi5 =>
+      const AssetGenImage('assets/icons/kun_mavzusi_5.jpg');
 
   /// File path: assets/icons/kun_savoli.png
   AssetGenImage get kunSavoli =>
@@ -141,6 +167,10 @@ class $AssetsIconsGen {
   SvgGenImage get rightVector =>
       const SvgGenImage('assets/icons/right_vector.svg');
 
+  /// File path: assets/icons/search_icon.svg
+  SvgGenImage get searchIcon =>
+      const SvgGenImage('assets/icons/search_icon.svg');
+
   /// File path: assets/icons/soglom_ovqatlanish.png
   AssetGenImage get soglomOvqatlanish =>
       const AssetGenImage('assets/icons/soglom_ovqatlanish.png');
@@ -172,12 +202,19 @@ class $AssetsIconsGen {
         checked,
         close,
         dorilarIcon,
+        hayz1,
+        hayz2,
         hayzDavri,
         hayzGirl,
         hayzIcon,
         hisobSelect,
         hisobUnselect,
         kayfiyatIcon,
+        kunMavzusi1,
+        kunMavzusi2,
+        kunMavzusi3,
+        kunMavzusi4,
+        kunMavzusi5,
         kunSavoli,
         kundalikIcon,
         leftVector,
@@ -191,6 +228,7 @@ class $AssetsIconsGen {
         ovulyatsiyaIcon,
         pregrant,
         rightVector,
+        searchIcon,
         soglomOvqatlanish,
         splash,
         yordamchiSelect,
