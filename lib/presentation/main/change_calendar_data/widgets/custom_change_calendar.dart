@@ -116,7 +116,7 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 54.h),
                   _buildDaySelector(),
                 ],
               ),

@@ -36,6 +36,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
         centerTitle: checkTitle,
         elevation: 0,
         shadowColor: Colors.transparent,
+        leadingWidth: 10,
         title: checkTitle
             ? Text(
                 widget.centerTitle,

@@ -21,14 +21,16 @@ class MainAppDbService extends ChangeNotifier {
   }
 
   void handleScroll() {
-    if (_scrollController.position.userScrollDirection ==
-            ScrollDirection.forward &&
-        !_isVisible) {
-      updateVisibility(true);
-    } else if (_scrollController.position.userScrollDirection ==
-            ScrollDirection.reverse &&
-        _isVisible) {
-      updateVisibility(false);
+    if (_scrollController.hasClients) {
+      if (_scrollController.position.userScrollDirection ==
+              ScrollDirection.forward &&
+          !_isVisible) {
+        updateVisibility(true);
+      } else if (_scrollController.position.userScrollDirection ==
+              ScrollDirection.reverse &&
+          _isVisible) {
+        updateVisibility(false);
+      }
     }
   }
 

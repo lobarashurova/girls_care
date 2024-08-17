@@ -7,6 +7,8 @@ import 'package:girls_care/presentation/main/home/widgets/custom_calendar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_container_img.dart';
 import 'package:girls_care/presentation/main/home/widgets/maqolalar_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/yordamchi_section.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SingleChildScrollView(
+        controller: Provider.of<MainAppDbService>(context).scrollController,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(

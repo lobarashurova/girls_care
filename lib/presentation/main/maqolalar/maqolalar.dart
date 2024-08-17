@@ -11,7 +11,7 @@ class _MaqolalarPageState extends State<MaqolalarPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text("Yordamchi")),
+      body: Center(child: Text("Maqolalar")),
     );
   }
 }

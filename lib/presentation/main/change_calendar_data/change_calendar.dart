@@ -20,14 +20,14 @@ class _ChangeCalendarState extends State<ChangeCalendar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppbar(
-        centerTitle:
-            "$displaySelectedDay-${displaySelectedMonth.toUpperCase()}",
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Assets.icons.leftVector.svg()),
-      ),
+          centerTitle:
+              "$displaySelectedDay-${displaySelectedMonth.toUpperCase()}",
+          leading: SizedBox(
+              width: 24.w,
+              height: 24.h,
+              child: InkWell(
+                  onTap: () => Navigator.pop(context),
+                  child: Assets.icons.leftVector.svg()))),
       backgroundColor: const Color(0xFFF3F0FF),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
