@@ -4,9 +4,9 @@ import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/common/widget/common_text_filed.dart';
+import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
 import 'package:girls_care/presentation/auth/register_total/register_total.dart';
-import 'package:girls_care/presentation/auth/register_total/register_total.dart';
-import 'package:girls_care/presentation/auth/verify_page/verify_page.dart';
+import 'package:provider/provider.dart';
 
 class RegisterSimplerPage extends StatefulWidget {
   const RegisterSimplerPage({super.key});
@@ -16,6 +16,8 @@ class RegisterSimplerPage extends StatefulWidget {
 }
 
 class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
+  TextEditingController dayController=TextEditingController();
+  TextEditingController siklController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,17 +80,28 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                             )),
                           ],
                         ),
-                        SizedBox(height: 8,),
-                        "Hayz davomiyligi va hayzlar orasidagi taxminiy davrni kiriting ".s(12).w(400).c(context.colors.display),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        "Hayz davomiyligi va hayzlar orasidagi taxminiy davrni kiriting "
+                            .s(12)
+                            .w(400)
+                            .c(context.colors.display),
                         SizedBox(
                           height: 32,
                         ),
                         CommonTextField(
                           hint: "Oxirgi hayzning boshlanish sanasini kiriting",
-                          suffix: Assets.icons.calendar.svg(width: 20, height: 20),
+                          suffix:
+                              Assets.icons.calendar.svg(width: 20, height: 20),
                         ),
-                        SizedBox(height: 8,),
-                        "Ilova navbatdagi hayz davrini hisoblashi uchun".s(12).w(400).c(context.colors.display)
+                        SizedBox(
+                          height: 8,
+                        ),
+                        "Ilova navbatdagi hayz davrini hisoblashi uchun"
+                            .s(12)
+                            .w(400)
+                            .c(context.colors.display)
                       ],
                     ),
                     Spacer(),

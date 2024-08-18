@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "461541611278",
+    "project_id": "pairappsgroupproject",
+    "storage_bucket": "pairappsgroupproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461541611278:android:64a84322db5cd46f59e95f",
+        "android_client_info": {
+          "package_name": "uz.beamdevs.girls_care"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa9zxn6gOz0wlVBKhpJjudm-Y2N5W__sk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
