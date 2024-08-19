@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/home/widgets/calendar_details.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 DateTime selectedDate = DateTime.now();
@@ -8,36 +10,6 @@ int currentDateSelectedIndex = 0;
 
 int? rangeStartIndex;
 int? rangeEndIndex;
-
-final Map<String, int> monthDaysUzbek = {
-  "Yanvar": 31,
-  "Fevral": 28,
-  "Mart": 31,
-  "Aprel": 30,
-  "May": 31,
-  "Iyun": 30,
-  "Iyul": 31,
-  "Avgust": 31,
-  "Sentyabr": 30,
-  "Oktyabr": 31,
-  "Noyabr": 30,
-  "Dekabr": 31
-};
-
-List<String> listOfMonths = [
-  "Yanvar",
-  "Fevral",
-  "Mart",
-  "Aprel",
-  "May",
-  "Iyun",
-  "Iyul",
-  "Avgust",
-  "Sentyabr",
-  "Oktyabr",
-  "Noyabr",
-  "Dekabr"
-];
 
 class CustomCalendar extends StatefulWidget {
   const CustomCalendar({super.key});
@@ -97,16 +69,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               icon: Assets.icons.leftVector.svg(width: 14.w, height: 14.h),
               onPressed: _goToPreviousMonth,
             ),
-            Text(
-              semanticsLabel: displaySelectedYearMonth,
-              displaySelectedYearMonth,
-              style: TextStyle(
-                fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                color: Colors.black,
-                fontSize: 20.sp,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
+            displaySelectedYearMonth.s(20.sp).w(600).c(Colors.black),
             IconButton(
               icon: Assets.icons.rightVector.svg(width: 24.w, height: 24.h),
               onPressed: _goToNextMonth,
@@ -183,28 +146,9 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   ? CircleAvatar(
                       radius: 20.w,
                       backgroundColor: const Color(0xFF8D80C1),
-                      child: Text(
-                        semanticsLabel: '${index + 1}',
-                        '${index + 1}',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      child: "${index + 1}".s(16.sp).w(600).c(Colors.white),
                     )
-                  : Text(
-                      semanticsLabel: '${index + 1}',
-                      '${index + 1}',
-                      style: TextStyle(
-                        letterSpacing: 0.5,
-                        color: Colors.black,
-                        fontSize: 16.sp,
-                        fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  : "${index + 1}".s(16.sp).w(600).c(Colors.black),
             ),
           ),
         );

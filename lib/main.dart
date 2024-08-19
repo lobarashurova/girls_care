@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/presentation/main/main_app.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
+import 'package:girls_care/presentation/main/maqolalar/articles.dart';
 import 'package:provider/provider.dart';
 import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: context.colors.window,
               textTheme: GoogleFonts.balooTamma2TextTheme(),
             ),
-            home: const MainApp(),
+            home: const ArticlesPage(),
           ),
         );
       },

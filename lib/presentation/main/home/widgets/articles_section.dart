@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 
-class MaqolalarSection extends StatefulWidget {
-  const MaqolalarSection({super.key});
+class ArticlesSection extends StatefulWidget {
+  const ArticlesSection({super.key});
 
   @override
-  State<MaqolalarSection> createState() => _MaqolalarSectionState();
+  State<ArticlesSection> createState() => _ArticlesSectionState();
 }
 
-class _MaqolalarSectionState extends State<MaqolalarSection> {
+class _ArticlesSectionState extends State<ArticlesSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,14 +18,7 @@ class _MaqolalarSectionState extends State<MaqolalarSection> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              semanticsLabel: "Maqolalar",
-              "Maqolalar",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w600),
-            ),
+            "Maqolalar".s(24.sp).w(600).c(Colors.black),
             IconButton(
               onPressed: () {},
               icon: Assets.icons.rightVector.svg(width: 24.w, height: 24.h),
@@ -96,15 +90,7 @@ class GridItem extends StatelessWidget {
               child: Center(
                 child: Align(
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    semanticsLabel: " $title",
-                    " $title",
-                    style: TextStyle(
-                      fontSize: 14.sp,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
+                  child: " $title".s(14.sp).w(700).c(Colors.white),
                 ),
               ),
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 
 class ChangeCalendarB extends StatefulWidget {
   final String text;
@@ -28,16 +28,7 @@ class _ChangeCalendarBState extends State<ChangeCalendarB> {
           padding: EdgeInsets.all(10.w),
         ),
         onPressed: widget.onPressed,
-        child: Text(
-          semanticsLabel: widget.text,
-          widget.text,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 14.sp,
-            color: const Color(0xFFEB2D69),
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        child: widget.text.s(14.sp).w(700).c(const Color(0xFFEB2D69)),
       ),
     );
   }

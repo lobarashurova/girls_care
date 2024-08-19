@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/common/gen/assets.gen.dart';
-import 'package:girls_care/presentation/main/hisob/hisob.dart';
+import 'package:girls_care/presentation/main/account/account_section.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
-import 'package:girls_care/presentation/main/maqolalar/maqolalar.dart';
-import 'package:girls_care/presentation/main/yordamchi/yordamchi.dart';
+import 'package:girls_care/presentation/main/main_app_details.dart';
+import 'package:girls_care/presentation/main/maqolalar/articles.dart';
+import 'package:girls_care/presentation/main/helper/helper.dart';
 import 'package:provider/provider.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart'; // Import your extension
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -28,9 +29,9 @@ class MainApp extends StatelessWidget {
             builder: (context, state, child) {
               final List<Widget> _children = [
                 const HomePage(),
-                const MaqolalarPage(),
-                const Yordamchi(),
-                const Hisob(),
+                const ArticlesPage(),
+                const Helper(),
+                const Account(),
               ];
               return _children[state.currentIndex];
             },
@@ -50,22 +51,6 @@ class MainApp extends StatelessWidget {
   }
 
   Widget _buildFloatingNavBar(BuildContext context) {
-    List<String> navTitle = ["Asosiy", "Maqolalar", "Yordamchi", "Hisob"];
-
-    List<Widget> navIconsSelected = [
-      Assets.icons.asosiySelected.svg(width: 20.w, height: 20.h),
-      Assets.icons.maqolalarSelect.svg(width: 20.w, height: 20.h),
-      Assets.icons.yordamchiSelect.svg(width: 20.w, height: 20.w),
-      Assets.icons.hisobSelect.svg(width: 20.w, height: 20.w),
-    ];
-
-    List<Widget> navIconsUnselected = [
-      Assets.icons.asosiyUnselect.svg(width: 20.w, height: 20.w),
-      Assets.icons.maqolalarUnselect.svg(width: 20.w, height: 20.w),
-      Assets.icons.yordamchiUnselect.svg(width: 20.w, height: 20.w),
-      Assets.icons.hisobUnselect.svg(width: 20.w, height: 20.w),
-    ];
-
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 25, vertical: 24),
       decoration: BoxDecoration(
@@ -102,14 +87,9 @@ class MainApp extends StatelessWidget {
                               ? navIconsSelected[index]
                               : navIconsUnselected[index],
                         ),
-                        Text(
-                          semanticsLabel: navTitle[index],
-                          navTitle[index],
-                          style: TextStyle(
-                            color: isSelected ? Colors.white : Colors.black,
-                            fontSize: 12.sp,
-                          ),
-                        ),
+                        navTitle[index].s(12.sp).c(isSelected
+                            ? Colors.white
+                            : Colors.black), // Using your extension
                       ],
                     ),
                   ),

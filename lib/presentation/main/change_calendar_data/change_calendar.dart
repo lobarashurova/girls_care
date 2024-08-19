@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/change_calendar_data/widgets/custom_change_calendar.dart';
+import 'package:girls_care/presentation/main/home/widgets/calendar_details.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_calendar.dart';
@@ -35,7 +36,10 @@ class _ChangeCalendarState extends State<ChangeCalendar> {
           children: [
             const CustomCalendarChange(),
             SizedBox(height: 20.h),
-             ChangeCalendarB(text: "Hayz sanasini kiritish", onPressed: (){},),
+            ChangeCalendarB(
+              text: "Hayz sanasini kiritish",
+              onPressed: () {},
+            ),
           ],
         ),
       ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/common/gen/assets.gen.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:girls_care/presentation/main/maqolalar/widgets/hayz_davri_details.dart';
 
 class HayzDavriHaqida extends StatefulWidget {
   const HayzDavriHaqida({super.key});
@@ -11,21 +10,6 @@ class HayzDavriHaqida extends StatefulWidget {
 }
 
 class _HayzDavriHaqidaState extends State<HayzDavriHaqida> {
-  final List<Map<String, dynamic>> hayzContainerDetails = [
-    {
-      'image': Assets.icons.hayz1,
-      'title': "Hayz davrida gigienik vositalarni to’g’ri tanlash",
-      'buttonText': "To’liq o’qish",
-      'color': Colors.pink,
-    },
-    {
-      'image': Assets.icons.hayz2,
-      'title': "Hayz davrida gigienik vositalarni to’g’ri tanlash",
-      'buttonText': "Videoni ko'rish",
-      'color': Colors.red,
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -63,34 +47,27 @@ class _HayzDavriHaqidaState extends State<HayzDavriHaqida> {
                     ),
                     color: const Color(0xFFE2DCFE),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        hayzContainerDetails[index]['title']!,
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          fontFamily: GoogleFonts.balooTamma2().fontFamily,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        hayzContainerDetails[index]['title']!.s(14.sp).w(500),
+                        SizedBox(height: 4.h),
+                        Row(
+                          children: [
+                            if (hayzContainerDetails[index]['buttonText'] ==
+                                "Videoni ko'rish")
+                              SizedBox(width: 2.w),
+                            hayzContainerDetails[index]['buttonText']!
+                                .s(12.sp)
+                                .w(700)
+                                .c(const Color(0xFFEB2D69)),
+                          ],
                         ),
-                      ),
-                      Row(
-                        children: [
-                          if (hayzContainerDetails[index]['buttonText'] ==
-                              "Videoni ko'rish")
-                            SizedBox(width: 2.w),
-                          Text(
-                            hayzContainerDetails[index]['buttonText']!,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                color: const Color(0xFFEB2D69),
-                                fontWeight: FontWeight.w700,
-                                fontFamily:
-                                    GoogleFonts.balooTamma2().fontFamily),
-                          ),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 
 class CustomContainerImg extends StatefulWidget {
   final String title;
@@ -43,25 +44,9 @@ class _CustomContainerImgState extends State<CustomContainerImg> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  semanticsLabel: widget.title,
-                  widget.title,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+                widget.title.s(16.sp).w(600).c(Colors.black),
                 SizedBox(height: 8.h),
-                Text(
-                  semanticsLabel: widget.subtitle,
-                  widget.subtitle,
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                widget.subtitle.s(11.sp).w(400).c(Colors.black),
               ],
             ),
           ),

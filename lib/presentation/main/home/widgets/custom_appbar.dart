@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 
 class CustomAppbar extends StatefulWidget implements PreferredSizeWidget {
   final String centerTitle;
@@ -37,16 +37,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
       shadowColor: Colors.transparent,
       leadingWidth: 10,
       title: checkTitle
-          ? Text(
-              semanticsLabel: widget.centerTitle,
-              widget.centerTitle,
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.sp,
-                fontWeight: FontWeight.w700,
-                fontFamily: GoogleFonts.balooTamma2().fontFamily,
-              ),
-            )
+          ? widget.centerTitle.s(16.sp).w(700).c(Colors.black)
           : null,
       actions: checkActions ? widget.actions : null,
       leading: checkLeading ? widget.leading : null,
