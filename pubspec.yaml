@@ -91,6 +91,7 @@ dependencies:
   flutter_card_swiper: ^7.0.1
   flutter_swiper_view: ^1.1.8
   card_slider: ^1.0.5
+  cloud_firestore: ^5.4.0
 
 dev_dependencies:
   flutter_test:

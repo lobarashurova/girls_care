@@ -1,9 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
-import 'package:girls_care/presentation/start/splash/splash_page.dart';
+import 'package:girls_care/presentation/auth/login/login_provider.dart';
+import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
 
-void main() async{
+import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'firebase_options.dart';
+
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
@@ -33,7 +43,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: context.colors.window,
               textTheme: GoogleFonts.balooTamma2TextTheme(),
             ),
-            home: const ArticlesPage(),
+            home: MainApp(),
           ),
         );
       },

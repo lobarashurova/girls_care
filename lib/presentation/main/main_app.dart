@@ -14,9 +14,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return Scaffold(
         body: NotificationListener<ScrollNotification>(
           onNotification: (scrollNotification) {
             if (scrollNotification is ScrollUpdateNotification) {
@@ -46,8 +44,7 @@ class MainApp extends StatelessWidget {
                 : const SizedBox.shrink();
           },
         ),
-      ),
-    );
+      );
   }
 
   Widget _buildFloatingNavBar(BuildContext context) {
