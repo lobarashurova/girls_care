@@ -15,32 +15,43 @@ class ArticlesPage extends StatelessWidget {
     return Scaffold(
       appBar: const CustomAppbar(centerTitle: "Maqolalar"),
       backgroundColor: const Color(0xffF3F0FF),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SearchField(),
-            SizedBox(height: 22.h),
-            "Kun mavzusi".s(18.sp).w(700),
-            SizedBox(height: 30.h),
-            const DailyThemes(),
-            SizedBox(height: 22.h),
-            const Expanded(child: HayzDavriHaqida()),
-            Positioned(
-              top: 130,
-              left: 320,
-              child: CircleAvatar(
-                radius: 25,
-                backgroundColor: const Color(0xFFE2DCFE),
-                child: Center(
-                    child: "Barchasi"
-                        .s(10.sp)
-                        .w(600)
-                        .c(Color(0xFF0FFEB2D69))), // Using your extension
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SearchField(),
+              SizedBox(height: 22.h),
+              "Kun mavzusi".s(18.sp).w(700),
+              SizedBox(height: 30.h),
+              Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  const DailyThemes(),
+                  Positioned(
+                    top: -20,
+                    right: 0,
+                    child: CircleAvatar(
+                      radius: 27,
+                      backgroundColor: const Color(0xFFE2DCFE),
+                      child: Center(
+                        child: "Barchasi"
+                            .s(10.sp)
+                            .w(600)
+                            .c(const Color(0xFF0FFEB2D69)),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: 22.h),
+              "Hayz davri haqida".s(18.sp).w(700).c(const Color(0xFF1B1F24)),
+              SizedBox(height: 8.h),
+              const HayzDavriHaqida(),
+              SizedBox(height: 120.h),
+            ],
+          ),
         ),
       ),
     );

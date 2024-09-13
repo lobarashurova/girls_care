@@ -1,4 +1,3 @@
-
 final Map<String, int> monthDaysUzbek = {
   "Yanvar": 31,
   "Fevral": 28,
@@ -27,4 +26,13 @@ List<String> listOfMonths = [
   "Oktyabr",
   "Noyabr",
   "Dekabr"
+];
+
+List<String> listOfWeekend = [
+  "Du",
+  "Se",
+  "Cho",
+  "PA",
+  "SH",
+  "YA",
 ];

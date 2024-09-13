@@ -46,6 +46,7 @@ extension TextStyleExtensions on TextStyle {
     TextOverflow? overflow,
   }) =>
       TextStyle(
+        fontFamily: GoogleFonts.balooTamma2().fontFamily,
         inherit: inherit ?? this.inherit,
         color: this.foreground == null && foreground == null
             ? color ?? this.color
@@ -121,7 +122,8 @@ extension TextExtensions on Text {
   Text w(int fontWeight) {
     final weight = FontWeight.values[fontWeight ~/ 100 - 1];
     return copyWith(
-        style: (style ?? GoogleFonts.balooTamma2()).copyWith(fontWeight: weight));
+        style:
+            (style ?? GoogleFonts.balooTamma2()).copyWith(fontWeight: weight));
   }
 
   Text styles({TextOverflow? overflow}) => Text(

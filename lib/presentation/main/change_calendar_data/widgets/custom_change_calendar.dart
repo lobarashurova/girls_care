@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/common/widget/common_button.dart';
+import 'package:girls_care/presentation/main/change_calendar_data/widgets/input_info_bottom.dart';
+import 'package:girls_care/presentation/main/home/widgets/calendar_details.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCalendarChange extends StatefulWidget {
@@ -12,177 +14,201 @@ class CustomCalendarChange extends StatefulWidget {
 
 class _CustomCalendarChangeState extends State<CustomCalendarChange> {
   DateTime selectedDate = DateTime.now();
-  int currentDateSelectedIndex = 0;
+  int averagePeriodDays = 5;
+  int averageCycleDays = 28;
+  DateTime periodStartDate = DateTime.now();
 
-  int? rangeStartIndex;
-  int? rangeEndIndex;
-
-  final Map<String, int> monthDaysUzbek = {
-    "Yanvar": 31,
-    "Fevral": 28,
-    "Mart": 31,
-    "Aprel": 30,
-    "May": 31,
-    "Iyun": 30,
-    "Iyul": 31,
-    "Avgust": 31,
-    "Sentyabr": 30,
-    "Oktyabr": 31,
-    "Noyabr": 30,
-    "Dekabr": 31
-  };
-
-  List<String> listOfMonths = [
-    "Yanvar",
-    "Fevral",
-    "Mart",
-    "Aprel",
-    "May",
-    "Iyun",
-    "Iyul",
-    "Avgust",
-    "Sentyabr",
-    "Oktyabr",
-    "Noyabr",
-    "Dekabr"
-  ];
-
-  void _goToPreviousMonth() {
-    setState(() {
-      if (selectedDate.month > 1) {
-        selectedDate = DateTime(selectedDate.year, selectedDate.month - 1);
-      } else {
-        selectedDate = DateTime(selectedDate.year - 1, 12);
-      }
-      _resetSelection();
-    });
-  }
-
-  void _resetSelection() {
-    currentDateSelectedIndex = 0;
-    rangeStartIndex = null;
-    rangeEndIndex = null;
-  }
+  final TextEditingController periodDaysController = TextEditingController();
+  final TextEditingController cycleDaysController = TextEditingController();
+  final TextEditingController startDateController = TextEditingController();
 
   int _daysInMonth(String month, int year) {
     if (month == "Fevral" &&
         ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))) {
       return 29;
     }
-    return monthDaysUzbek[month] ?? 30; //
+    return monthDaysUzbek[month] ?? 30;
+  }
+
+  int _firstDayOfWeek(int month, int year) {
+    return DateTime(year, month, 1).weekday - 0;
+  }
+
+  bool _isPeriodDay(DateTime date) {
+    final daysDifference = date.difference(periodStartDate).inDays;
+    if (daysDifference < 0) return false;
+    final cyclePosition = daysDifference % averageCycleDays;
+    return cyclePosition < averagePeriodDays;
+  }
+
+  void _updateCalendar() {
+    setState(() {
+      averagePeriodDays = int.tryParse(periodDaysController.text) ?? 5;
+      averageCycleDays = int.tryParse(cycleDaysController.text) ?? 28;
+      periodStartDate =
+          DateTime.tryParse(startDateController.text) ?? DateTime.now();
+    });
+  }
+
+  @override
+  void dispose() {
+    periodDaysController.dispose();
+    cycleDaysController.dispose();
+    startDateController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    int currentMonthIndex = selectedDate.month - 1;
+
+    return Stack(
       children: [
-        Text(
-          semanticsLabel: "Oxirgi hayzning 1-kunini kiriting",
-          "Oxirgi hayzning 1-kunini kiriting",
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w700,
-            fontFamily: GoogleFonts.balooTamma2().fontFamily,
-          ),
-        ),
-        SizedBox(height: 20.h),
-        Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 300.w,
-              // ignore: prefer_const_constructors
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30),
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  SizedBox(height: 54.h),
-                  _buildDaySelector(),
-                ],
-              ),
-            ),
-            Positioned(
-              top: -16,
-              left: 0,
-              right: 0,
-              child: Assets.icons.calendarDays
-                  .image(width: double.infinity, height: 69.h),
-            ),
-          ],
-        )
-      ],
-    );
-  }
+        SizedBox(
+          child: ListView.builder(
+            itemCount: listOfMonths.length,
+            itemBuilder: (context, index) {
+              int adjustedMonthIndex = (currentMonthIndex + index) % 12;
+              String month = listOfMonths[adjustedMonthIndex];
+              int daysInMonth = _daysInMonth(month, selectedDate.year);
+              int firstDayOfWeek =
+                  _firstDayOfWeek(adjustedMonthIndex + 1, selectedDate.year);
 
-  Widget _buildDaySelector() {
-    int daysInMonth =
-        _daysInMonth(listOfMonths[selectedDate.month - 1], selectedDate.year);
+              int totalGridSpots = daysInMonth + firstDayOfWeek;
+              int rowsNeeded = (totalGridSpots / 7).ceil();
+              totalGridSpots = rowsNeeded * 7;
 
-    var today = DateTime.now();
-    int todayDay = today.day;
-    bool isCurrentMonth =
-        selectedDate.month == today.month && selectedDate.year == today.year;
-
-    return GridView.builder(
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 7,
-        mainAxisSpacing: 6.w,
-        crossAxisSpacing: 10.w,
-      ),
-      itemCount: daysInMonth,
-      itemBuilder: (context, index) {
-        bool isToday = isCurrentMonth && (index + 1) == todayDay;
-
-        return GestureDetector(
-          onTap: () {},
-          child: Container(
-            alignment: Alignment.center,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: isToday
-                  ? CircleAvatar(
-                      radius: 20.w,
-                      backgroundColor: const Color(0xFF8D80C1),
-                      child: Text(
-                        semanticsLabel: '${index + 1}',
-                        '${index + 1}',
-                        style: TextStyle(
-                          fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                          color: Colors.white,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (adjustedMonthIndex != currentMonthIndex)
+                      Center(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: Text(
+                            month,
+                            style: TextStyle(
+                              fontFamily: GoogleFonts.balooTamma2().fontFamily,
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
-                    )
-                  : Text(
-                      semanticsLabel: '${index + 1}',
-                      '${index + 1}',
-                      style: TextStyle(
-                        fontFamily: GoogleFonts.balooTamma2().fontFamily,
-                        letterSpacing: 0.5,
-                        color: Colors.black,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+                    GridView.builder(
+                      padding: EdgeInsets.zero,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 7, // 7 days in a week
+                        crossAxisSpacing: 10.w,
                       ),
+                      itemCount: totalGridSpots,
+                      itemBuilder: (context, dayIndex) {
+                        if (dayIndex < firstDayOfWeek ||
+                            (dayIndex - firstDayOfWeek + 1) > daysInMonth) {
+                          return const SizedBox.shrink(); // Empty spot
+                        }
+
+                        int actualDay = dayIndex - firstDayOfWeek + 1;
+                        DateTime date = DateTime(selectedDate.year,
+                            adjustedMonthIndex + 1, actualDay);
+                        bool isPeriodDay = _isPeriodDay(date);
+
+                        // bool isFirstPeriodDay = isPeriodDay &&
+                        //     actualDay ==
+                        //         3; // Customize this to track first period day
+                        // bool isLastPeriodDay = isPeriodDay &&
+                        //     actualDay ==
+                        //         7; // Customize this to track last period day
+
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedDate = date;
+                            });
+                          },
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: isPeriodDay
+                                    ? Container(
+                                        width: 40.w,
+                                        height: 40.h,
+                                        decoration: BoxDecoration(
+                                          shape: isPeriodDay
+                                              ? BoxShape.circle
+                                              : BoxShape.rectangle,
+                                          border: isPeriodDay
+                                              ? Border.all(
+                                                  width: 1,
+                                                  color:
+                                                      const Color(0xFFEB2D69),
+                                                )
+                                              : null,
+                                        ),
+                                        child: Center(
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                                color: Color(0xFFFFDFFF),
+                                                borderRadius: BorderRadius.only(
+                                                    topRight:
+                                                        Radius.circular(50))),
+                                            child: Text(
+                                              '$actualDay',
+                                              style: TextStyle(
+                                                fontFamily:
+                                                    GoogleFonts.balooTamma2()
+                                                        .fontFamily,
+                                                color: Colors.black,
+                                                fontSize: 16.sp,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Text(
+                                        '$actualDay',
+                                        style: TextStyle(
+                                          fontFamily: GoogleFonts.balooTamma2()
+                                              .fontFamily,
+                                          color: Colors.black,
+                                          fontSize: 16.sp,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
                     ),
-            ),
+                  ],
+                ),
+              );
+            },
           ),
-        );
-      },
+        ),
+        InputInfoBottom(
+          periodDaysController: periodDaysController,
+          cycleDaysController: cycleDaysController,
+          startDateController: startDateController,
+        ),
+        Positioned(
+          bottom: 24.h,
+          left: 24.w,
+          right: 24.w,
+          child: CommonButton.elevated(
+            radius: 12.r,
+            text: "Saqlash",
+            backgroundColor: const Color(0xFFEB2D69),
+            onPressed: _updateCalendar,
+          ),
+        ),
+      ],
     );
   }
 }

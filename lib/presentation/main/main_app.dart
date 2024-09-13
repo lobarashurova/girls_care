@@ -17,25 +17,16 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: NotificationListener<ScrollNotification>(
-          onNotification: (scrollNotification) {
-            if (scrollNotification is ScrollUpdateNotification) {
-              Provider.of<MainAppDbService>(context, listen: false)
-                  .handleScroll();
-            }
-            return true;
+        body: Consumer<MainAppDbService>(
+          builder: (context, state, child) {
+            final List<Widget> _children = [
+              const HomePage(),
+              const ArticlesPage(),
+              const Helper(),
+              const Account(),
+            ];
+            return _children[state.currentIndex];
           },
-          child: Consumer<MainAppDbService>(
-            builder: (context, state, child) {
-              final List<Widget> _children = [
-                const HomePage(),
-                const ArticlesPage(),
-                const Helper(),
-                const Account(),
-              ];
-              return _children[state.currentIndex];
-            },
-          ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: Selector<MainAppDbService, bool>(

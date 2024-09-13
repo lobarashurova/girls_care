@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 
@@ -161,6 +162,7 @@ class CommonButton extends StatelessWidget {
 
   Widget _elevated(BuildContext context) {
     return Container(
+      height: 50.h,
       decoration: shadow
           ? BoxDecoration(
               boxShadow: <BoxShadow>[
@@ -202,7 +204,7 @@ class CommonButton extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Flexible(
-              child: text.w(400).s(16).c(context.colors.display).copyWith(
+              child: text.w(600).s(16).c(context.colors.display).copyWith(
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: context.colors.display))),

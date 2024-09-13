@@ -29,18 +29,34 @@ class _CustomAppbarState extends State<CustomAppbar> {
     bool checkLeading = widget.leading != null;
 
     return AppBar(
+      leadingWidth: 86,
+      toolbarHeight: 32,
       surfaceTintColor: Colors.transparent,
       automaticallyImplyLeading: false,
       backgroundColor: const Color(0xffF3F0FF),
       centerTitle: checkTitle,
       elevation: 0,
       shadowColor: Colors.transparent,
-      leadingWidth: 10,
       title: checkTitle
-          ? widget.centerTitle.s(16.sp).w(700).c(Colors.black)
+          ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: widget.centerTitle.s(18.sp).w(700).c(Colors.black),
+            )
           : null,
-      actions: checkActions ? widget.actions : null,
-      leading: checkLeading ? widget.leading : null,
+      actions: checkActions
+          ? [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(children: widget.actions!),
+              )
+            ]
+          : null,
+      leading: checkLeading
+          ? Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 36.0),
+              child: widget.leading,
+            )
+          : null,
     );
   }
 }

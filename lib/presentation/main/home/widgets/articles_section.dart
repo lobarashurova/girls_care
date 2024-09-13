@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ArticlesSection extends StatefulWidget {
   const ArticlesSection({super.key});
@@ -26,30 +27,38 @@ class _ArticlesSectionState extends State<ArticlesSection> {
           ],
         ),
         SizedBox(height: 20.h),
-        GridView.count(
-          crossAxisCount: 2,
+        GridView.builder(
           shrinkWrap: true,
-          crossAxisSpacing: 16.w,
-          mainAxisSpacing: 16.h,
           physics: const NeverScrollableScrollPhysics(),
-          children: [
-            GridItem(
-              imagePath: Assets.icons.kunSavoli.image(fit: BoxFit.fill),
-              title: 'Kun savoli',
-            ),
-            GridItem(
-              imagePath: Assets.icons.hayzDavri.image(fit: BoxFit.fill),
-              title: 'Hayz davri haqida',
-            ),
-            GridItem(
-              imagePath: Assets.icons.soglomOvqatlanish.image(fit: BoxFit.fill),
-              title: 'Sog\'lom ovqatlanish',
-            ),
-            GridItem(
-              imagePath: Assets.icons.ogriqBartaraf.image(fit: BoxFit.fill),
-              title: 'Hayz davrida og\'riqni bartaraf etish',
-            ),
-          ],
+          itemCount: 4,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.w,
+            mainAxisSpacing: 16.h,
+            mainAxisExtent: 180.h,
+          ),
+          itemBuilder: (context, index) {
+            List<GridItem> items = [
+              GridItem(
+                imagePath: Assets.icons.kunSavoli.image(fit: BoxFit.fill),
+                title: 'Kun savoli',
+              ),
+              GridItem(
+                imagePath: Assets.icons.hayzDavri.image(fit: BoxFit.fill),
+                title: 'Hayz davri haqida',
+              ),
+              GridItem(
+                imagePath:
+                    Assets.icons.soglomOvqatlanish.image(fit: BoxFit.fill),
+                title: 'Sog\'lom ovqatlanish',
+              ),
+              GridItem(
+                imagePath: Assets.icons.ogriqBartaraf.image(fit: BoxFit.fill),
+                title: "Hayz davrida og'riqni bartaraf etish",
+              ),
+            ];
+            return items[index];
+          },
         ),
       ],
     );
@@ -64,39 +73,39 @@ class GridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      elevation: 0,
-      child: Stack(
-        children: [
-          Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    width: 1,
-                    color: const Color.fromARGB(90, 141, 128, 193),
-                  )),
-              child: imagePath),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: 47.h,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(95, 141, 128, 193),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12)),
-              ),
-              child: Center(
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: " $title".s(14.sp).w(700).c(Colors.white),
+    return Stack(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: imagePath,
+        ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          left: 0,
+          child: Container(
+            height: 46.h,
+            decoration: const BoxDecoration(
+              color: Color(0xFF8D80C1),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12)),
+            ),
+            child: Center(
+              child: Text(
+                textAlign: TextAlign.center,
+                " $title",
+                style: TextStyle(
+                  color: const Color(0xFFE2DCFE),
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: GoogleFonts.balooTamma2().fontFamily,
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

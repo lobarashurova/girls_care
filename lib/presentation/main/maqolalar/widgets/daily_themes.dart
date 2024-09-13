@@ -22,7 +22,7 @@ class _DailyThemesState extends State<DailyThemes> {
             axisDirection: AxisDirection.right,
             allowImplicitScrolling: true,
             layout: SwiperLayout.STACK,
-            itemWidth: 300.w,
+            itemWidth: 320.w,
             itemHeight: 200.h,
             containerHeight: double.infinity,
             itemBuilder: (BuildContext context, int index) {

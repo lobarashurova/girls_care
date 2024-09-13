@@ -11,20 +11,25 @@ import 'package:girls_care/presentation/main/home/widgets/helper_section.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffF3F0FF),
       appBar: CustomAppbar(
         centerTitle: "Bugun",
-        actions: [Assets.icons.notification.svg(width: 20, height: 20)],
+        actions: [Assets.icons.notification.svg(width: 20.w, height: 20.h)],
       ),
       body: SingleChildScrollView(
         controller: context.read<MainAppDbService>().scrollController,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -33,8 +38,9 @@ class HomePage extends StatelessWidget {
                 const ChangeCalendar()),
             _buildInfoRow(),
             const HelperSection(),
+            SizedBox(height: 20.h),
             const ArticlesSection(),
-            SizedBox(height: 200.h),
+            SizedBox(height: 140.h),
           ],
         ),
       ),

@@ -34,6 +34,10 @@ class $AssetsIconsGen {
   SvgGenImage get asosiyUnselect =>
       const SvgGenImage('assets/icons/asosiy_unselect.svg');
 
+  /// File path: assets/icons/avatar_account.png
+  AssetGenImage get avatarAccount =>
+      const AssetGenImage('assets/icons/avatar_account.png');
+
   /// File path: assets/icons/backgound.png
   AssetGenImage get backgound =>
       const AssetGenImage('assets/icons/backgound.png');
@@ -53,6 +57,9 @@ class $AssetsIconsGen {
   SvgGenImage get cameraRounded =>
       const SvgGenImage('assets/icons/camera_rounded.svg');
 
+  /// File path: assets/icons/cancel.svg
+  SvgGenImage get cancel => const SvgGenImage('assets/icons/cancel.svg');
+
   /// File path: assets/icons/chat_icon.svg
   SvgGenImage get chatIcon => const SvgGenImage('assets/icons/chat_icon.svg');
 
@@ -71,6 +78,18 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/hayz_2.png
   AssetGenImage get hayz2 => const AssetGenImage('assets/icons/hayz_2.png');
+
+  /// File path: assets/icons/hayz_3.png
+  AssetGenImage get hayz3 => const AssetGenImage('assets/icons/hayz_3.png');
+
+  /// File path: assets/icons/hayz_4.png
+  AssetGenImage get hayz4 => const AssetGenImage('assets/icons/hayz_4.png');
+
+  /// File path: assets/icons/hayz_5.png
+  AssetGenImage get hayz5 => const AssetGenImage('assets/icons/hayz_5.png');
+
+  /// File path: assets/icons/hayz_6.png
+  AssetGenImage get hayz6 => const AssetGenImage('assets/icons/hayz_6.png');
 
   /// File path: assets/icons/hayz_davri.png
   AssetGenImage get hayzDavri =>
@@ -193,17 +212,23 @@ class $AssetsIconsGen {
         arrow,
         asosiySelected,
         asosiyUnselect,
+        avatarAccount,
         backgound,
         background,
         calendar,
         calendarDays,
         cameraRounded,
+        cancel,
         chatIcon,
         checked,
         close,
         dorilarIcon,
         hayz1,
         hayz2,
+        hayz3,
+        hayz4,
+        hayz5,
+        hayz6,
         hayzDavri,
         hayzGirl,
         hayzIcon,
