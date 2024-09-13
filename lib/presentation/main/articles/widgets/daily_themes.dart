@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
+import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/presentation/main/maqolalar/widgets/daily_themes_detail.dart';
-import 'package:girls_care/common/extensions/text_extensions.dart'; // Import your extensions
+import 'package:girls_care/common/extensions/text_extensions.dart';
+import 'package:google_fonts/google_fonts.dart'; // Import your extensions
 
 class DailyThemes extends StatefulWidget {
   const DailyThemes({super.key});
@@ -65,8 +67,26 @@ class _DailyThemesState extends State<DailyThemes> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          title.s(16.sp).w(700).c(Colors.white),
-                          subtitle.s(12.sp).c(Colors.white),
+                          Text(
+                            title,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: GoogleFonts.balooTamma2().fontFamily,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Text(
+                            subtitle,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: GoogleFonts.balooTamma2().fontFamily,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
                         ],
                       ),
                     ),
