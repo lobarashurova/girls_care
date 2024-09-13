@@ -3,8 +3,10 @@ import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
+import 'package:girls_care/presentation/auth/login/login_provider.dart';
 import 'package:girls_care/presentation/auth/plan/plan_page.dart';
 import 'package:girls_care/presentation/auth/verify_page/verify_page.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/widget/common_text_filed.dart';
 
@@ -16,8 +18,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    LoginProvider loginProvider = Provider.of<LoginProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -68,6 +74,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 16,
                         ),
                         CommonTextField(
+                          controller: phoneController,
                           prefixIcon:
                               "+998".s(16).w(400).c(context.colors.display),
                         ),
@@ -79,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 16,
                         ),
                         CommonTextField(
+                          controller: passwordController,
                           obscureText: true,
                         ),
                       ],
@@ -86,11 +94,26 @@ class _LoginPageState extends State<LoginPage> {
                     Spacer(),
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => VerifyPage()));
+                      loading: loginProvider.loading ?? false,
+                      onPressed: () async {
+                        await loginProvider.login(
+                          phoneController.text.trim(),
+                          passwordController.text.trim(),
+                        );
+
+                        if (loginProvider.user != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const VerifyPage()));
+                        }
+                        else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                    loginProvider.errorMessage ?? 'Error')),
+                          );
+                        }
                       },
                     ),
                     SizedBox(
@@ -106,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: "Hisob yaratish"
                             .s(16)
                             .w(700)
-                            .c(context.colors.primary))
+                            .c(context.colors.primary)),
                   ],
                 ),
               ))

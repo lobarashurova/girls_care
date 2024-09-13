@@ -4,7 +4,10 @@ import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/common/widget/common_text_filed.dart';
+import 'package:girls_care/data/api_model/register_data/register_data.dart';
+import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
+import 'package:provider/provider.dart';
 
 class RegisterTotalPage extends StatefulWidget {
   const RegisterTotalPage({super.key});
@@ -14,8 +17,13 @@ class RegisterTotalPage extends StatefulWidget {
 }
 
 class _RegisterTotalPageState extends State<RegisterTotalPage> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController rewritePasswordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    RegisterProvider registerProvider = Provider.of<RegisterProvider>(context);
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -66,6 +74,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           height: 16,
                         ),
                         CommonTextField(
+                          controller: phoneController,
                           prefixIcon:
                               "+998".s(16).w(400).c(context.colors.display),
                         ),
@@ -77,6 +86,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           height: 8,
                         ),
                         CommonTextField(
+                          controller: passwordController,
                           obscureText: true,
                         ),
                         SizedBox(
@@ -87,6 +97,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           height: 8,
                         ),
                         CommonTextField(
+                          controller: rewritePasswordController,
                           obscureText: true,
                         ),
                       ],
@@ -94,11 +105,24 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                     Spacer(),
                     CommonButton.elevated(
                       text: "Hisob yaratish",
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                      loading: registerProvider.isRegistering,
+                      onPressed: () async {
+                        final userData = RegisterUserData(
+                          phone: phoneController.text.trim(),
+                          password: passwordController.text.trim(),
+                        );
+                        await registerProvider.registerUser(userData);
+                        if (registerProvider.errorMessage == null) {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(registerProvider.errorMessage!)),
+                          );
+                        }
                       },
                     ),
                     SizedBox(

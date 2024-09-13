@@ -1,18 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/presentation/main/account/account_information.dart';
-import 'package:girls_care/presentation/main/main_app.dart';
-import 'package:girls_care/presentation/main/main_app_db_service.dart';
-import 'package:girls_care/presentation/start/splash/splash_page.dart';
-import 'package:provider/provider.dart';
 import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
+import 'package:girls_care/presentation/auth/login/login_provider.dart';
+import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
+
+import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => LoginProvider()),
+    ChangeNotifierProvider(create: (_) => RegisterProvider()),
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +44,7 @@ class MyApp extends StatelessWidget {
               textTheme: GoogleFonts.balooTamma2TextTheme(),
               fontFamily: GoogleFonts.balooTamma2().fontFamily,
             ),
-            home: const SplashPage(),
+            home: MainApp(),
           ),
         );
       },
