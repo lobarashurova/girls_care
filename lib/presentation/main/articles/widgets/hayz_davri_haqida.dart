@@ -3,38 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 
-final List<Map<String, dynamic>> hayzContainerDetails = [
-  {
-    'image': Assets.icons.hayz1,
-    'title': "Hayz davrida gigienik vositalarni to’g’ri tanlash",
-    'buttonText': "To’liq o’qish",
-  },
-  {
-    'image': Assets.icons.hayz2,
-    'title': "Hayz davrida gigienik vositalarni to’g’ri tanlash",
-    'buttonText': "Videoni ko'rish",
-  },
-  {
-    'image': Assets.icons.hayz3,
-    'title': "Hayz davrida tana qanday holatda bo’ladi?",
-    'buttonText': "To’liq o’qish",
-  },
-  {
-    'image': Assets.icons.hayz4,
-    'title': "Hayz davridagi psixologik o’zgarishlar",
-    'buttonText': "Videoni ko'rish",
-  },
-  {
-    'image': Assets.icons.hayz5,
-    'title': "Hayz davrida organizmga zarur oziq-ovqatlar ro’yxati",
-    'buttonText': "To’liq o’qish",
-  },
-  {
-    'image': Assets.icons.hayz6,
-    'title': "Ichak faoliyatini yaxshilovchi ozuqalar",
-    'buttonText': "Videoni ko'rish",
-  },
-];
+import 'hayz_davri_details.dart';
 
 class HayzDavriHaqida extends StatefulWidget {
   const HayzDavriHaqida({super.key});

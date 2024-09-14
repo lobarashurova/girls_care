@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper_view/flutter_swiper_view.dart';
-import 'package:girls_care/common/extensions/theme_extensions.dart';
-import 'package:girls_care/presentation/main/maqolalar/widgets/daily_themes_detail.dart';
-import 'package:girls_care/common/extensions/text_extensions.dart';
-import 'package:google_fonts/google_fonts.dart'; // Import your extensions
+import 'package:girls_care/presentation/main/articles/read_articles.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import 'daily_themes_detail.dart';
 
 class DailyThemes extends StatefulWidget {
   const DailyThemes({super.key});
@@ -37,16 +37,29 @@ class _DailyThemesState extends State<DailyThemes> {
               );
               final title = article["title"]!;
               final subtitle = article["subtitle"]!;
+              final id = article["id"]!;
+              final text = article["text"]!;
 
               return Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16.r),
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: 200.h,
-                      child: image,
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ReadArticles(
+                                  imagePath: article["image"]!,
+                                  title: title,
+                                  id: id,
+                                  text: text,
+                                ))),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.r),
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 200.h,
+                        child: image,
+                      ),
                     ),
                   ),
                   Positioned(

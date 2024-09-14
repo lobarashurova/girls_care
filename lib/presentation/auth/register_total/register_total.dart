@@ -7,6 +7,7 @@ import 'package:girls_care/common/widget/common_text_filed.dart';
 import 'package:girls_care/data/api_model/register_data/register_data.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
+import 'package:girls_care/presentation/main/main_app.dart';
 import 'package:provider/provider.dart';
 
 class RegisterTotalPage extends StatefulWidget {
@@ -116,7 +117,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => MainApp()));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

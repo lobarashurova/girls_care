@@ -4,10 +4,11 @@ import 'package:girls_care/presentation/main/account/account_section.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/main_app_details.dart';
-import 'package:girls_care/presentation/main/maqolalar/articles.dart';
 import 'package:girls_care/presentation/main/helper/helper.dart';
 import 'package:provider/provider.dart';
-import 'package:girls_care/common/extensions/text_extensions.dart'; // Import your extension
+import 'package:girls_care/common/extensions/text_extensions.dart';
+
+import 'articles/articles.dart'; // Import your extension
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomCalendar(),
-            _buildButton(context, "Kalendarga o'zgartirish kiritish",
+            _buildButton(context, "Hayz ma’lumotlaringizni kiriting",
                 const ChangeCalendar()),
             _buildInfoRow(),
             const HelperSection(),

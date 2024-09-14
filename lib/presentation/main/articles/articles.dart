@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
+import 'package:girls_care/presentation/main/articles/widgets/daily_themes.dart';
+import 'package:girls_care/presentation/main/articles/widgets/hayz_davri_haqida.dart';
+import 'package:girls_care/presentation/main/articles/widgets/search_textfield.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
-import 'package:girls_care/presentation/main/maqolalar/widgets/hayz_davri_haqida.dart';
-import 'package:girls_care/presentation/main/maqolalar/widgets/daily_themes.dart';
-import 'package:girls_care/presentation/main/maqolalar/widgets/search_textfield.dart';
 
 class ArticlesPage extends StatelessWidget {
   const ArticlesPage({super.key});

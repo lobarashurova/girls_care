@@ -73,6 +73,9 @@ class $AssetsIconsGen {
   AssetGenImage get dorilarIcon =>
       const AssetGenImage('assets/icons/dorilar_icon.png');
 
+  /// File path: assets/icons/export.svg
+  SvgGenImage get export => const SvgGenImage('assets/icons/export.svg');
+
   /// File path: assets/icons/hayz_1.png
   AssetGenImage get hayz1 => const AssetGenImage('assets/icons/hayz_1.png');
 
@@ -223,6 +226,7 @@ class $AssetsIconsGen {
         checked,
         close,
         dorilarIcon,
+        export,
         hayz1,
         hayz2,
         hayz3,

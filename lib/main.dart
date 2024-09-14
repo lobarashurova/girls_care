@@ -5,7 +5,6 @@ import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/presentation/auth/login/login_provider.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
-
 import 'package:girls_care/presentation/main/main_app.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +19,7 @@ void main() async {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => LoginProvider()),
     ChangeNotifierProvider(create: (_) => RegisterProvider()),
-  ], child: MyApp()));
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -44,7 +43,7 @@ class MyApp extends StatelessWidget {
               textTheme: GoogleFonts.balooTamma2TextTheme(),
               fontFamily: GoogleFonts.balooTamma2().fontFamily,
             ),
-            home: MainApp(),
+            home: const MainApp(),
           ),
         );
       },

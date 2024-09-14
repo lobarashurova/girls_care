@@ -14,9 +14,9 @@ class CustomCalendarChange extends StatefulWidget {
 
 class _CustomCalendarChangeState extends State<CustomCalendarChange> {
   DateTime selectedDate = DateTime.now();
-  int averagePeriodDays = 5;
-  int averageCycleDays = 28;
-  DateTime periodStartDate = DateTime.now();
+  int? averagePeriodDays;
+  int? averageCycleDays;
+  DateTime? periodStartDate;
 
   final TextEditingController periodDaysController = TextEditingController();
   final TextEditingController cycleDaysController = TextEditingController();
@@ -35,18 +35,43 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
   }
 
   bool _isPeriodDay(DateTime date) {
-    final daysDifference = date.difference(periodStartDate).inDays;
+    if (periodStartDate == null ||
+        averageCycleDays == null ||
+        averagePeriodDays == null) {
+      return false;
+    }
+    final daysDifference = date.difference(periodStartDate!).inDays;
     if (daysDifference < 0) return false;
-    final cyclePosition = daysDifference % averageCycleDays;
-    return cyclePosition < averagePeriodDays;
+    final cyclePosition = daysDifference % averageCycleDays!;
+    return cyclePosition < averagePeriodDays!;
+  }
+
+  bool _isOvulationDay(DateTime date) {
+    if (periodStartDate == null || averageCycleDays == null) {
+      return false; 
+    }
+    final daysDifference = date.difference(periodStartDate!).inDays;
+    if (daysDifference < 0) return false;
+    final cyclePosition = daysDifference % averageCycleDays!;
+    return cyclePosition == (averageCycleDays! ~/ 2);
   }
 
   void _updateCalendar() {
+    print("${averagePeriodDays}${averageCycleDays}${periodStartDate}");
     setState(() {
-      averagePeriodDays = int.tryParse(periodDaysController.text) ?? 5;
-      averageCycleDays = int.tryParse(cycleDaysController.text) ?? 28;
-      periodStartDate =
-          DateTime.tryParse(startDateController.text) ?? DateTime.now();
+      averagePeriodDays = int.tryParse(periodDaysController.text);
+      averageCycleDays = int.tryParse(cycleDaysController.text);
+      periodStartDate = DateTime.tryParse(startDateController.text);
+
+      if (averagePeriodDays == null ||
+          averageCycleDays == null ||
+          periodStartDate == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Iltimos, barcha ma'lumotlarni to'liq kiriting."),
+          ),
+        );
+      }
     });
   }
 
@@ -102,27 +127,21 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 7, // 7 days in a week
+                        crossAxisCount: 7,
                         crossAxisSpacing: 10.w,
                       ),
                       itemCount: totalGridSpots,
                       itemBuilder: (context, dayIndex) {
                         if (dayIndex < firstDayOfWeek ||
                             (dayIndex - firstDayOfWeek + 1) > daysInMonth) {
-                          return const SizedBox.shrink(); // Empty spot
+                          return const SizedBox.shrink(); 
                         }
 
                         int actualDay = dayIndex - firstDayOfWeek + 1;
                         DateTime date = DateTime(selectedDate.year,
                             adjustedMonthIndex + 1, actualDay);
                         bool isPeriodDay = _isPeriodDay(date);
-
-                        // bool isFirstPeriodDay = isPeriodDay &&
-                        //     actualDay ==
-                        //         3; // Customize this to track first period day
-                        // bool isLastPeriodDay = isPeriodDay &&
-                        //     actualDay ==
-                        //         7; // Customize this to track last period day
+                        bool isOvulationDay = _isOvulationDay(date);
 
                         return GestureDetector(
                           onTap: () {
@@ -133,41 +152,41 @@ class _CustomCalendarChangeState extends State<CustomCalendarChange> {
                           child: Stack(
                             children: [
                               Center(
-                                child: isPeriodDay
+                                child: isPeriodDay || isOvulationDay
                                     ? Container(
                                         width: 40.w,
                                         height: 40.h,
                                         decoration: BoxDecoration(
-                                          shape: isPeriodDay
-                                              ? BoxShape.circle
-                                              : BoxShape.rectangle,
-                                          border: isPeriodDay
+                                          shape: BoxShape.circle,
+                                          color: isPeriodDay
+                                              ? const Color(0xFFFFDFFF)
+                                              : Colors.white,
+                                          border: isOvulationDay
                                               ? Border.all(
-                                                  width: 1,
+                                                  width: 2,
                                                   color:
                                                       const Color(0xFFEB2D69),
                                                 )
                                               : null,
                                         ),
                                         child: Center(
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                                color: Color(0xFFFFDFFF),
-                                                borderRadius: BorderRadius.only(
-                                                    topRight:
-                                                        Radius.circular(50))),
-                                            child: Text(
-                                              '$actualDay',
-                                              style: TextStyle(
-                                                fontFamily:
-                                                    GoogleFonts.balooTamma2()
+                                          child: isOvulationDay
+                                              ? const Icon(
+                                                  Icons.favorite,
+                                                  color: Colors.red,
+                                                  size: 20,
+                                                )
+                                              : Text(
+                                                  '$actualDay',
+                                                  style: TextStyle(
+                                                    fontFamily: GoogleFonts
+                                                            .balooTamma2()
                                                         .fontFamily,
-                                                color: Colors.black,
-                                                fontSize: 16.sp,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
+                                                    color: Colors.black,
+                                                    fontSize: 16.sp,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
                                         ),
                                       )
                                     : Text(
