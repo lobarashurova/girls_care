@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
-import 'package:girls_care/common/gen/assets.gen.dart';
 
 class CustomListTileItem {
   final String text;
   final Widget? prefix;
+  final Function? onTap;
   final Widget? suffix;
 
-  CustomListTileItem({
-    required this.text,
-    this.prefix,
-    this.suffix,
-  });
+  CustomListTileItem(
+      {required this.text, this.prefix, this.suffix, this.onTap});
 }
 
 class CustomListTile extends StatelessWidget {
@@ -25,7 +22,8 @@ class CustomListTile extends StatelessWidget {
     super.key,
     required this.items,
     required this.onTap,
-    this.isMoreLine = false,  this.color = Colors.black,
+    this.isMoreLine = false,
+    this.color = Colors.black,
   });
 
   @override

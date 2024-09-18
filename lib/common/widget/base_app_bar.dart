@@ -32,7 +32,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: backgroundColor != null
               ? context.colors.onPrimary
               : context.colors.label),
-      leading: leading ?? (canPop ? appBarLeading(context) : null),
+      // leading: leading ?? (canPop ? appBarLeading(context) : null),
       centerTitle: centerTitle,
       title: hasIcon
           ? Assets.icons.appLauncher.image(width: 96, height: 28)

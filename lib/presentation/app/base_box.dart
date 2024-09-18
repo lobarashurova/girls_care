@@ -31,7 +31,7 @@ class BaseBox extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        padding: padding ?? EdgeInsets.symmetric(vertical: 16),
+        padding: padding ?? EdgeInsets.symmetric(vertical: 16, horizontal: 12),
         margin: margin,
         decoration: BoxDecoration(
           color: backgroundColor ??

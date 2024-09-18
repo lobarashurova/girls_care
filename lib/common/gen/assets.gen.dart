@@ -15,6 +15,12 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/add_dori.png
+  AssetGenImage get addDori => const AssetGenImage('assets/icons/add_dori.png');
+
+  /// File path: assets/icons/akne.png
+  AssetGenImage get akne => const AssetGenImage('assets/icons/akne.png');
+
   /// File path: assets/icons/alomatlar_icon.png
   AssetGenImage get alomatlarIcon =>
       const AssetGenImage('assets/icons/alomatlar_icon.png');
@@ -25,6 +31,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/arrow.svg
   SvgGenImage get arrow => const SvgGenImage('assets/icons/arrow.svg');
+
+  /// File path: assets/icons/asabiylik.png
+  AssetGenImage get asabiylik =>
+      const AssetGenImage('assets/icons/asabiylik.png');
 
   /// File path: assets/icons/asosiy_selected.svg
   SvgGenImage get asosiySelected =>
@@ -46,6 +56,10 @@ class $AssetsIconsGen {
   AssetGenImage get background =>
       const AssetGenImage('assets/icons/background.png');
 
+  /// File path: assets/icons/bosh_aylanishi.png
+  AssetGenImage get boshAylanishi =>
+      const AssetGenImage('assets/icons/bosh_aylanishi.png');
+
   /// File path: assets/icons/calendar.svg
   SvgGenImage get calendar => const SvgGenImage('assets/icons/calendar.svg');
 
@@ -63,11 +77,18 @@ class $AssetsIconsGen {
   /// File path: assets/icons/chat_icon.svg
   SvgGenImage get chatIcon => const SvgGenImage('assets/icons/chat_icon.svg');
 
+  /// File path: assets/icons/check_pink.svg
+  SvgGenImage get checkPink => const SvgGenImage('assets/icons/check_pink.svg');
+
   /// File path: assets/icons/checked.svg
   SvgGenImage get checked => const SvgGenImage('assets/icons/checked.svg');
 
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
+
+  /// File path: assets/icons/dori_qoshish.png
+  AssetGenImage get doriQoshish =>
+      const AssetGenImage('assets/icons/dori_qoshish.png');
 
   /// File path: assets/icons/dorilar_icon.png
   AssetGenImage get dorilarIcon =>
@@ -105,6 +126,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/hayz_icon.svg
   SvgGenImage get hayzIcon => const SvgGenImage('assets/icons/hayz_icon.svg');
 
+  /// File path: assets/icons/headache.png
+  AssetGenImage get headache =>
+      const AssetGenImage('assets/icons/headache.png');
+
   /// File path: assets/icons/hisob_select.svg
   SvgGenImage get hisobSelect =>
       const SvgGenImage('assets/icons/hisob_select.svg');
@@ -113,9 +138,16 @@ class $AssetsIconsGen {
   SvgGenImage get hisobUnselect =>
       const SvgGenImage('assets/icons/hisob_unselect.svg');
 
+  /// File path: assets/icons/isitma.png
+  AssetGenImage get isitma => const AssetGenImage('assets/icons/isitma.png');
+
   /// File path: assets/icons/kayfiyat_icon.png
   AssetGenImage get kayfiyatIcon =>
       const AssetGenImage('assets/icons/kayfiyat_icon.png');
+
+  /// File path: assets/icons/kayfiyatsizlik.png
+  AssetGenImage get kayfiyatsizlik =>
+      const AssetGenImage('assets/icons/kayfiyatsizlik.png');
 
   /// File path: assets/icons/kun_mavzusi_1.jpg
   AssetGenImage get kunMavzusi1 =>
@@ -177,6 +209,10 @@ class $AssetsIconsGen {
   AssetGenImage get onboard3 =>
       const AssetGenImage('assets/icons/onboard3.png');
 
+  /// File path: assets/icons/organizm.png
+  AssetGenImage get organizm =>
+      const AssetGenImage('assets/icons/organizm.png');
+
   /// File path: assets/icons/ovulyatsiya_icon.svg
   SvgGenImage get ovulyatsiyaIcon =>
       const SvgGenImage('assets/icons/ovulyatsiya_icon.svg');
@@ -184,6 +220,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/pregrant.png
   AssetGenImage get pregrant =>
       const AssetGenImage('assets/icons/pregrant.png');
+
+  /// File path: assets/icons/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/icons/profile.png');
+
+  /// File path: assets/icons/protected.png
+  AssetGenImage get protected =>
+      const AssetGenImage('assets/icons/protected.png');
 
   /// File path: assets/icons/right_vector.svg
   SvgGenImage get rightVector =>
@@ -200,6 +243,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/icons/splash.png');
 
+  /// File path: assets/icons/taslim.png
+  AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
+
+  /// File path: assets/icons/tushkunlik.png
+  AssetGenImage get tushkunlik =>
+      const AssetGenImage('assets/icons/tushkunlik.png');
+
+  /// File path: assets/icons/unavailable.png
+  AssetGenImage get unavailable =>
+      const AssetGenImage('assets/icons/unavailable.png');
+
+  /// File path: assets/icons/unprotected.png
+  AssetGenImage get unprotected =>
+      const AssetGenImage('assets/icons/unprotected.png');
+
   /// File path: assets/icons/yordamchi_select.svg
   SvgGenImage get yordamchiSelect =>
       const SvgGenImage('assets/icons/yordamchi_select.svg');
@@ -210,21 +268,27 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        addDori,
+        akne,
         alomatlarIcon,
         appLauncher,
         arrow,
+        asabiylik,
         asosiySelected,
         asosiyUnselect,
         avatarAccount,
         backgound,
         background,
+        boshAylanishi,
         calendar,
         calendarDays,
         cameraRounded,
         cancel,
         chatIcon,
+        checkPink,
         checked,
         close,
+        doriQoshish,
         dorilarIcon,
         export,
         hayz1,
@@ -236,9 +300,12 @@ class $AssetsIconsGen {
         hayzDavri,
         hayzGirl,
         hayzIcon,
+        headache,
         hisobSelect,
         hisobUnselect,
+        isitma,
         kayfiyatIcon,
+        kayfiyatsizlik,
         kunMavzusi1,
         kunMavzusi2,
         kunMavzusi3,
@@ -254,12 +321,19 @@ class $AssetsIconsGen {
         onboard1,
         onboard2,
         onboard3,
+        organizm,
         ovulyatsiyaIcon,
         pregrant,
+        profile,
+        protected,
         rightVector,
         searchIcon,
         soglomOvqatlanish,
         splash,
+        taslim,
+        tushkunlik,
+        unavailable,
+        unprotected,
         yordamchiSelect,
         yordamchiUnselect
       ];

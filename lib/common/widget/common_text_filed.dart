@@ -131,25 +131,25 @@ class _CommonTextFieldState extends State<CommonTextField> {
                 alignment: Alignment.center,
                 child: widget.prefixIcon,
               ),
-        hintStyle: TextStyle(
+        hintStyle: GoogleFonts.balooTamma2(
           fontSize: 14,
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w700,
           color: context.colors.display,
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.grey),
+          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.grey),
+          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.grey),
+          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.grey05),
+          borderSide: BorderSide(color: context.colors.primary2),
           borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
