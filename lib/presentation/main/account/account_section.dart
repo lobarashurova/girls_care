@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/account/account_information.dart';
 import 'package:girls_care/presentation/main/account/widgets/custom_listtile.dart';
 
 class Account extends StatefulWidget {
@@ -27,7 +29,9 @@ class _AccountState extends State<Account> {
         child: ListView(
           children: [
             CustomListTile(
-              onTap: () {},
+              onTap: () {
+                context.push(AccountInformation());
+              },
               isMoreLine: true,
               items: [
                 CustomListTileItem(
@@ -82,7 +86,8 @@ class _AccountState extends State<Account> {
                 CustomListTileItem(
                   text: 'Homiladorlik',
                   prefix: Switch(
-                    value: false, onChanged: (val) {},
+                    value: false,
+                    onChanged: (val) {},
                     activeColor: Colors.white,
                     inactiveTrackColor: Colors.white,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -98,7 +103,9 @@ class _AccountState extends State<Account> {
                 CustomListTileItem(
                   text: 'Tug’ruqdan keyin',
                   prefix: Switch(
-                    value: true, onChanged: (val) {}, activeColor: Colors.white,
+                    value: true,
+                    onChanged: (val) {},
+                    activeColor: Colors.white,
                     // ignore: prefer_const_constructors
                     thumbColor: WidgetStateProperty.all(Color(0xFF8D80C1)),
                     trackOutlineColor:
@@ -109,7 +116,8 @@ class _AccountState extends State<Account> {
                 CustomListTileItem(
                   text: 'Klimaks',
                   prefix: Switch(
-                    value: false, onChanged: (val) {},
+                    value: false,
+                    onChanged: (val) {},
                     activeColor: Colors.white,
                     inactiveTrackColor: Colors.white,
                     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

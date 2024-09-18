@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 
-class BaseBox extends StatelessWidget {
-  const BaseBox(
+class MyBaseBox extends StatelessWidget {
+  const MyBaseBox(
       {super.key,
       required this.child,
       this.width,
       this.height,
-      this.selected = false,
+      this.selected = true,
       this.margin,
       this.padding,
       this.onTap,
@@ -36,10 +36,9 @@ class BaseBox extends StatelessWidget {
         decoration: BoxDecoration(
           color: backgroundColor ??
               (selected
-                  ? context.colors.primary2.withOpacity(0.2)
+                  ? Color(0xFFE2DCFE)
                   : context.colors.onPrimary),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: context.colors.primary2),
         ),
         child: Center(child: child),
       ),

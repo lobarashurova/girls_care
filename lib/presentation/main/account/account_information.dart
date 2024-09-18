@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/account/widgets/change_account_information.dart';
@@ -17,6 +18,17 @@ class AccountInformation extends StatelessWidget {
         foregroundColor: const Color(0xFFF3F0FF),
         centerTitle: true,
         title: "Shaxsiy ma’lumotlar".s(18.sp).w(700).c(const Color(0xFF1B1F24)),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: InkWell(
+              onTap: () {
+                context.pop();
+              },
+              child: Assets.icons.close.svg(),
+            ),
+          )
+        ],
       ),
       body: Padding(
           padding: const EdgeInsets.all(12.0),
