@@ -5,6 +5,7 @@ import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/main_app_details.dart';
 import 'package:girls_care/presentation/main/helper/helper.dart';
+import 'package:girls_care/presentation/main/pregnancy/pregnancy_page.dart';
 import 'package:provider/provider.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 
@@ -21,7 +22,7 @@ class MainApp extends StatelessWidget {
         body: Consumer<MainAppDbService>(
           builder: (context, state, child) {
             final List<Widget> _children = [
-              const HomePage(),
+              const PregnancyPage(),
               const ArticlesPage(),
               const Helper(),
               const Account(),
