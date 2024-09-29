@@ -66,14 +66,17 @@ class _CalendarPregnancyState extends State<CalendarPregnancy> {
               visible: showCalendar,
               replacement: const SizedBox.shrink(),
               child: const CustomCalendar(
+                isPregnancy: true,
                   // hasBackground: false,
                   // hasSize: true,
                   // hasWeekDayContainer: false,
                   ),
             ),
-            SizedBox(height: 20.h),
+            // SizedBox(height: 10.h),
             ChangeCalendarB(
-                text: "Homila ma’lumotlarini o’zgartirish",
+                text: showCalendar
+                    ? "O'zgarishlarni saqlash"
+                    : "Homila ma’lumotlarini o’zgartirish",
                 onPressed: () {
                   setState(() {
                     showCalendar = !showCalendar;

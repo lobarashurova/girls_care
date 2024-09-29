@@ -12,7 +12,8 @@ int? rangeStartIndex;
 int? rangeEndIndex;
 
 class CustomCalendar extends StatefulWidget {
-  const CustomCalendar({super.key});
+  final bool isPregnancy;
+  const CustomCalendar({super.key, this.isPregnancy = false});
 
   @override
   State<CustomCalendar> createState() => _CustomCalendarState();
@@ -76,15 +77,18 @@ class _CustomCalendarState extends State<CustomCalendar> {
             ),
           ],
         ),
-        SizedBox(height: 20.h),
+        if (!widget.isPregnancy) SizedBox(height: 20.h),
         Stack(
           children: [
             Container(
+              margin: EdgeInsets.all(12),
               width: double.infinity,
-              height: 300.w,
+              // height: 300.w,
               // ignore: prefer_const_constructors
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: widget.isPregnancy == true
+                    ? Colors.transparent
+                    : Colors.white,
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(30),
                   topRight: Radius.circular(30),
@@ -95,12 +99,13 @@ class _CustomCalendarState extends State<CustomCalendar> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: 60.h),
+                  if (!widget.isPregnancy) SizedBox(height: 60.h),
                   _buildDaySelector(),
                 ],
               ),
             ),
-            Positioned(
+            if (!widget.isPregnancy)
+              Positioned(
               top: -16,
               left: 0,
               right: 0,

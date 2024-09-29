@@ -23,7 +23,7 @@ class _AddNoteHelperPageState extends State<AddNoteHelperPage> {
             onTap: (){
               context.pop();
             },
-              child: Assets.icons.checkPink.svg())],
+              child: Assets.icons.checked.svg())],
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
