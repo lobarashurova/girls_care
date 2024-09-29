@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
@@ -7,9 +8,11 @@ import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/common/widget/common_text_filed.dart';
 import 'package:girls_care/data/api_model/register_data/register_data.dart';
+import 'package:girls_care/data/storage/storage.dart';
+import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
-import 'package:girls_care/presentation/main/home/home_page.dart';
-import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 import 'package:provider/provider.dart';
 
 class RegisterTotalPage extends StatefulWidget {
@@ -23,6 +26,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController rewritePasswordController = TextEditingController();
+  final storage = getIt<Storage>();
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +130,12 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           );
                           await registerProvider.registerUser(userData);
                           if (registerProvider.errorMessage == null) {
-                            context.pushAndRemoveAll(const MainApp());
+                            if ((storage.mode.call() == GirlMode.period)) {
+                              context.pushAndRemoveAll(PeriodMainApp());
+                            } else if (storage.mode.call() ==
+                                GirlMode.pregnant) {
+                              context.pushAndRemoveAll(PregnancyMainApp());
+                            }
                             context.showElegantNotification(
                                 title: "Ilovaga xush kelibsiz!",
                                 description:
@@ -151,17 +160,6 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                     SizedBox(
                       height: 16,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => HomePage()));
-                        },
-                        child: "Ma’lumotlarni kiritmasdan davom etish"
-                            .s(16)
-                            .w(700)
-                            .c(context.colors.primary))
                   ],
                 ),
               ))

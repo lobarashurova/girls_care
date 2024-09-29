@@ -15,6 +15,10 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/2_trismetr.png
+  AssetGenImage get a2Trismetr =>
+      const AssetGenImage('assets/icons/2_trismetr.png');
+
   /// File path: assets/icons/add_dori.png
   AssetGenImage get addDori => const AssetGenImage('assets/icons/add_dori.png');
 
@@ -28,6 +32,13 @@ class $AssetsIconsGen {
   /// File path: assets/icons/app_launcher.png
   AssetGenImage get appLauncher =>
       const AssetGenImage('assets/icons/app_launcher.png');
+
+  /// File path: assets/icons/apple.svg
+  SvgGenImage get apple => const SvgGenImage('assets/icons/apple.svg');
+
+  /// File path: assets/icons/apple_img.png
+  AssetGenImage get appleImg =>
+      const AssetGenImage('assets/icons/apple_img.png');
 
   /// File path: assets/icons/arrow.svg
   SvgGenImage get arrow => const SvgGenImage('assets/icons/arrow.svg');
@@ -48,6 +59,10 @@ class $AssetsIconsGen {
   AssetGenImage get avatarAccount =>
       const AssetGenImage('assets/icons/avatar_account.png');
 
+  /// File path: assets/icons/baby_envolving.png
+  AssetGenImage get babyEnvolving =>
+      const AssetGenImage('assets/icons/baby_envolving.png');
+
   /// File path: assets/icons/backgound.png
   AssetGenImage get backgound =>
       const AssetGenImage('assets/icons/backgound.png');
@@ -55,6 +70,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/background.png
   AssetGenImage get background =>
       const AssetGenImage('assets/icons/background.png');
+
+  /// File path: assets/icons/body_health.png
+  AssetGenImage get bodyHealth =>
+      const AssetGenImage('assets/icons/body_health.png');
 
   /// File path: assets/icons/bosh_aylanishi.png
   AssetGenImage get boshAylanishi =>
@@ -93,16 +112,43 @@ class $AssetsIconsGen {
   AssetGenImage get doriQoshish =>
       const AssetGenImage('assets/icons/dori_qoshish.png');
 
-  /// File path: assets/icons/dori_qoshish.png
-  AssetGenImage get doriQoshish =>
-      const AssetGenImage('assets/icons/dori_qoshish.png');
-
   /// File path: assets/icons/dorilar_icon.png
   AssetGenImage get dorilarIcon =>
       const AssetGenImage('assets/icons/dorilar_icon.png');
 
+  /// File path: assets/icons/edit_icon.svg
+  SvgGenImage get editIcon => const SvgGenImage('assets/icons/edit_icon.svg');
+
+  /// File path: assets/icons/eight_week.jpg
+  AssetGenImage get eightWeek =>
+      const AssetGenImage('assets/icons/eight_week.jpg');
+
+  /// File path: assets/icons/eleven_week.jpg
+  AssetGenImage get elevenWeek =>
+      const AssetGenImage('assets/icons/eleven_week.jpg');
+
   /// File path: assets/icons/export.svg
   SvgGenImage get export => const SvgGenImage('assets/icons/export.svg');
+
+  /// File path: assets/icons/fifteen_week.jpg
+  AssetGenImage get fifteenWeek =>
+      const AssetGenImage('assets/icons/fifteen_week.jpg');
+
+  /// File path: assets/icons/fifth_week.jpg
+  AssetGenImage get fifthWeek =>
+      const AssetGenImage('assets/icons/fifth_week.jpg');
+
+  /// File path: assets/icons/first_week.jpg
+  AssetGenImage get firstWeek =>
+      const AssetGenImage('assets/icons/first_week.jpg');
+
+  /// File path: assets/icons/four_seven_week.jpg
+  AssetGenImage get fourSevenWeek =>
+      const AssetGenImage('assets/icons/four_seven_week.jpg');
+
+  /// File path: assets/icons/fourteen_week.jpg
+  AssetGenImage get fourteenWeek =>
+      const AssetGenImage('assets/icons/fourteen_week.jpg');
 
   /// File path: assets/icons/hayz_1.png
   AssetGenImage get hayz1 => const AssetGenImage('assets/icons/hayz_1.png');
@@ -137,6 +183,10 @@ class $AssetsIconsGen {
   AssetGenImage get headache =>
       const AssetGenImage('assets/icons/headache.png');
 
+  /// File path: assets/icons/healthy_food.png
+  AssetGenImage get healthyFood =>
+      const AssetGenImage('assets/icons/healthy_food.png');
+
   /// File path: assets/icons/hisob_select.svg
   SvgGenImage get hisobSelect =>
       const SvgGenImage('assets/icons/hisob_select.svg');
@@ -158,10 +208,6 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/klimaks.png
   AssetGenImage get klimaks => const AssetGenImage('assets/icons/klimaks.png');
-
-  /// File path: assets/icons/kayfiyatsizlik.png
-  AssetGenImage get kayfiyatsizlik =>
-      const AssetGenImage('assets/icons/kayfiyatsizlik.png');
 
   /// File path: assets/icons/kun_mavzusi_1.jpg
   AssetGenImage get kunMavzusi1 =>
@@ -191,6 +237,9 @@ class $AssetsIconsGen {
   AssetGenImage get kundalikIcon =>
       const AssetGenImage('assets/icons/kundalik_icon.png');
 
+  /// File path: assets/icons/left.png
+  AssetGenImage get left => const AssetGenImage('assets/icons/left.png');
+
   /// File path: assets/icons/left_vector.svg
   SvgGenImage get leftVector =>
       const SvgGenImage('assets/icons/left_vector.svg');
@@ -202,6 +251,21 @@ class $AssetsIconsGen {
   /// File path: assets/icons/maqolalar_unselect.svg
   SvgGenImage get maqolalarUnselect =>
       const SvgGenImage('assets/icons/maqolalar_unselect.svg');
+
+  /// File path: assets/icons/nine_week.jpg
+  AssetGenImage get nineWeek =>
+      const AssetGenImage('assets/icons/nine_week.jpg');
+
+  /// File path: assets/icons/nineteen_week.jpg
+  AssetGenImage get nineteenWeek =>
+      const AssetGenImage('assets/icons/nineteen_week.jpg');
+
+  /// File path: assets/icons/not_good.png
+  AssetGenImage get notGood => const AssetGenImage('assets/icons/not_good.png');
+
+  /// File path: assets/icons/not_secured.png
+  AssetGenImage get notSecured =>
+      const AssetGenImage('assets/icons/not_secured.png');
 
   /// File path: assets/icons/notification.svg
   SvgGenImage get notification =>
@@ -231,13 +295,12 @@ class $AssetsIconsGen {
   AssetGenImage get organizm =>
       const AssetGenImage('assets/icons/organizm.png');
 
-  /// File path: assets/icons/organizm.png
-  AssetGenImage get organizm =>
-      const AssetGenImage('assets/icons/organizm.png');
-
   /// File path: assets/icons/ovulyatsiya_icon.svg
   SvgGenImage get ovulyatsiyaIcon =>
       const SvgGenImage('assets/icons/ovulyatsiya_icon.svg');
+
+  /// File path: assets/icons/pain.png
+  AssetGenImage get pain => const AssetGenImage('assets/icons/pain.png');
 
   /// File path: assets/icons/pregrant.png
   AssetGenImage get pregrant =>
@@ -250,6 +313,10 @@ class $AssetsIconsGen {
   AssetGenImage get protected =>
       const AssetGenImage('assets/icons/protected.png');
 
+  /// File path: assets/icons/question.png
+  AssetGenImage get question =>
+      const AssetGenImage('assets/icons/question.png');
+
   /// File path: assets/icons/right_vector.svg
   SvgGenImage get rightVector =>
       const SvgGenImage('assets/icons/right_vector.svg');
@@ -257,6 +324,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/search_icon.svg
   SvgGenImage get searchIcon =>
       const SvgGenImage('assets/icons/search_icon.svg');
+
+  /// File path: assets/icons/second_third_week.jpg
+  AssetGenImage get secondThirdWeek =>
+      const AssetGenImage('assets/icons/second_third_week.jpg');
 
   /// File path: assets/icons/soglom_ovqatlanish.png
   AssetGenImage get soglomOvqatlanish =>
@@ -268,20 +339,8 @@ class $AssetsIconsGen {
   /// File path: assets/icons/taslim.png
   AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
 
-  /// File path: assets/icons/tushkunlik.png
-  AssetGenImage get tushkunlik =>
-      const AssetGenImage('assets/icons/tushkunlik.png');
-
-  /// File path: assets/icons/unavailable.png
-  AssetGenImage get unavailable =>
-      const AssetGenImage('assets/icons/unavailable.png');
-
-  /// File path: assets/icons/unprotected.png
-  AssetGenImage get unprotected =>
-      const AssetGenImage('assets/icons/unprotected.png');
-
-  /// File path: assets/icons/taslim.png
-  AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
+  /// File path: assets/icons/ten_week.jpg
+  AssetGenImage get tenWeek => const AssetGenImage('assets/icons/ten_week.jpg');
 
   /// File path: assets/icons/tugruq_song.png
   AssetGenImage get tugruqSong =>
@@ -291,6 +350,22 @@ class $AssetsIconsGen {
   AssetGenImage get tushkunlik =>
       const AssetGenImage('assets/icons/tushkunlik.png');
 
+  /// File path: assets/icons/twelve_week.jpg
+  AssetGenImage get twelveWeek =>
+      const AssetGenImage('assets/icons/twelve_week.jpg');
+
+  /// File path: assets/icons/twenty_eight_week.jpg
+  AssetGenImage get twentyEightWeek =>
+      const AssetGenImage('assets/icons/twenty_eight_week.jpg');
+
+  /// File path: assets/icons/twenty_four_week.jpg
+  AssetGenImage get twentyFourWeek =>
+      const AssetGenImage('assets/icons/twenty_four_week.jpg');
+
+  /// File path: assets/icons/twenty_week.jpg
+  AssetGenImage get twentyWeek =>
+      const AssetGenImage('assets/icons/twenty_week.jpg');
+
   /// File path: assets/icons/unavailable.png
   AssetGenImage get unavailable =>
       const AssetGenImage('assets/icons/unavailable.png');
@@ -298,6 +373,10 @@ class $AssetsIconsGen {
   /// File path: assets/icons/unprotected.png
   AssetGenImage get unprotected =>
       const AssetGenImage('assets/icons/unprotected.png');
+
+  /// File path: assets/icons/weekday_name.png
+  AssetGenImage get weekdayName =>
+      const AssetGenImage('assets/icons/weekday_name.png');
 
   /// File path: assets/icons/yordamchi_select.svg
   SvgGenImage get yordamchiSelect =>
@@ -309,17 +388,22 @@ class $AssetsIconsGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        a2Trismetr,
         addDori,
         akne,
         alomatlarIcon,
         appLauncher,
+        apple,
+        appleImg,
         arrow,
         asabiylik,
         asosiySelected,
         asosiyUnselect,
         avatarAccount,
+        babyEnvolving,
         backgound,
         background,
+        bodyHealth,
         boshAylanishi,
         calendar,
         calendarDays,
@@ -329,9 +413,18 @@ class $AssetsIconsGen {
         checkPink,
         checked,
         close,
+        closeProf,
         doriQoshish,
         dorilarIcon,
+        editIcon,
+        eightWeek,
+        elevenWeek,
         export,
+        fifteenWeek,
+        fifthWeek,
+        firstWeek,
+        fourSevenWeek,
+        fourteenWeek,
         hayz1,
         hayz2,
         hayz3,
@@ -341,6 +434,8 @@ class $AssetsIconsGen {
         hayzDavri,
         hayzGirl,
         hayzIcon,
+        headache,
+        healthyFood,
         hisobSelect,
         hisobUnselect,
         isitma,
@@ -354,34 +449,43 @@ class $AssetsIconsGen {
         kunMavzusi5,
         kunSavoli,
         kundalikIcon,
+        left,
         leftVector,
         maqolalarSelect,
         maqolalarUnselect,
+        nineWeek,
+        nineteenWeek,
+        notGood,
+        notSecured,
         notification,
         ogriqBartaraf,
         onboard1,
         onboard2,
         onboard3,
-        organizm,
         onboard4,
         organizm,
         ovulyatsiyaIcon,
+        pain,
         pregrant,
         profile,
         protected,
+        question,
         rightVector,
         searchIcon,
+        secondThirdWeek,
         soglomOvqatlanish,
         splash,
         taslim,
-        tushkunlik,
-        unavailable,
-        unprotected,
-        taslim,
+        tenWeek,
         tugruqSong,
         tushkunlik,
+        twelveWeek,
+        twentyEightWeek,
+        twentyFourWeek,
+        twentyWeek,
         unavailable,
         unprotected,
+        weekdayName,
         yordamchiSelect,
         yordamchiUnselect
       ];

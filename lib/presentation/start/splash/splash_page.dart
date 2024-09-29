@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/base/base_page.dart';
+import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/auth/login/login_page.dart';
-import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
+import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 import 'package:girls_care/presentation/start/onboard/onboarding_page.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_cubit.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_state.dart';
@@ -15,7 +19,9 @@ import 'package:girls_care/presentation/start/splash/cubit/splash_state.dart';
 @RoutePage()
 class SplashPage
     extends BasePage<SplashCubit, SplashBuildable, SplashListenable> {
-  const SplashPage({super.key});
+  SplashPage({super.key});
+
+  final storage = getIt<Storage>();
 
   @override
   void init(BuildContext context) {
@@ -27,7 +33,14 @@ class SplashPage
   void listener(BuildContext context, SplashListenable state) {
     switch (state.effect) {
       case SplashEffect.home:
-        context.pushReplacement(const MainApp());
+        {
+          if (storage.mode.call() == GirlMode.period) {
+            context.pushReplacement(const PeriodMainApp());
+          } else if (storage.mode.call() == GirlMode.pregnant) {
+            context.pushReplacement(const PregnancyMainApp());
+          }
+        }
+
         break;
       case SplashEffect.onboard:
         context.pushReplacement(const OnboardingPage());

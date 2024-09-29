@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
+import 'package:girls_care/presentation/main/home/widgets/articles_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_calendar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_container_img.dart';
-import 'package:girls_care/presentation/main/home/widgets/articles_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/helper_section.dart';
-import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:provider/provider.dart';
+
+import 'main/main_app_db_service.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

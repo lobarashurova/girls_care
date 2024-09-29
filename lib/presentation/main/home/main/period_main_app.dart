@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/presentation/main/account/account_section.dart';
-import 'package:girls_care/presentation/main/home/home_page.dart';
-import 'package:girls_care/presentation/main/main_app_db_service.dart';
-import 'package:girls_care/presentation/main/main_app_details.dart';
 import 'package:girls_care/presentation/main/helper/helper.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/main_app_db_service.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/main_app_details.dart';
 import 'package:girls_care/presentation/main/pregnancy/pregnancy_page.dart';
 import 'package:provider/provider.dart';
-import 'package:girls_care/common/extensions/text_extensions.dart';
 
-import 'articles/articles.dart'; // Import your extension
+import '../../articles/articles.dart';
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class PeriodMainApp extends StatelessWidget {
+  const PeriodMainApp({super.key});
 
   @override
   Widget build(BuildContext context) {

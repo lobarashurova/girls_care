@@ -5,7 +5,7 @@ import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/presentation/auth/login/login_provider.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
-import 'package:girls_care/presentation/main/main_app_db_service.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/start/splash/splash_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

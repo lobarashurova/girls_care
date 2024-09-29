@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
+import 'package:girls_care/data/storage/storage.dart';
+import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/plan/plan_page.dart';
 import 'package:girls_care/presentation/auth/verify_page/widget/common_pin_put.dart';
-import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 
 class VerifyPage extends StatefulWidget {
   const VerifyPage({super.key, required this.code});
@@ -20,6 +24,7 @@ class VerifyPage extends StatefulWidget {
 
 class _VerifyPageState extends State<VerifyPage> {
   final controller = TextEditingController();
+  final storage = getIt<Storage>();
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +88,11 @@ class _VerifyPageState extends State<VerifyPage> {
                       text: "Kirish",
                       onPressed: () {
                         if (widget.code.toString() == controller.text) {
-                          context.pushAndRemoveAll(const MainApp());
+                          if ((storage.mode.call() == GirlMode.period)) {
+                            context.pushAndRemoveAll(PeriodMainApp());
+                          } else if (storage.mode.call() == GirlMode.pregnant) {
+                            context.pushAndRemoveAll(PregnancyMainApp());
+                          }
                           context.showElegantNotification(
                               title: "Muvaffaqiyatli kirish!",
                               description: "Ilovaga muvaffaqiyatli kirdingiz!",
