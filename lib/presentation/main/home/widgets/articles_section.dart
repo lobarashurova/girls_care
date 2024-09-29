@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ArticlesSection extends StatefulWidget {
-  final bool isPregnancy;
-  const ArticlesSection({super.key, required this.isPregnancy});
+
+  const ArticlesSection({super.key});
 
   @override
   State<ArticlesSection> createState() => _ArticlesSectionState();
@@ -23,13 +25,9 @@ class _ArticlesSectionState extends State<ArticlesSection> {
           children: [
             "Maqolalar".s(24.sp).w(600).c(Colors.black),
             IconButton(
-              onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MainApp(
-                            isPregnancy: false,
-                            index: 1,
-                          ))),
+              onPressed: () {
+                context.read<MainAppDbService>().onTabTapped(1);
+              },
               icon: Assets.icons.rightVector.svg(width: 24.w, height: 24.h),
             ),
           ],

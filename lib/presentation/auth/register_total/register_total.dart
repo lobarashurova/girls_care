@@ -118,7 +118,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => MainApp(
-                                        isPregnancy: true,
+                                        isPregnancy: false,
                                         index: 0,
                                       )));
                         } else {
@@ -139,7 +139,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                               MaterialPageRoute(
                                   builder: (context) => MainApp(
                                         index: 0,
-                                        isPregnancy: true,
+                                        isPregnancy: false,
                                       )));
                         },
                         child: "Ma’lumotlarni kiritmasdan davom etish"

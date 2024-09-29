@@ -81,7 +81,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
         Stack(
           children: [
             Container(
-              margin: EdgeInsets.all(12),
+              
               width: double.infinity,
               // height: 300.w,
               // ignore: prefer_const_constructors
@@ -96,12 +96,15 @@ class _CustomCalendarState extends State<CustomCalendar> {
                   bottomRight: Radius.circular(20),
                 ),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  if (!widget.isPregnancy) SizedBox(height: 60.h),
-                  _buildDaySelector(),
-                ],
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    if (!widget.isPregnancy) SizedBox(height: 60.h),
+                    _buildDaySelector(),
+                  ],
+                ),
               ),
             ),
             if (!widget.isPregnancy)

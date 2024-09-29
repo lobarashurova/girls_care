@@ -9,12 +9,12 @@ import 'package:girls_care/presentation/main/change_calendar_data/widgets/input_
 class InputInfoBottom extends StatefulWidget {
   final TextEditingController periodDaysController;
   final TextEditingController cycleDaysController;
-  final TextEditingController startDateController;
+  final TextEditingController lastDaysController;
   const InputInfoBottom({
     super.key,
     required this.periodDaysController,
     required this.cycleDaysController,
-    required this.startDateController,
+    required this.lastDaysController,
   });
 
   @override
@@ -69,7 +69,7 @@ class _InputInfoBottomState extends State<InputInfoBottom> {
                   .c(Colors.black),
               SizedBox(height: 24.h),
               InputInfoTextfield(
-                controller: widget.startDateController,
+                controller: widget.lastDaysController,
                 hasSuffix: true,
                 hintText: "Oxirgi hayzning boshlanish sanasini kiriting",
                 width: double.infinity,
