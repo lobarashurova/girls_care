@@ -14,7 +14,7 @@ class Storage {
   static Future<Storage> create() async {
     await Hive.initFlutter();
 
-    Hive.registerAdapter(TokensImplAdapter());
+    Hive.registerAdapter(GirlModeAdapter());
 
     final box = await Hive.openBox('storage');
     return Storage(box);
@@ -22,7 +22,6 @@ class Storage {
 
   BaseStorage<bool> get showOnboard => BaseStorage(_box, 'showOnboard');
 
-  BaseStorage<Tokens> get tokens => BaseStorage(_box, 'token');
 
   BaseStorage<int> get status => BaseStorage(_box, 'status');
 
@@ -37,8 +36,10 @@ class Storage {
   BaseStorage<bool> get enabled => BaseStorage(_box, 'enabled');
 
   BaseStorage<GirlMode> get mode => BaseStorage(_box, 'mode');
-  BaseStorage<int> get avarageSikl => BaseStorage(_box, 'avarage_sikl');
-  BaseStorage<int> get avarageHayz => BaseStorage(_box, 'avarage_hayz');
-  BaseStorage<String> get lastDay => BaseStorage(_box, 'last_day');
 
+  BaseStorage<int> get avarageSikl => BaseStorage(_box, 'avarage_sikl');
+
+  BaseStorage<int> get avarageHayz => BaseStorage(_box, 'avarage_hayz');
+
+  BaseStorage<String> get lastDay => BaseStorage(_box, 'last_day');
 }

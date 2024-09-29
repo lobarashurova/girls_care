@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class MainAppDbService extends ChangeNotifier {
+class PregnancyAppService extends ChangeNotifier {
   int _currentIndex = 0;
   bool _isVisible = true;
   final ScrollController _scrollController = ScrollController();

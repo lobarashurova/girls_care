@@ -7,11 +7,8 @@ import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/data/storage/storage.dart';
-import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/plan/plan_page.dart';
 import 'package:girls_care/presentation/auth/verify_page/widget/common_pin_put.dart';
-import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
-import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 
 class VerifyPage extends StatefulWidget {
   const VerifyPage({super.key, required this.code});
@@ -48,12 +45,13 @@ class _VerifyPageState extends State<VerifyPage> {
               left: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 height: MediaQuery.of(context).size.height * 2 / 3 + 60,
                 decoration: BoxDecoration(
                     color: context.colors.onPrimary,
                     borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(24))),
+                        const BorderRadius.vertical(top: Radius.circular(24))),
                 child: Column(
                   children: [
                     SizedBox(
@@ -88,11 +86,7 @@ class _VerifyPageState extends State<VerifyPage> {
                       text: "Kirish",
                       onPressed: () {
                         if (widget.code.toString() == controller.text) {
-                          if ((storage.mode.call() == GirlMode.period)) {
-                            context.pushAndRemoveAll(PeriodMainApp());
-                          } else if (storage.mode.call() == GirlMode.pregnant) {
-                            context.pushAndRemoveAll(PregnancyMainApp());
-                          }
+                          context.pushAndRemoveAll(PlanPage(isLogin: true));
                           context.showElegantNotification(
                               title: "Muvaffaqiyatli kirish!",
                               description: "Ilovaga muvaffaqiyatli kirdingiz!",
@@ -110,10 +104,7 @@ class _VerifyPageState extends State<VerifyPage> {
                     ),
                     TextButton(
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PlanPage()));
+                          context.pushAndRemoveAll(PlanPage(isLogin: false));
                         },
                         child: "Hisob yaratish"
                             .s(16)

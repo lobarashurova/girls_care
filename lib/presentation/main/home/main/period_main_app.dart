@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/presentation/main/account/account_section.dart';
 import 'package:girls_care/presentation/main/helper/helper.dart';
-import 'package:girls_care/presentation/main/pregnancy/main/main_app_db_service.dart';
+import 'package:girls_care/presentation/main/home/home_page.dart';
+import 'package:girls_care/presentation/main/home/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/main_app_details.dart';
-import 'package:girls_care/presentation/main/pregnancy/pregnancy_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../articles/articles.dart';
@@ -18,10 +18,10 @@ class PeriodMainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Consumer<MainAppDbService>(
+        body: Consumer<PeriodAppService>(
           builder: (context, state, child) {
             final List<Widget> _children = [
-              const PregnancyPage(),
+              const HomePage(),
               const ArticlesPage(),
               const Helper(),
               const Account(),
@@ -30,7 +30,7 @@ class PeriodMainApp extends StatelessWidget {
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Selector<MainAppDbService, bool>(
+        floatingActionButton: Selector<PeriodAppService, bool>(
           selector: (_, state) => state.isVisible,
           builder: (context, isVisible, child) {
             return isVisible
@@ -54,9 +54,9 @@ class PeriodMainApp extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(navIconsSelected.length, (index) {
           bool isSelected =
-              context.watch<MainAppDbService>().currentIndex == index;
+              context.watch<PeriodAppService>().currentIndex == index;
           return GestureDetector(
-            onTap: () => context.read<MainAppDbService>().onTabTapped(index),
+            onTap: () => context.read<PeriodAppService>().onTabTapped(index),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

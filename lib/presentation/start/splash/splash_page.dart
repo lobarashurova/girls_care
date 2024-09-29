@@ -38,6 +38,8 @@ class SplashPage
             context.pushReplacement(const PeriodMainApp());
           } else if (storage.mode.call() == GirlMode.pregnant) {
             context.pushReplacement(const PregnancyMainApp());
+          } else{
+
           }
         }
 

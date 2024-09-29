@@ -12,9 +12,13 @@ import 'package:girls_care/presentation/app/base_box.dart';
 import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/register/register_simple_page.dart';
 import 'package:girls_care/presentation/auth/register_pregnant/register_pregnant.dart';
+import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 
 class PlanPage extends StatefulWidget {
-  const PlanPage({super.key});
+  const PlanPage({super.key, required this.isLogin});
+
+  final bool isLogin;
 
   @override
   State<PlanPage> createState() => _PlanPageState();
@@ -171,12 +175,20 @@ class _PlanPageState extends State<PlanPage> {
                           case 0:
                             {
                               storage.mode.set(GirlMode.period);
-                              context.push(RegisterSimplerPage());
+                              if (widget.isLogin) {
+                                context.pushAndRemoveAll(PeriodMainApp());
+                              } else {
+                                context.push(const RegisterSimplerPage());
+                              }
                             }
                           case 1:
                             {
                               storage.mode.set(GirlMode.pregnant);
-                              context.push(RegisterPregnant());
+                              if (widget.isLogin) {
+                                context.pushAndRemoveAll(PregnancyMainApp());
+                              } else {
+                                context.push(RegisterPregnant());
+                              }
                             }
                           case 3:
                             {

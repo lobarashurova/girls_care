@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
+import 'package:girls_care/presentation/main/home/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/home/widgets/articles_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
@@ -10,16 +12,16 @@ import 'package:girls_care/presentation/main/home/widgets/custom_container_img.d
 import 'package:girls_care/presentation/main/home/widgets/helper_section.dart';
 import 'package:provider/provider.dart';
 
-import 'main/main_app_db_service.dart';
-
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class AfterPregnancyPage extends StatefulWidget {
+  const AfterPregnancyPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AfterPregnancyPage> createState() => _AfterPregnancyPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AfterPregnancyPageState extends State<AfterPregnancyPage> {
+  List<bool> isSelected = [true, false];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +36,39 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+              width: 293.w,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30.0),
+                border: Border.all(color: Colors.purpleAccent, width: 2.0),
+              ),
+              child: ToggleButtons(
+                borderColor: Colors.transparent,
+                selectedBorderColor: Colors.transparent,
+                borderRadius: BorderRadius.circular(30.0),
+                fillColor: Colors.purple[100],
+                selectedColor: Colors.black,
+                color: Colors.black,
+                isSelected: isSelected,
+                onPressed: (int index) {
+                  setState(() {
+                    for (int i = 0; i < isSelected.length; i++) {
+                      isSelected[i] = i == index;
+                    }
+                  });
+                },
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: "Ona".s(16).w(700),
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: "Bola".s(16).w(700)),
+                ],
+              ),
+            ),
             const CustomCalendar(),
             _buildButton(context, "Hayz ma’lumotlaringizni kiriting",
                 const ChangeCalendar()),

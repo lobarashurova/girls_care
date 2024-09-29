@@ -144,7 +144,8 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => PlanPage()));
+                                  builder: (context) =>
+                                      const PlanPage(isLogin: false)));
                         },
                         child: "Hisob yaratish"
                             .s(16)

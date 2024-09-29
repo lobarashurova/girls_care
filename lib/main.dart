@@ -5,6 +5,7 @@ import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/presentation/auth/login/login_provider.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
+import 'package:girls_care/presentation/main/home/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/start/splash/splash_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => MainAppDbService()),
+            ChangeNotifierProvider(create: (_) => PregnancyAppService()),
+            ChangeNotifierProvider(create: (_) => PeriodAppService()),
+
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
               textTheme: GoogleFonts.balooTamma2TextTheme(),
               fontFamily: GoogleFonts.balooTamma2().fontFamily,
             ),
-            home: const SplashPage(),
+            home: SplashPage(),
           ),
         );
       },

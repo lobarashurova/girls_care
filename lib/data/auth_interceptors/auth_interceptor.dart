@@ -12,53 +12,53 @@ class AuthInterceptor extends QueuedInterceptor {
 
   AuthInterceptor(this._storage, this.log);
 
-  @override
-  void onRequest(
-    RequestOptions options,
-    RequestInterceptorHandler handler,
-  ) async {
-    final tokens = null;
-
-    if (tokens == null) return handler.next(options);
-
-    String? access = tokens.access;
-    if (access == null) {
-      return handler.reject(DioException(requestOptions: options), true);
-    }
-
-    if (JwtDecoder.isExpired(access)) {
-      access = await refreshToken(tokens.refresh!);
-    }
-
-    options.headers.addAll({'Authorization': 'Bearer $access'});
-
-    return handler.next(options);
-  }
-
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) async {
-    if (err.response?.statusCode == 401) {
-      await _storage.tokens.set(null);
-    }
-    return handler.next(err);
-  }
-
-  Future<String?> refreshToken(String refresh) async {
-    try {
-      final dio = Dio();
-      dio.options.baseUrl = " Constants.baseUrl";
-
-      final request = {'refresh': refresh};
-      final response =
-          await dio.post('/api/auth/token/refresh/', data: request);
-
-      final tokens = Tokens(refresh: refresh, access: response.data['access']);
-      await _storage.tokens.set(tokens);
-      return tokens.access;
-    } catch (e, stackTrace) {
-      log.e("My expetiosn:::::${e.toString()}",
-          error: e, stackTrace: stackTrace);
-      return null;
-    }
-  }
+  // @override
+  // void onRequest(
+  //   RequestOptions options,
+  //   RequestInterceptorHandler handler,
+  // ) async {
+  //   final tokens = null;
+  //
+  //   if (tokens == null) return handler.next(options);
+  //
+  //   String? access = tokens.access;
+  //   if (access == null) {
+  //     return handler.reject(DioException(requestOptions: options), true);
+  //   }
+  //
+  //   if (JwtDecoder.isExpired(access)) {
+  //     access = await refreshToken(tokens.refresh!);
+  //   }
+  //
+  //   options.headers.addAll({'Authorization': 'Bearer $access'});
+  //
+  //   return handler.next(options);
+  // }
+  //
+  // @override
+  // void onError(DioException err, ErrorInterceptorHandler handler) async {
+  //   if (err.response?.statusCode == 401) {
+  //     await _storage.tokens.set(null);
+  //   }
+  //   return handler.next(err);
+  // }
+  //
+  // Future<String?> refreshToken(String refresh) async {
+  //   try {
+  //     final dio = Dio();
+  //     dio.options.baseUrl = " Constants.baseUrl";
+  //
+  //     final request = {'refresh': refresh};
+  //     final response =
+  //         await dio.post('/api/auth/token/refresh/', data: request);
+  //
+  //     final tokens = Tokens(refresh: refresh, access: response.data['access']);
+  //     await _storage.tokens.set(tokens);
+  //     return tokens.access;
+  //   } catch (e, stackTrace) {
+  //     log.e("My expetiosn:::::${e.toString()}",
+  //         error: e, stackTrace: stackTrace);
+  //     return null;
+  //   }
+  // }
 }

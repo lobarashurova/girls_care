@@ -18,7 +18,7 @@ class PregnancyMainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Consumer<MainAppDbService>(
+        body: Consumer<PregnancyAppService>(
           builder: (context, state, child) {
             final List<Widget> _children = [
               const PregnancyPage(),
@@ -30,7 +30,7 @@ class PregnancyMainApp extends StatelessWidget {
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: Selector<MainAppDbService, bool>(
+        floatingActionButton: Selector<PregnancyAppService, bool>(
           selector: (_, state) => state.isVisible,
           builder: (context, isVisible, child) {
             return isVisible
@@ -54,9 +54,9 @@ class PregnancyMainApp extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: List.generate(navIconsSelected.length, (index) {
           bool isSelected =
-              context.watch<MainAppDbService>().currentIndex == index;
+              context.watch<PregnancyAppService>().currentIndex == index;
           return GestureDetector(
-            onTap: () => context.read<MainAppDbService>().onTabTapped(index),
+            onTap: () => context.read<PregnancyAppService>().onTabTapped(index),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
