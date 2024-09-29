@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:girls_care/common/extensions/text_extensions.dart';
+import 'package:girls_care/common/extensions/widget.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/common/widget/custom_slider.dart';
 import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
 import 'package:girls_care/presentation/main/home/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/home/widgets/articles_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
-import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_calendar.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_container_img.dart';
 import 'package:girls_care/presentation/main/home/widgets/helper_section.dart';
@@ -20,59 +20,60 @@ class AfterPregnancyPage extends StatefulWidget {
 }
 
 class _AfterPregnancyPageState extends State<AfterPregnancyPage> {
-  List<bool> isSelected = [true, false];
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xffF3F0FF),
-      appBar: CustomAppbar(
-        centerTitle: "Bugun",
-        actions: [Assets.icons.notification.svg(width: 20.w, height: 20.h)],
-      ),
       body: SingleChildScrollView(
-        controller: context.read<PeriodAppService>().scrollController,
+        controller: context
+            .read<PeriodAppService>()
+            .scrollController,
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 293.w,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30.0),
-                border: Border.all(color: Colors.purpleAccent, width: 2.0),
-              ),
-              child: ToggleButtons(
-                borderColor: Colors.transparent,
-                selectedBorderColor: Colors.transparent,
-                borderRadius: BorderRadius.circular(30.0),
-                fillColor: Colors.purple[100],
-                selectedColor: Colors.black,
-                color: Colors.black,
-                isSelected: isSelected,
-                onPressed: (int index) {
+            SizedBox(height: MediaQuery
+                .of(context)
+                .padding
+                .top),
+            16.kh,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+              children: [
+                16.kw,
+                CustomSlider(firstTitle: "Ona", secondTitle: "Bola", selectedIndex: (index){
                   setState(() {
-                    for (int i = 0; i < isSelected.length; i++) {
-                      isSelected[i] = i == index;
-                    }
+                    selectedIndex=index;
                   });
-                },
+                }),
+                Assets.icons.notification.svg()
+              ],
+            ),
+            if (selectedIndex == 0)
+              Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: "Ona".s(16).w(700),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: "Bola".s(16).w(700)),
+                  const CustomCalendar(),
+                  _buildButton(context, "Hayz ma’lumotlaringizni kiriting",
+                      const ChangeCalendar()),
+                  _buildInfoRow(),
                 ],
               ),
-            ),
-            const CustomCalendar(),
-            _buildButton(context, "Hayz ma’lumotlaringizni kiriting",
-                const ChangeCalendar()),
-            _buildInfoRow(),
+            if (selectedIndex == 1)
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 12),
+                width: MediaQuery
+                    .of(context)
+                    .size
+                    .width,
+                child: CustomContainerImg(
+                    title: "Farzandingiz  ",
+                    subtitle: "3 oy 15 kunlik",
+                    color: const Color(0xFFE2DCFE),
+                    image: Assets.icons.hayzIcon.svg()),
+              ),
             const HelperSection(),
             SizedBox(height: 20.h),
             const ArticlesSection(),
@@ -88,10 +89,11 @@ class _AfterPregnancyPageState extends State<AfterPregnancyPage> {
       padding: EdgeInsets.symmetric(vertical: 20.h),
       child: ChangeCalendarB(
         text: text,
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => page),
-        ),
+        onPressed: () =>
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => page),
+            ),
       ),
     );
   }
@@ -112,8 +114,8 @@ class _AfterPregnancyPageState extends State<AfterPregnancyPage> {
     );
   }
 
-  Widget _buildInfoCard(
-      String title, String subtitle, Color color, SvgGenImage image) {
+  Widget _buildInfoCard(String title, String subtitle, Color color,
+      SvgGenImage image) {
     return Expanded(
       child: CustomContainerImg(
         title: title,

@@ -12,6 +12,7 @@ import 'package:girls_care/presentation/app/base_box.dart';
 import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/register/register_simple_page.dart';
 import 'package:girls_care/presentation/auth/register_pregnant/register_pregnant.dart';
+import 'package:girls_care/presentation/main/after_pregnancy/main/pregnancy_main_app.dart';
 import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 
@@ -190,11 +191,17 @@ class _PlanPageState extends State<PlanPage> {
                                 context.push(RegisterPregnant());
                               }
                             }
-                          case 3:
+                          case 2:
                             {
                               storage.mode.set(GirlMode.afterbirth);
+                              if (widget.isLogin) {
+                                context
+                                    .pushAndRemoveAll(AfterPregnancyMainApp());
+                              } else {
+                                context.push(RegisterPregnant());
+                              }
                             }
-                          case 4:
+                          case 3:
                             {
                               storage.mode.set(GirlMode.klimaks);
                             }

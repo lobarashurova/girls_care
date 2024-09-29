@@ -103,6 +103,7 @@ class _AccountInformationState extends State<AccountInformation> {
                                     storage.enabled.set(null);
                                     storage.password.set(null);
                                     storage.phone.set(null);
+                                    storage.mode.set(null);
                                     context.pushAndRemoveAll(const LoginPage());
                                     dialogContext.pop();
                                   },
