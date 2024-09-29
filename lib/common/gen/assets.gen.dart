@@ -93,6 +93,10 @@ class $AssetsIconsGen {
   AssetGenImage get doriQoshish =>
       const AssetGenImage('assets/icons/dori_qoshish.png');
 
+  /// File path: assets/icons/dori_qoshish.png
+  AssetGenImage get doriQoshish =>
+      const AssetGenImage('assets/icons/dori_qoshish.png');
+
   /// File path: assets/icons/dorilar_icon.png
   AssetGenImage get dorilarIcon =>
       const AssetGenImage('assets/icons/dorilar_icon.png');
@@ -154,6 +158,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/klimaks.png
   AssetGenImage get klimaks => const AssetGenImage('assets/icons/klimaks.png');
+
+  /// File path: assets/icons/kayfiyatsizlik.png
+  AssetGenImage get kayfiyatsizlik =>
+      const AssetGenImage('assets/icons/kayfiyatsizlik.png');
 
   /// File path: assets/icons/kun_mavzusi_1.jpg
   AssetGenImage get kunMavzusi1 =>
@@ -223,6 +231,10 @@ class $AssetsIconsGen {
   AssetGenImage get organizm =>
       const AssetGenImage('assets/icons/organizm.png');
 
+  /// File path: assets/icons/organizm.png
+  AssetGenImage get organizm =>
+      const AssetGenImage('assets/icons/organizm.png');
+
   /// File path: assets/icons/ovulyatsiya_icon.svg
   SvgGenImage get ovulyatsiyaIcon =>
       const SvgGenImage('assets/icons/ovulyatsiya_icon.svg');
@@ -252,6 +264,21 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/splash.png
   AssetGenImage get splash => const AssetGenImage('assets/icons/splash.png');
+
+  /// File path: assets/icons/taslim.png
+  AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
+
+  /// File path: assets/icons/tushkunlik.png
+  AssetGenImage get tushkunlik =>
+      const AssetGenImage('assets/icons/tushkunlik.png');
+
+  /// File path: assets/icons/unavailable.png
+  AssetGenImage get unavailable =>
+      const AssetGenImage('assets/icons/unavailable.png');
+
+  /// File path: assets/icons/unprotected.png
+  AssetGenImage get unprotected =>
+      const AssetGenImage('assets/icons/unprotected.png');
 
   /// File path: assets/icons/taslim.png
   AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
@@ -302,7 +329,6 @@ class $AssetsIconsGen {
         checkPink,
         checked,
         close,
-        closeProf,
         doriQoshish,
         dorilarIcon,
         export,
@@ -315,7 +341,6 @@ class $AssetsIconsGen {
         hayzDavri,
         hayzGirl,
         hayzIcon,
-        headache,
         hisobSelect,
         hisobUnselect,
         isitma,
@@ -337,6 +362,7 @@ class $AssetsIconsGen {
         onboard1,
         onboard2,
         onboard3,
+        organizm,
         onboard4,
         organizm,
         ovulyatsiyaIcon,
@@ -347,6 +373,10 @@ class $AssetsIconsGen {
         searchIcon,
         soglomOvqatlanish,
         splash,
+        taslim,
+        tushkunlik,
+        unavailable,
+        unprotected,
         taslim,
         tugruqSong,
         tushkunlik,
