@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
@@ -77,42 +81,58 @@ class _LoginPageState extends State<LoginPage> {
                           controller: phoneController,
                           prefixIcon:
                               "+998".s(16).w(400).c(context.colors.display),
+                          onChanged: (text) {
+                            setState(() {});
+                          },
+                          keyboardType: TextInputType.number,
+                          mask: "## ### ## ##",
                         ),
                         SizedBox(
                           height: 16,
                         ),
-                        "Maxfiy kodni kiriting::".s(12).w(400),
+                        "Maxfiy so'zni kiriting::".s(12).w(400),
                         SizedBox(
                           height: 16,
                         ),
                         CommonTextField(
                           controller: passwordController,
                           obscureText: true,
+                          onChanged: (text) {
+                            setState(() {});
+                          },
+                          errorText:
+                              "Maxfiy so'z uzunligi 5 dan katta boliishi kerak",
                         ),
                       ],
                     ),
                     Spacer(),
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
+                      enabled: phoneController.text.length == 12 &&
+                          passwordController.text.length > 5,
                       loading: loginProvider.loading ?? false,
                       onPressed: () async {
+                        print(
+                            "phone ::::: +998${phoneController.text.trim().replaceAll(" ", "")}");
                         await loginProvider.login(
-                          phoneController.text.trim(),
+                          "+998${phoneController.text.trim().replaceAll(" ", "")}",
                           passwordController.text.trim(),
                         );
-
                         if (loginProvider.user != null) {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const VerifyPage()));
-                        }
-                        else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(
-                                    loginProvider.errorMessage ?? 'Error')),
-                          );
+                          Random random = Random();
+                          int number = 1001 + random.nextInt(9999 - 1001);
+                          context.push(VerifyPage(
+                            code: number,
+                          ));
+                          context.showElegantNotification(
+                              title: "Sizning kodingiz:",
+                              description: "Tasdiqlash kodingiz : $number",
+                              type: NotificationType.success);
+                        } else {
+                          context.showElegantNotification(
+                              title: "Foydalanuvchi topilmadi",
+                              description: "${loginProvider.errorMessage}",
+                              type: NotificationType.error);
                         }
                       },
                     ),

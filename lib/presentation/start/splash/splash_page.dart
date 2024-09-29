@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/base/base_page.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
-import 'package:girls_care/presentation/main/home/home_page.dart';
+import 'package:girls_care/presentation/auth/login/login_page.dart';
+import 'package:girls_care/presentation/main/main_app.dart';
 import 'package:girls_care/presentation/start/onboard/onboarding_page.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_cubit.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_state.dart';
@@ -25,14 +27,13 @@ class SplashPage
   void listener(BuildContext context, SplashListenable state) {
     switch (state.effect) {
       case SplashEffect.home:
-        // context.router.replaceAll([const MainRoute()]);
+        context.pushReplacement(const MainApp());
         break;
       case SplashEffect.onboard:
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => OnboardingPage()));
+        context.pushReplacement(const OnboardingPage());
         break;
       case SplashEffect.login:
-        // context.router.replaceAll([LoginRoute()]);
+        context.push(const LoginPage());
         break;
     }
   }

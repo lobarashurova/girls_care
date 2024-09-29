@@ -1,10 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/di/injection.dart';
+import 'package:girls_care/data/storage/storage.dart';
 
 import '../../../data/user_model.dart';
 
 class LoginProvider with ChangeNotifier {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final storage = getIt<Storage>();
   UserModel? _user;
   String? _errorMessage;
   bool? _loading;
@@ -26,8 +29,6 @@ class LoginProvider with ChangeNotifier {
           .where('password', isEqualTo: password)
           .limit(1)
           .get();
-      print("login found=============================\n====");
-
 
       if (userSnapshot.docs.isNotEmpty) {
         DocumentSnapshot userDoc = userSnapshot.docs.first;
@@ -35,9 +36,15 @@ class LoginProvider with ChangeNotifier {
           phone: userDoc['phone'],
           password: userDoc['password'],
         );
+        storage.enabled.set(true);
+        storage.phone.set(userDoc['phone']);
+        storage.password.set(userDoc['password']);
+
+        print("login found=============================\n====");
+
         _errorMessage = null;
       } else {
-        _errorMessage = 'Invalid phone number or password';
+        _errorMessage = 'Iltimos, maydonlarni tekshiring!';
       }
     } catch (e) {
       _errorMessage = 'An error occurred: ${e.toString()}';

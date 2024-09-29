@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/di/injection.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
+import 'package:girls_care/common/extensions/widget.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/app/base_box.dart';
+import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/auth/register/register_simple_page.dart';
 import 'package:girls_care/presentation/auth/register_pregnant/register_pregnant.dart';
 
@@ -16,6 +22,7 @@ class PlanPage extends StatefulWidget {
 
 class _PlanPageState extends State<PlanPage> {
   int selectedIndex = 0;
+  final storage = getIt<Storage>();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +38,6 @@ class _PlanPageState extends State<PlanPage> {
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height / 3 - 15,
               child: Assets.icons.backgound.image(fit: BoxFit.cover),
-
             ),
           ),
           Positioned(
@@ -72,14 +78,12 @@ class _PlanPageState extends State<PlanPage> {
                               selectedIndex = 0;
                             });
                           },
+                          height: 165.h,
                           selected: selectedIndex == 0,
                           child: Column(
                             children: [
                               Assets.icons.hayzGirl
-                                  .image(width: 100, height: 85),
-                              SizedBox(
-                                height: 32,
-                              ),
+                                  .image(width: 100.w, height: 85.h),
                               "Hayz davri"
                                   .s(16)
                                   .w(400)
@@ -92,6 +96,7 @@ class _PlanPageState extends State<PlanPage> {
                         ),
                         Flexible(
                           child: BaseBox(
+                              height: 165.h,
                               onTap: () => setState(() {
                                     selectedIndex = 1;
                                   }),
@@ -99,11 +104,57 @@ class _PlanPageState extends State<PlanPage> {
                               child: Column(
                                 children: [
                                   Assets.icons.pregrant
-                                      .image(width: 100, height: 85),
-                                  SizedBox(
-                                    height: 32,
-                                  ),
+                                      .image(width: 100.w, height: 85.h),
                                   "Homiladorlik kalendari"
+                                      .s(16)
+                                      .w(400)
+                                      .c(context.colors.display)
+                                      .a(TextAlign.center),
+                                ],
+                              )),
+                        )
+                      ],
+                    ),
+                    16.kh,
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Flexible(
+                            child: BaseBox(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = 2;
+                            });
+                          },
+                          height: 165.h,
+                          selected: selectedIndex == 2,
+                          child: Column(
+                            children: [
+                              Assets.icons.tugruqSong
+                                  .image(width: 100.w, height: 85.h),
+                              "Tug'ruqdan keyingi tiklanish"
+                                  .s(16)
+                                  .w(400)
+                                  .c(context.colors.display)
+                                  .a(TextAlign.center),
+                            ],
+                          ),
+                        )),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        Flexible(
+                          child: BaseBox(
+                              height: 165.h,
+                              onTap: () => setState(() {
+                                    selectedIndex = 3;
+                                  }),
+                              selected: selectedIndex == 3,
+                              child: Column(
+                                children: [
+                                  Assets.icons.klimaks
+                                      .image(width: 100.w, height: 85.h),
+                                  "Klimaks"
                                       .s(16)
                                       .w(400)
                                       .c(context.colors.display),
@@ -116,26 +167,28 @@ class _PlanPageState extends State<PlanPage> {
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => selectedIndex==0 ? RegisterSimplerPage() : RegisterPregnant()));
+                        switch (selectedIndex) {
+                          case 0:
+                            {
+                              storage.mode.set(GirlMode.period);
+                              context.push(RegisterSimplerPage());
+                            }
+                          case 1:
+                            {
+                              storage.mode.set(GirlMode.pregnant);
+                              context.push(RegisterPregnant());
+                            }
+                          case 3:
+                            {
+                              storage.mode.set(GirlMode.afterbirth);
+                            }
+                          case 4:
+                            {
+                              storage.mode.set(GirlMode.klimaks);
+                            }
+                        }
                       },
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RegisterSimplerPage()));
-                        },
-                        child: "Ma'lumotlarni saqlamasdan davom etish"
-                            .s(16)
-                            .w(700)
-                            .c(context.colors.primary))
                   ],
                 ),
               ))

@@ -12,4 +12,11 @@ extension NavigationExtension on BuildContext {
   void pop<T extends Object?>([T? result]) {
     Navigator.of(this).pop(result);
   }
+
+  Future<T?> pushAndRemoveAll<T>(Widget newPage) {
+    return Navigator.of(this).pushAndRemoveUntil<T>(
+      MaterialPageRoute(builder: (_) => newPage),
+          (Route<dynamic> route) => false, // Remove all previous routes
+    );
+  }
 }

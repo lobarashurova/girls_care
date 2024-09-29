@@ -74,6 +74,10 @@ dependencies:
   html: ^0.15.4
   dropdown_button2: ^2.3.9
   flutter_widget_from_html: ^0.15.1
+  youtube_player_flutter: ^9.0.1
+  flutter_inappwebview: ^6.0.0
+  url_launcher: ^6.3.0
+  web_socket_channel: ^2.4.5
   flutter_local_notifications: ^17.2.1
   firebase_messaging: ^15.0.2
   firebase_core: ^3.1.0
@@ -118,7 +122,7 @@ flutter:
 
   assets:
     - assets/icons/
-
+    - assets/images/
 
 flutter_gen:
   output: lib/common/gen

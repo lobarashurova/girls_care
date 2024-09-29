@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/di/injection.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/common/widget/common_text_filed.dart';
-import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/auth/register_total/register_total.dart';
-import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'package:pinput/pinput.dart';
 
 class RegisterSimplerPage extends StatefulWidget {
   const RegisterSimplerPage({super.key});
@@ -16,8 +20,12 @@ class RegisterSimplerPage extends StatefulWidget {
 }
 
 class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
-  TextEditingController dayController=TextEditingController();
-  TextEditingController siklController=TextEditingController();
+  TextEditingController dayController = TextEditingController();
+  TextEditingController siklController = TextEditingController();
+  DateTime? selectedDay;
+  TextEditingController lastDayController = TextEditingController();
+  final storage = getIt<Storage>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +48,8 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
               left: 0,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                 height: MediaQuery.of(context).size.height * 2 / 3 + 60,
                 decoration: BoxDecoration(
                     color: context.colors.onPrimary,
@@ -51,7 +60,8 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                     SizedBox(
                       width: 80,
                       child: LinearProgressIndicator(
-                        borderRadius: const BorderRadius.all(Radius.circular(3)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(3)),
                         color: context.colors.primary2.withOpacity(0.1),
                       ),
                     ),
@@ -65,18 +75,28 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           children: [
                             Flexible(
                                 child: CommonTextField(
+                              controller: dayController,
                               hint: "O’rtacha hayz kunlari",
+                              keyboardType: TextInputType.number,
+                              maxLength: 2,
+                              onChanged: (text) {
+                                setState(() {});
+                              },
                             )),
                             SizedBox(
                               width: 16,
                             ),
                             Flexible(
                                 child: CommonTextField(
+                              keyboardType: TextInputType.number,
                               hint: "O’rtacha sikl kunlari",
+                              controller: siklController,
+                              maxLength: 2,
+                              onChanged: (text) => setState(() {}),
                             )),
                           ],
                         ),
@@ -91,9 +111,23 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                           height: 32,
                         ),
                         CommonTextField(
+                          controller: lastDayController,
                           hint: "Oxirgi hayzning boshlanish sanasini kiriting",
                           suffix:
                               Assets.icons.calendar.svg(width: 20, height: 20),
+                          suffixPressed: () async {
+                            selectedDay = await showDatePicker(
+                              context: context,
+                              initialDate: selectedDay ?? DateTime.now(),
+                              // Default to current date if none selected
+                              firstDate: DateTime(2000),
+                              // Start of range
+                              lastDate: DateTime(2101),
+                            );
+                            setState(() {});
+                            lastDayController.setText(DateFormat('dd-MM-yyyy')
+                                .format(selectedDay ?? DateTime.now()));
+                          },
                         ),
                         const SizedBox(
                           height: 8,
@@ -108,10 +142,26 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const RegisterTotalPage()));
+                        if (siklController.text.isNotEmpty &&
+                            siklController.text.length < 3 &&
+                            dayController.text.isNotEmpty &&
+                            dayController.text.length < 3 &&
+                            selectedDay != null) {
+                          storage.avarageHayz
+                              .set(int.parse(dayController.text.toString()));
+                          storage.avarageSikl
+                              .set(int.parse(siklController.text.toString()));
+                          storage.lastDay
+                              .set((lastDayController.text.toString()));
+
+                          context.push(const RegisterTotalPage());
+                        } else {
+                          context.showElegantNotification(
+                              title: "Maydonlarda xatolik!",
+                              description:
+                                  "Sikl va o'rtacha hayz kunlar bo'sh va 3 xonali son bo'lolmaydi",
+                              type: NotificationType.info);
+                        }
                       },
                     ),
                     const SizedBox(
@@ -122,7 +172,8 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const RegisterTotalPage()));
+                                  builder: (context) =>
+                                      const RegisterTotalPage()));
                         },
                         child: "Ma’lumotlarni kiritmasdan davom etish"
                             .s(16)

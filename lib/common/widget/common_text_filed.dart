@@ -118,6 +118,11 @@ class _CommonTextFieldState extends State<CommonTextField> {
             GoogleFonts.nunito(fontSize: 12, color: context.colors.display),
         fillColor: widget.background ?? context.colors.grey.withOpacity(0.2),
         hintText: widget.hint,
+        errorStyle: TextStyle(
+          fontSize: 10,
+          fontWeight: FontWeight.w400,
+          color: context.colors.label,
+        ),
         errorText: widget.errorText,
         contentPadding: widget.padding ??
             const EdgeInsets.symmetric(
@@ -137,15 +142,18 @@ class _CommonTextFieldState extends State<CommonTextField> {
           color: context.colors.display,
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
+          borderSide:
+              BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
+          borderSide:
+              BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.primary2.withOpacity(0.4)),
+          borderSide:
+              BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         focusedBorder: OutlineInputBorder(
@@ -153,7 +161,8 @@ class _CommonTextFieldState extends State<CommonTextField> {
           borderRadius: BorderRadius.circular(8),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: context.colors.errorColor),
+          borderSide:
+              BorderSide(color: context.colors.primary2.withOpacity(0.4)),
           borderRadius: BorderRadius.circular(8),
         ),
         suffixIcon: widget.obscureText
@@ -166,9 +175,14 @@ class _CommonTextFieldState extends State<CommonTextField> {
                   setState(() => passwordVisible = !passwordVisible);
                 },
               )
-            :  Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: widget.suffix,
+            : InkWell(
+          onTap: (){
+            widget.suffixPressed?.call();
+          },
+              child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: widget.suffix,
+                ),
             ),
       ),
       style: TextStyle(

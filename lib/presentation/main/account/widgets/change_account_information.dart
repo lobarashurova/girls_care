@@ -5,7 +5,9 @@ import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 
 class ChangeAccountInformation extends StatelessWidget {
-  const ChangeAccountInformation({super.key});
+  ChangeAccountInformation({super.key, required this.name});
+
+  String name;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,7 @@ class ChangeAccountInformation extends StatelessWidget {
       children: [
         Assets.icons.avatarAccount.image(width: 100.w, height: 100.h),
         SizedBox(height: 12.h),
-        "Foydalanuvchi".s(16).w(600).c(Colors.black),
+        "${name}".s(16).w(600).c(Colors.black),
         SizedBox(height: 12.h),
         SizedBox(
             width: 203.w,

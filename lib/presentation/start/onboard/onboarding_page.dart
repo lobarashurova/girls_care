@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/di/injection.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/widget/common_button.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/start/onboard/data/onboard.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -18,6 +21,7 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final controller = PageController();
   int selectedIndex = 0;
+  final storage = getIt<Storage>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +48,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       selectedIndex = index;
                     });
                   },
-                  itemCount: 3,
+                  itemCount: 4,
                 ),
               ),
               Flexible(
@@ -54,7 +58,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     SizedBox(height: 68.h),
                     AnimatedSmoothIndicator(
                       activeIndex: selectedIndex,
-                      count: 3,
+                      count: 4,
                       effect: CustomizableEffect(
                         dotDecoration: DotDecoration(
                           color: context.colors.title01,
@@ -88,19 +92,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     CommonButton.elevated(
                         text: "Далее",
                         onPressed: () {
-                          if (selectedIndex < 2) {
+                          if (selectedIndex < 3) {
                             setState(() {
                               selectedIndex++;
                             });
-                            controller.nextPage(
+                            controller.animateToPage(
+                              selectedIndex,
                               duration: const Duration(milliseconds: 300),
                               curve: Curves.easeIn,
                             );
                           } else {
-                            Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const NamePage()));
+                            context.pushAndRemoveAll(const NamePage());
                           }
                         }),
                   ],

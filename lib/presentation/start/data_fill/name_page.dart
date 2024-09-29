@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/di/injection.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/common/widget/common_text_filed.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/start/data_fill/age_page.dart';
 
 class NamePage extends StatefulWidget {
@@ -14,6 +17,9 @@ class NamePage extends StatefulWidget {
 }
 
 class _NamePageState extends State<NamePage> {
+  final storage = getIt<Storage>();
+  TextEditingController nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,14 +68,29 @@ class _NamePageState extends State<NamePage> {
                       height: 40,
                     ),
                     CommonTextField(
+                      controller: nameController,
                       hint: "Ismni kiriting",
+                      onChanged: (text) {
+                        setState(() {});
+                      },
                     ),
                     Spacer(),
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => AgePage()));
+                        if (nameController.text.length > 3) {
+                          storage.name.set(nameController.text);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AgePage()));
+                        } else {
+                          context.showElegantNotification(
+                              title: "Ismda xatolik!",
+                              description:
+                                  "Ism 3 ta harfdan ko'p bo'lishi kerak",
+                              type: NotificationType.info);
+                        }
                       },
                     ),
                     SizedBox(

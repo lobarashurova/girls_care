@@ -1,23 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
-import 'package:girls_care/presentation/main/home/home_page.dart';
 
-enum Onboard {
-  first,
-  second,
-  third,
-}
+enum Onboard { first, second, third, fourth }
 
 extension LanguageExtensions on Onboard {
   String get title {
     switch (this) {
       case Onboard.first:
-        return "Mattis sagittis malesuada quis et ultricies vehicula.";
+        return "Hayz siklingizni kuzatib, simptomlarni yozib boring va eslatmalar oling.";
       case Onboard.second:
-        return "Mattis sagittis malesuada quis et ultricies vehicula.";
+        return "Homiladorlikni haftalar bo'yicha kuzatib, bola rivojlanishini va sog'lig'ingizni nazorat qiling.";
       case Onboard.third:
-        return "Mattis sagittis malesuada quis et ultricies vehicula.";
+        return "Tug'ruqdan keyin tiklanish va bola parvarishini nazorat qiling.";
+      case Onboard.fourth:
+        return "Menopauza simptomlarini kuzatib, foydali maslahatlar va maqolalar bilan tanishing.";
     }
   }
 
@@ -29,6 +26,8 @@ extension LanguageExtensions on Onboard {
         return Assets.icons.onboard2.image(height: 300.h);
       case Onboard.third:
         return Assets.icons.onboard3.image(height: 300.h);
+      case Onboard.fourth:
+        return Assets.icons.onboard4.image(height: 300.h);
     }
   }
 
@@ -39,6 +38,8 @@ extension LanguageExtensions on Onboard {
       case Onboard.second:
         return "Удобные голосования прямо в приложении, оповещения для администрации ТСЖ";
       case Onboard.third:
+        return "Срочные оповещения жителей в случае экстренных ситуаций";
+      case Onboard.fourth:
         return "Срочные оповещения жителей в случае экстренных ситуаций";
     }
   }

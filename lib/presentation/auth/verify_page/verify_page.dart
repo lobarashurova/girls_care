@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
 import 'package:girls_care/presentation/auth/plan/plan_page.dart';
 import 'package:girls_care/presentation/auth/verify_page/widget/common_pin_put.dart';
-import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/main/main_app.dart';
 
 class VerifyPage extends StatefulWidget {
-  const VerifyPage({super.key});
+  const VerifyPage({super.key, required this.code});
+
+  final int code;
 
   @override
   State<VerifyPage> createState() => _VerifyPageState();
@@ -79,10 +82,18 @@ class _VerifyPageState extends State<VerifyPage> {
                     CommonButton.elevated(
                       text: "Kirish",
                       onPressed: () {
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => MainApp()));
+                        if (widget.code.toString() == controller.text) {
+                          context.pushAndRemoveAll(const MainApp());
+                          context.showElegantNotification(
+                              title: "Muvaffaqiyatli kirish!",
+                              description: "Ilovaga muvaffaqiyatli kirdingiz!",
+                              type: NotificationType.success);
+                        } else {
+                          context.showElegantNotification(
+                              title: "Kod noto'g'ri",
+                              description: "Iltimos qayta urinib ko’ring.",
+                              type: NotificationType.error);
+                        }
                       },
                     ),
                     SizedBox(

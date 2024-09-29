@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
@@ -16,6 +18,8 @@ class RegisterPregnant extends StatefulWidget {
 
 class _RegisterPregnantState extends State<RegisterPregnant> {
   int selectedIndex = 0;
+  DateTime? selectedStartDay;
+  DateTime? selectedhayzDate;
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +65,43 @@ class _RegisterPregnantState extends State<RegisterPregnant> {
                     SizedBox(
                       height: 40,
                     ),
-                    selectedIndex == 0 ? Page1() : Page2(),
+                    selectedIndex == 0
+                        ? Page1(
+                            selectedDay: (day) {
+                              setState(() {
+                                selectedStartDay = day;
+                              });
+                            },
+                          )
+                        : Page2(
+                            selectedDay: (day) {
+                              setState(() {
+                                selectedhayzDate = day;
+                              });
+                            },
+                          ),
                     Spacer(),
                     CommonButton.elevated(
                       text: "Saqlash va davom etish",
                       onPressed: () {
-                        if (selectedIndex < 1) {
+                        if (selectedIndex < 1 && selectedStartDay != null) {
                           setState(() {
                             selectedIndex++;
                           });
+                        } else if (selectedStartDay == null) {
+                          context.showElegantNotification(
+                              title: "Maydonni tekshiring",
+                              description: "Maydon to'ldirilmagan!",
+                              type: NotificationType.info);
                         } else {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => RegisterTotalPage()));
+                          if (selectedhayzDate != null) {
+                            context.push(const RegisterTotalPage());
+                          } else {
+                            context.showElegantNotification(
+                                title: "Maydonni tekshiring",
+                                description: "Maydon to'ldirilmagan!",
+                                type: NotificationType.info);
+                          }
                         }
                       },
                     ),

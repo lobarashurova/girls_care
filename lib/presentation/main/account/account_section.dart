@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
+import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/main/account/account_information.dart';
 import 'package:girls_care/presentation/main/account/widgets/custom_listtile.dart';
+
+import '../../../common/di/injection.dart';
 
 class Account extends StatefulWidget {
   const Account({super.key});
@@ -14,6 +19,9 @@ class Account extends StatefulWidget {
 }
 
 class _AccountState extends State<Account> {
+  final storage = getIt<Storage>();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,19 +37,19 @@ class _AccountState extends State<Account> {
         child: ListView(
           children: [
             CustomListTile(
-              onTap: () {
-                context.push(AccountInformation());
-              },
+              onTap: () {},
               isMoreLine: true,
               items: [
                 CustomListTileItem(
-                  text: "Shaxsiy ma'lumotlar",
-                  prefix: Assets.icons.rightVector.svg(
-                      width: 24.w,
-                      height: 24.h,
-                      color: const Color(0xFF8D80C1)),
-                  suffix: null,
-                ),
+                    text: "Shaxsiy ma'lumotlar",
+                    prefix: Assets.icons.rightVector.svg(
+                        width: 24.w,
+                        height: 24.h,
+                        color: const Color(0xFF8D80C1)),
+                    suffix: null,
+                    onTap: () {
+                      context.push(AccountInformation());
+                    }),
               ],
             ),
             SizedBox(height: 20.h),
@@ -53,12 +61,18 @@ class _AccountState extends State<Account> {
               items: [
                 CustomListTileItem(
                   text: 'Sikl davomiyligi',
-                  prefix: "28 kun".s(14.sp).w(500).c(const Color(0xFF8D80C1)),
+                  prefix: "${storage.avarageSikl.call()}"
+                      .s(14.sp)
+                      .w(500)
+                      .c(const Color(0xFF8D80C1)),
                   suffix: null,
                 ),
                 CustomListTileItem(
                   text: 'Hayz davomiyligi',
-                  prefix: "5 kun".s(14.sp).w(500).c(const Color(0xFF8D80C1)),
+                  prefix: "${storage.avarageHayz.call()}"
+                      .s(14.sp)
+                      .w(500)
+                      .c(const Color(0xFF8D80C1)),
                   suffix: null,
                 ),
               ],

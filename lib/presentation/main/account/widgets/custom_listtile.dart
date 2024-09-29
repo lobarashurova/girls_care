@@ -28,38 +28,40 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12.r),
-          color: const Color(0xFFFAF9FF),
-        ),
-        child: isMoreLine
-            ? Column(
-                children: [
-                  for (int i = 0; i < items.length; i++) ...[
-                    _buildRow(items[i]),
-                    if (i < items.length - 1) SizedBox(height: 10.h),
-                  ],
-                ],
-              )
-            : _buildRow(items.first),
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(8.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12.r),
+        color: const Color(0xFFFAF9FF),
       ),
+      child: isMoreLine
+          ? Column(
+              children: [
+                for (int i = 0; i < items.length; i++) ...[
+                  _buildRow(items[i]),
+                  if (i < items.length - 1) SizedBox(height: 10.h),
+                ],
+              ],
+            )
+          : _buildRow(items.first),
     );
   }
 
   Widget _buildRow(CustomListTileItem item) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          item.text.s(16).w(400).c(const Color(0xFF1B1F24)),
-          item.prefix ?? const SizedBox.shrink(),
-        ],
+    return InkWell(
+      onTap: () {
+        item.onTap?.call();
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            item.text.s(16).w(400).c(const Color(0xFF1B1F24)),
+            item.prefix ?? const SizedBox.shrink(),
+          ],
+        ),
       ),
     );
   }

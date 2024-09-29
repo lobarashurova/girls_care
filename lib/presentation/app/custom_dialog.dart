@@ -39,7 +39,7 @@ class CustomDialog extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 24),
-            title.s(20).w(600).c(context.colors.headline),
+            title.s(20).w(600).c(context.colors.headline).a(TextAlign.center),
             const SizedBox(height: 16),
             description
                 .s(16)

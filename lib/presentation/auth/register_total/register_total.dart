@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:girls_care/common/extensions/navigation_extensions.dart';
+import 'package:girls_care/common/extensions/notification_extensions.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
@@ -78,17 +80,21 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           controller: phoneController,
                           prefixIcon:
                               "+998".s(16).w(400).c(context.colors.display),
+                          mask: "## ### ## ##",
+                          keyboardType: TextInputType.number,
+                          onChanged: (text) => setState(() {}),
                         ),
                         SizedBox(
                           height: 16,
                         ),
-                        "Maxfiy kodni kiriting::".s(12).w(400),
+                        "Maxfiy kodni kiriting:".s(12).w(400),
                         SizedBox(
                           height: 8,
                         ),
                         CommonTextField(
                           controller: passwordController,
                           obscureText: true,
+                          onChanged: (text) => setState(() {}),
                         ),
                         SizedBox(
                           height: 16,
@@ -100,6 +106,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                         CommonTextField(
                           controller: rewritePasswordController,
                           obscureText: true,
+                          onChanged: (text) => setState(() {}),
                         ),
                       ],
                     ),
@@ -108,21 +115,36 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                       text: "Hisob yaratish",
                       loading: registerProvider.isRegistering,
                       onPressed: () async {
-                        final userData = RegisterUserData(
-                          phone: phoneController.text.trim(),
-                          password: passwordController.text.trim(),
-                        );
-                        await registerProvider.registerUser(userData);
-                        if (registerProvider.errorMessage == null) {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => MainApp()));
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                                content: Text(registerProvider.errorMessage!)),
+                        if (phoneController.text.length == 12 &&
+                            passwordController.text.length > 5 &&
+                            rewritePasswordController.text ==
+                                passwordController.text) {
+                          final userData = RegisterUserData(
+                            phone:
+                                "+998${phoneController.text.trim().replaceAll(" ", "")}",
+                            password: passwordController.text.trim(),
                           );
+                          await registerProvider.registerUser(userData);
+                          if (registerProvider.errorMessage == null) {
+                            context.pushAndRemoveAll(const MainApp());
+                            context.showElegantNotification(
+                                title: "Ilovaga xush kelibsiz!",
+                                description:
+                                    "Registratsiya muvaffaqiyatli amalga oshirildi",
+                                type: NotificationType.success);
+                          } else {
+                            context.showElegantNotification(
+                                title: "Xatolik",
+                                description:
+                                    registerProvider.errorMessage ?? "",
+                                type: NotificationType.error);
+                          }
+                        } else {
+                          context.showElegantNotification(
+                              title: "Maydonlarni tekshiring",
+                              description:
+                                  "Maxiy so'zlar bir xil bo'lishi va 6 ta harfdan kam bolmasligi kerak!",
+                              type: NotificationType.info);
                         }
                       },
                     ),

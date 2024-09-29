@@ -86,6 +86,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/close.svg
   SvgGenImage get close => const SvgGenImage('assets/icons/close.svg');
 
+  /// File path: assets/icons/close_prof.svg
+  SvgGenImage get closeProf => const SvgGenImage('assets/icons/close_prof.svg');
+
   /// File path: assets/icons/dori_qoshish.png
   AssetGenImage get doriQoshish =>
       const AssetGenImage('assets/icons/dori_qoshish.png');
@@ -149,6 +152,9 @@ class $AssetsIconsGen {
   AssetGenImage get kayfiyatsizlik =>
       const AssetGenImage('assets/icons/kayfiyatsizlik.png');
 
+  /// File path: assets/icons/klimaks.png
+  AssetGenImage get klimaks => const AssetGenImage('assets/icons/klimaks.png');
+
   /// File path: assets/icons/kun_mavzusi_1.jpg
   AssetGenImage get kunMavzusi1 =>
       const AssetGenImage('assets/icons/kun_mavzusi_1.jpg');
@@ -209,6 +215,10 @@ class $AssetsIconsGen {
   AssetGenImage get onboard3 =>
       const AssetGenImage('assets/icons/onboard3.png');
 
+  /// File path: assets/icons/onboard_4.png
+  AssetGenImage get onboard4 =>
+      const AssetGenImage('assets/icons/onboard_4.png');
+
   /// File path: assets/icons/organizm.png
   AssetGenImage get organizm =>
       const AssetGenImage('assets/icons/organizm.png');
@@ -245,6 +255,10 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/taslim.png
   AssetGenImage get taslim => const AssetGenImage('assets/icons/taslim.png');
+
+  /// File path: assets/icons/tugruq_song.png
+  AssetGenImage get tugruqSong =>
+      const AssetGenImage('assets/icons/tugruq_song.png');
 
   /// File path: assets/icons/tushkunlik.png
   AssetGenImage get tushkunlik =>
@@ -288,6 +302,7 @@ class $AssetsIconsGen {
         checkPink,
         checked,
         close,
+        closeProf,
         doriQoshish,
         dorilarIcon,
         export,
@@ -306,6 +321,7 @@ class $AssetsIconsGen {
         isitma,
         kayfiyatIcon,
         kayfiyatsizlik,
+        klimaks,
         kunMavzusi1,
         kunMavzusi2,
         kunMavzusi3,
@@ -321,6 +337,7 @@ class $AssetsIconsGen {
         onboard1,
         onboard2,
         onboard3,
+        onboard4,
         organizm,
         ovulyatsiyaIcon,
         pregrant,
@@ -331,6 +348,7 @@ class $AssetsIconsGen {
         soglomOvqatlanish,
         splash,
         taslim,
+        tugruqSong,
         tushkunlik,
         unavailable,
         unprotected,
