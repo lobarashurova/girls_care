@@ -82,7 +82,10 @@ class _VerifyPageState extends State<VerifyPage> {
                         Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MainApp()));
+                                builder: (context) => MainApp(
+                                      isPregnancy: true,
+                                      index: 0,
+                                    )));
                       },
                     ),
                     SizedBox(

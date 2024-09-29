@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
             _buildInfoRow(),
             const HelperSection(),
             SizedBox(height: 20.h),
-            const ArticlesSection(),
+            const ArticlesSection(isPregnancy: false),
             SizedBox(height: 140.h),
           ],
         ),

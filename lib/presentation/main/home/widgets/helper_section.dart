@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/presentation/main/helper/add_note_helper/add_note_helper_page.dart';
 import 'package:girls_care/presentation/main/home/widgets/helper_section_details.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
+import 'package:provider/provider.dart';
 
 class HelperSection extends StatefulWidget {
   const HelperSection({super.key});
@@ -21,7 +24,9 @@ class _HelperSectionState extends State<HelperSection> {
           children: [
             "Yordamchi".s(24.sp).w(700).c(Colors.black),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.read<MainAppDbService>().onTabTapped(2);
+              },
               icon: Assets.icons.rightVector.svg(width: 24.w, height: 24.h),
             ),
           ],

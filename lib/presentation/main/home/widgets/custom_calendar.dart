@@ -128,6 +128,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
         selectedDate.month == today.month && selectedDate.year == today.year;
 
     return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
@@ -149,7 +150,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               ),
               child: isToday
                   ? CircleAvatar(
-                      radius: 20.w,
+                      radius: 18.w,
                       backgroundColor: const Color(0xFF8D80C1),
                       child: "${index + 1}".s(16.sp).w(600).c(Colors.white),
                     )

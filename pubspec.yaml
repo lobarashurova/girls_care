@@ -87,6 +87,7 @@ dependencies:
   flutter_swiper_view: ^1.1.8
   card_slider: ^1.0.5
   cloud_firestore: ^5.4.0
+  url_launcher: any
 
 dev_dependencies:
   flutter_test:

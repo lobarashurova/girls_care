@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/presentation/main/account/account_section.dart';
+import 'package:girls_care/presentation/main/helper/add_note_helper/add_note_helper_page.dart';
 import 'package:girls_care/presentation/main/home/home_page.dart';
 import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/main_app_details.dart';
 import 'package:girls_care/presentation/main/helper/helper.dart';
 import 'package:girls_care/presentation/main/pregnancy/pregnancy_page.dart';
+import 'package:girls_care/presentation/main/pregnancy/widgets/article_preg.dart';
 import 'package:provider/provider.dart';
 import 'package:girls_care/common/extensions/text_extensions.dart';
-
 import 'articles/articles.dart'; // Import your extension
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+  final int index;
+  final bool isPregnancy;
+  const MainApp({super.key, required this.index, required this.isPregnancy});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +24,15 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body: Consumer<MainAppDbService>(
           builder: (context, state, child) {
-            final List<Widget> _children = [
-              const PregnancyPage(),
-              const ArticlesPage(),
-              const Helper(),
+      
+            final List<Widget> children = [
+              isPregnancy ? const PregnancyPage() : const HomePage(),
+              isPregnancy ? const ArticlePreg() : const ArticlesPage(),
+              const AddNoteHelperPage(),
               const Account(),
             ];
-            return _children[state.currentIndex];
+
+            return children[state.currentIndex];
           },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -80,9 +85,9 @@ class MainApp extends StatelessWidget {
                               ? navIconsSelected[index]
                               : navIconsUnselected[index],
                         ),
-                        navTitle[index].s(12.sp).c(isSelected
-                            ? Colors.white
-                            : Colors.black), // Using your extension
+                        navTitle[index]
+                            .s(12.sp)
+                            .c(isSelected ? Colors.white : Colors.black),
                       ],
                     ),
                   ),

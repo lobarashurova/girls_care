@@ -7,12 +7,15 @@ import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/presentation/main/articles/widgets/daily_themes.dart';
 import 'package:girls_care/presentation/main/home/widgets/custom_appbar.dart';
 import 'package:girls_care/presentation/main/home/widgets/helper_section.dart';
+import 'package:girls_care/presentation/main/main_app.dart';
+import 'package:girls_care/presentation/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/pregnancy/calendar_pregnancy.dart';
 import 'package:girls_care/presentation/main/pregnancy/widgets/child_size_widget.dart';
 import 'package:girls_care/presentation/main/pregnancy/widgets/pregnancy_article_details.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:provider/provider.dart';
 
 class PregnancyPage extends StatefulWidget {
   const PregnancyPage({super.key});
@@ -220,9 +223,12 @@ class _PregnancyPageState extends State<PregnancyPage> {
               children: [
                 "Maqolalar".s(20.sp).w(700).c(Colors.black),
                 IconButton(
-                    onPressed: () {},
-                    icon: Assets.icons.rightVector
-                        .svg(width: 18.w, height: 18.h)),
+                  onPressed: () {
+                    context.read<MainAppDbService>().onTabTapped(1);
+                  },
+                  icon: Assets.icons.rightVector.svg(width: 18.w, height: 18.h),
+                ),
+
               ],
             ),
             SizedBox(height: 20.h),

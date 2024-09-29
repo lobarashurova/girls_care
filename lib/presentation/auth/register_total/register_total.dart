@@ -117,7 +117,10 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => MainApp()));
+                                  builder: (context) => MainApp(
+                                        isPregnancy: true,
+                                        index: 0,
+                                      )));
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
@@ -134,7 +137,10 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomePage()));
+                                  builder: (context) => MainApp(
+                                        index: 0,
+                                        isPregnancy: true,
+                                      )));
                         },
                         child: "Ma’lumotlarni kiritmasdan davom etish"
                             .s(16)
