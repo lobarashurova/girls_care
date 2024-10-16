@@ -3,6 +3,20 @@
 <p>
   The <strong>Girls Care</strong> app is a comprehensive solution designed exclusively for women. It provides essential tools for tracking period cycles, managing pregnancy, and navigating menopause and postpartum stages. Additionally, the app offers a wide range of articles to support and educate users at every stage of life.
 </p>
+## Girls Care App Screenshots
+
+<p align="center">
+  <!-- First row with 3 images -->
+  <img src="https://github.com/user-attachments/assets/9870cd55-8627-43dc-b55f-4ddc358d9698" alt="Screenshot 1" width="200" />
+  <img src="https://github.com/user-attachments/assets/fd282004-9c66-45c0-abe4-2b58e271005a" alt="Screenshot 2" width="200" />
+  <img src="https://github.com/user-attachments/assets/1d496c4c-75d5-46d6-8563-6a6c59c87835" alt="Screenshot 3" width="200" />
+</p>
+
+<p align="center">
+  <!-- Second row with 2 images -->
+  <img src="https://github.com/user-attachments/assets/c833eed3-dcf7-453f-851a-efba2e815c1d" alt="Screenshot 4" width="200" />
+  <img src="https://github.com/user-attachments/assets/8313549f-8428-4c12-8e59-d8247b3390d7" alt="Screenshot 5" width="200" />
+</p>
 
 <h2>Key Features</h2>
 <ul>
