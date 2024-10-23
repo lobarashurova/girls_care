@@ -7,6 +7,7 @@ import 'package:girls_care/presentation/auth/login/login_provider.dart';
 import 'package:girls_care/presentation/auth/register/provider/register_provider.dart';
 import 'package:girls_care/presentation/main/after_pregnancy/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/main/home/main/main_app_db_service.dart';
+import 'package:girls_care/presentation/main/klimaks/main/klimaks_app_db_service.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/main_app_db_service.dart';
 import 'package:girls_care/presentation/start/splash/splash_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,6 +38,8 @@ class MyApp extends StatelessWidget {
             ChangeNotifierProvider(create: (_) => PregnancyAppService()),
             ChangeNotifierProvider(create: (_) => PeriodAppService()),
             ChangeNotifierProvider(create: (_) => AfterPregnancyAppService()),
+            ChangeNotifierProvider(create: (_) => KlimaksAppService()),
+
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

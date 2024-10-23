@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
+import 'package:girls_care/data/storage/storage.dart';
 import 'package:girls_care/presentation/main/change_calendar_data/change_calendar.dart';
 import 'package:girls_care/presentation/main/home/widgets/articles_section.dart';
 import 'package:girls_care/presentation/main/home/widgets/change_calendar_b.dart';
@@ -20,6 +22,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final storage = getIt<Storage>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,8 +39,18 @@ class _HomePageState extends State<HomePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomCalendar(),
-            _buildButton(context, "Hayz ma’lumotlaringizni kiriting",
+            _buildButton(
+                context,
+                storage.avarageSikl.call() == null
+                    ? "Hayz ma’lumotlaringizni kiriting"
+                    : "Kalendarga o’zgarish kiritish",
                 const ChangeCalendar()),
+            if(storage.avarageSikl.call()!=null)
+              Column(
+                children: [
+                  
+                ],
+              ),
             _buildInfoRow(),
             const HelperSection(),
             SizedBox(height: 20.h),

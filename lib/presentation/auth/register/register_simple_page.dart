@@ -83,6 +83,7 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                               hint: "O’rtacha hayz kunlari",
                               keyboardType: TextInputType.number,
                               maxLength: 2,
+                              autofocus: true,
                               onChanged: (text) {
                                 setState(() {});
                               },
@@ -151,8 +152,7 @@ class _RegisterSimplerPageState extends State<RegisterSimplerPage> {
                               .set(int.parse(dayController.text.toString()));
                           storage.avarageSikl
                               .set(int.parse(siklController.text.toString()));
-                          storage.lastDay
-                              .set((lastDayController.text.toString()));
+                          storage.lastDay.set((selectedDay.toString()));
 
                           context.push(const RegisterTotalPage());
                         } else {

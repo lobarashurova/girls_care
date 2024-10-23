@@ -12,6 +12,7 @@ import 'package:girls_care/presentation/auth/login/login_page.dart';
 import 'package:girls_care/presentation/auth/plan/girl_mode.dart';
 import 'package:girls_care/presentation/main/after_pregnancy/main/pregnancy_main_app.dart';
 import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/klimaks/main/period_main_app.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 import 'package:girls_care/presentation/start/onboard/onboarding_page.dart';
 import 'package:girls_care/presentation/start/splash/cubit/splash_cubit.dart';
@@ -41,6 +42,8 @@ class SplashPage
             context.pushReplacement(const PregnancyMainApp());
           } else if (storage.mode.call() == GirlMode.afterbirth) {
             context.pushReplacement(const AfterPregnancyMainApp());
+          } else {
+            context.pushAndRemoveAll(KlimaksMainApp());
           }
         }
 

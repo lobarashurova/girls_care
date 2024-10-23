@@ -90,7 +90,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         .a(TextAlign.center),
                     const Spacer(),
                     CommonButton.elevated(
-                        text: "Далее",
+                        text: "Keyingisi",
                         onPressed: () {
                           if (selectedIndex < 3) {
                             setState(() {

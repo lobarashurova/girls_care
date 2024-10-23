@@ -75,12 +75,6 @@ class _VerifyPageState extends State<VerifyPage> {
                     CommonPinPut(
                       pinController: controller,
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    "Kiritilgan kod noto’g’ri! Iltimos qayta urinib ko’ring."
-                        .s(12)
-                        .w(500),
                     Spacer(),
                     CommonButton.elevated(
                       text: "Kirish",

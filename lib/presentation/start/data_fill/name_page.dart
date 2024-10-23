@@ -68,7 +68,9 @@ class _NamePageState extends State<NamePage> {
                       height: 40,
                     ),
                     CommonTextField(
+                      autofocus: true,
                       controller: nameController,
+                      capitalization: TextCapitalization.sentences,
                       hint: "Ismni kiriting",
                       onChanged: (text) {
                         setState(() {});

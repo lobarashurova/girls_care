@@ -14,6 +14,7 @@ import 'package:girls_care/presentation/auth/register/register_simple_page.dart'
 import 'package:girls_care/presentation/auth/register_pregnant/register_pregnant.dart';
 import 'package:girls_care/presentation/main/after_pregnancy/main/pregnancy_main_app.dart';
 import 'package:girls_care/presentation/main/home/main/period_main_app.dart';
+import 'package:girls_care/presentation/main/klimaks/main/period_main_app.dart';
 import 'package:girls_care/presentation/main/pregnancy/main/pregnancy_main_app.dart';
 
 class PlanPage extends StatefulWidget {
@@ -204,6 +205,12 @@ class _PlanPageState extends State<PlanPage> {
                           case 3:
                             {
                               storage.mode.set(GirlMode.klimaks);
+                              if (widget.isLogin) {
+                                context
+                                    .pushAndRemoveAll(const KlimaksMainApp());
+                              } else {
+                                context.push(const RegisterSimplerPage());
+                              }
                             }
                         }
                       },

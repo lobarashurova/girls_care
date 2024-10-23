@@ -5,7 +5,6 @@ import 'package:girls_care/common/extensions/text_extensions.dart';
 import 'package:girls_care/common/extensions/theme_extensions.dart';
 import 'package:girls_care/common/gen/assets.gen.dart';
 import 'package:girls_care/common/widget/common_button.dart';
-import 'package:girls_care/presentation/auth/register_pregnant/widgets/page1.dart';
 import 'package:girls_care/presentation/auth/register_pregnant/widgets/page2.dart';
 import 'package:girls_care/presentation/auth/register_total/register_total.dart';
 
@@ -65,46 +64,26 @@ class _RegisterPregnantState extends State<RegisterPregnant> {
                     SizedBox(
                       height: 40,
                     ),
-                    selectedIndex == 0
-                        ? Page1(
-                            selectedDay: (day) {
-                              setState(() {
-                                selectedStartDay = day;
-                              });
-                            },
-                          )
-                        : Page2(
-                            selectedDay: (day) {
-                              setState(() {
-                                selectedhayzDate = day;
-                              });
-                            },
-                          ),
+                    Page2(
+                      selectedDay: (day) {
+                        setState(() {
+                          selectedhayzDate = day;
+                        });
+                      },
+                    ),
                     Spacer(),
                     CommonButton.elevated(
-                      text: "Saqlash va davom etish",
-                      onPressed: () {
-                        if (selectedIndex < 1 && selectedStartDay != null) {
-                          setState(() {
-                            selectedIndex++;
-                          });
-                        } else if (selectedStartDay == null) {
-                          context.showElegantNotification(
-                              title: "Maydonni tekshiring",
-                              description: "Maydon to'ldirilmagan!",
-                              type: NotificationType.info);
-                        } else {
+                        text: "Saqlash va davom etish",
+                        onPressed: () {
                           if (selectedhayzDate != null) {
                             context.push(const RegisterTotalPage());
                           } else {
                             context.showElegantNotification(
-                                title: "Maydonni tekshiring",
+                              title: "Maydonni tekshiring",
                                 description: "Maydon to'ldirilmagan!",
                                 type: NotificationType.info);
                           }
-                        }
-                      },
-                    ),
+                        }),
                     SizedBox(
                       height: 16,
                     ),

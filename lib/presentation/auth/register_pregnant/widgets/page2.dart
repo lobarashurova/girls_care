@@ -60,20 +60,21 @@ class _Page2State extends State<Page2> {
         SizedBox(
           height: 16,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              children: [
-                (yearHomila ?? "Kunni tanlang").s(24).w(700),
-                "Tug’ruqqacha ${yearTugruq ?? 0} kun"
-                    .s(12)
-                    .w(400)
-                    .c(context.colors.display)
-              ],
-            ),
-          ],
-        )
+        if (selectedDay != null)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  (yearHomila ?? "Kunni tanlang").s(24).w(700),
+                  "${yearTugruq ?? 0} kun"
+                      .s(12)
+                      .w(400)
+                      .c(context.colors.display)
+                ],
+              ),
+            ],
+          )
       ],
     );
   }

@@ -81,6 +81,7 @@ class _RegisterTotalPageState extends State<RegisterTotalPage> {
                           height: 16,
                         ),
                         CommonTextField(
+                          autofocus: true,
                           controller: phoneController,
                           prefixIcon:
                               "+998".s(16).w(400).c(context.colors.display),

@@ -5,33 +5,33 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CommonTextField extends StatefulWidget {
-  const CommonTextField({
-    super.key,
-    this.hint,
-    this.controller,
-    this.obscureText = false,
-    this.prefixIcon,
-    this.errorText,
-    this.onChanged,
-    this.keyboardType,
-    this.inputFormatter,
-    this.enabled,
-    this.suffix,
-    this.mask,
-    this.maxLength,
-    this.enabledBorderColor,
-    this.background,
-    this.suffixPressed,
-    this.moneyInput = false,
-    this.autofocus = false,
-    this.padding,
-    this.initialValue,
-    this.textInputAction,
-    this.labelText,
-    this.onTap,
-    this.minLines,
-    this.maxLines = 1,
-  });
+  const CommonTextField(
+      {super.key,
+      this.hint,
+      this.controller,
+      this.obscureText = false,
+      this.prefixIcon,
+      this.errorText,
+      this.onChanged,
+      this.keyboardType,
+      this.inputFormatter,
+      this.enabled,
+      this.suffix,
+      this.mask,
+      this.maxLength,
+      this.enabledBorderColor,
+      this.background,
+      this.suffixPressed,
+      this.moneyInput = false,
+      this.autofocus = false,
+      this.padding,
+      this.initialValue,
+      this.textInputAction,
+      this.labelText,
+      this.onTap,
+      this.minLines,
+      this.maxLines = 1,
+      this.capitalization});
 
   final String? hint;
   final Widget? prefixIcon;
@@ -54,6 +54,7 @@ class CommonTextField extends StatefulWidget {
   final EdgeInsets? padding;
   final String? initialValue;
   final TextInputAction? textInputAction;
+  final TextCapitalization? capitalization;
   final GestureTapCallback? onTap;
   final int? maxLines;
   final int? minLines;
@@ -99,6 +100,7 @@ class _CommonTextFieldState extends State<CommonTextField> {
       obscureText: passwordVisible,
       cursorColor: context.colors.primary,
       textAlign: TextAlign.start,
+      textCapitalization: widget.capitalization ?? TextCapitalization.none,
       inputFormatters:
           widget.moneyInput ? [PriceInputFormatter()] : [maskFormatter],
       onChanged: widget.onChanged == null
@@ -176,14 +178,14 @@ class _CommonTextFieldState extends State<CommonTextField> {
                 },
               )
             : InkWell(
-          onTap: (){
-            widget.suffixPressed?.call();
-          },
-              child: Padding(
+                onTap: () {
+                  widget.suffixPressed?.call();
+                },
+                child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: widget.suffix,
                 ),
-            ),
+              ),
       ),
       style: TextStyle(
         fontSize: 14,

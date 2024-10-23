@@ -14,14 +14,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:pinput/pinput.dart';
 
-class CustomCalendarChange extends StatefulWidget {
-  const CustomCalendarChange({super.key});
+class CustomCalendarEdit extends StatefulWidget {
+  const CustomCalendarEdit({super.key});
 
   @override
-  State<CustomCalendarChange> createState() => _CustomCalendarChangeState();
+  State<CustomCalendarEdit> createState() => _CustomCalendarEditState();
 }
 
-class _CustomCalendarChangeState extends State<CustomCalendarChange> {
+class _CustomCalendarEditState extends State<CustomCalendarEdit> {
   DateTime selectedDate = DateTime.now();
   int? averagePeriodDays;
   int? averageCycleDays;

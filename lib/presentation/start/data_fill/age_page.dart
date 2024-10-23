@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:girls_care/common/di/injection.dart';
 import 'package:girls_care/common/extensions/navigation_extensions.dart';
 import 'package:girls_care/common/extensions/notification_extensions.dart';
@@ -19,8 +20,8 @@ class AgePage extends StatefulWidget {
 }
 
 class _AgePageState extends State<AgePage> {
-  int? currentValue;
-  final Storage _storage = getIt<Storage>();
+  int currentValue = 18;
+  final _storage = getIt<Storage>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class _AgePageState extends State<AgePage> {
             top: 0,
             right: 0,
             left: 0,
-            child: SizedBox(
+            child: Container(
               height: MediaQuery.of(context).size.height / 3 - 15,
               child: Assets.icons.backgound.image(fit: BoxFit.cover),
             ),
@@ -80,8 +81,8 @@ class _AgePageState extends State<AgePage> {
                       onChanged: (newValue) =>
                           setState(() => currentValue = newValue),
                       value: currentValue ?? 18,
-                      itemHeight: 200,
-                      itemWidth: 123,
+                      itemHeight: 200.w,
+                      itemWidth: 150.h,
                       textStyle: GoogleFonts.balooTamma2(
                           fontSize: 96,
                           color: context.colors.display,
